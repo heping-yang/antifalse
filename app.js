@@ -24,6 +24,7 @@ App({
   },
 
   globalData: {
+    globalUrl: "https://www.nxyqedu.com/Aspect",
     userInfo: null
   }
 })

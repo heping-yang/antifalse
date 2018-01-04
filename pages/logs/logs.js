@@ -1,14 +1,30 @@
 //logs.js
 var util = require('../../utils/util.js')
+var app = getApp();
 Page({
   data: {
-    logs: []
+    logs: [],
+    arr_res : ""
   },
   onLoad: function () {
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(function (log) {
-        return util.formatTime(new Date(log))
-      })
+    var that = this
+    wx.request({
+      url: app.globalData.globalUrl + "/aspect/login",
+      data: {
+      },
+      success: function (res) {
+        console.log(res);
+        console.log(res.data);
+        that.setData({
+          arr_res: res.data
+        });
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
     })
   }
 })

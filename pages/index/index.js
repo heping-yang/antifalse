@@ -22,5 +22,36 @@ Page({
         userInfo:userInfo
       })
     })
+  },
+  payment:function(){
+    wx.request({
+      url: app.globalData.globalUrl,
+      data: {
+        'openid': 'oe7H80FPDvTYI7317jpD91UoCiSE',
+        'total_free': '1'
+      },
+      success: function (res) {
+        console.log("res=" + res);
+        var count = res.data.indexOf("\r\n\r\n<!DOC");
+        console.log("count=" + count);
+        var str = res.data.substring(0, count);
+        var js = JSON.parse(str);
+        console.log("timeStamp=" + js.timeStamp);
+        console.log("nonceStr=" + js.nonceStr);
+        console.log("package=" + js.package);
+        console.log("paySign=" + js.paySign);
+        console.log("out_trade_no=" + js.out_trade_no);
+        wx.requestPayment({
+          'timeStamp': js.timeStamp,
+          'nonceStr': js.nonceStr,
+          'package': js.package,
+          'signType': 'MD5',
+          'paySign': js.paySign,
+          success: function (res) {
+            wx.showToast({ title: '完成' });
+          }
+        })
+      }
+    })
   }
 })
