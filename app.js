@@ -24,7 +24,8 @@ App({
   },
 
   globalData: {
-    globalUrl: "https://www.nxyqedu.com/Aspect",
+//    globalUrl: "https://www.nxyqedu.com/antifalse/api",
+    globalUrl: "http://localhost:8080/antifalse/api",
     userInfo: null
   }
 })

@@ -9,14 +9,14 @@ Page({
   onLoad: function () {
     var that = this
     wx.request({
-      url: app.globalData.globalUrl + "/aspect/login",
+      url: app.globalData.globalUrl + "/exam",
       data: {
+        method: "list"
       },
       success: function (res) {
-        console.log(res);
         console.log(res.data);
         that.setData({
-          arr_res: res.data
+          arr_res: res.data.status
         });
       },
       fail: function (error) {
