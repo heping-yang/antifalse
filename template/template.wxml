@@ -1,0 +1,27 @@
+<template name="MultipleQuestion">
+  <view class='exam_top'>
+    <text class='exam_top_left'>单项选择</text>
+    <view class='exam_top_right'>
+      <text class='cu'>{{item.index}}</text>
+      <text>/</text>
+      <text class='total'>{{item.total}}</text>
+    </view>
+  </view>
+  <scroll-view scroll-y="{{true}}" class='qu_cont'>
+    <!--题目类型及当前题目 -->
+    <!--答题  -->
+    <view class='answer_box'>
+      <!--问题  -->
+      <view class='question_box'>
+        <text class='question'>{{item.qu}}</text>
+      </view>
+      <!--答案选项  -->
+      <view class='answer_list'>
+        <view class='answer_item' wx:for="{{item.options}}" wx:key="unique">
+          <text class='{{item.css}}' catchtap='answerQuestion'>{{item.flag}}</text>
+          <text>{{item.optionText}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</template>

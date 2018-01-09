@@ -1,0 +1,159 @@
+<!--pages/exam/exam.wxml-->
+<import src="/template/template.wxml" />
+
+<view class='container'>
+  <!--休息弹框  -->
+  <view class='modal_bg {{modalShow==true?"modal_show":""}}'>
+    <view class='modal_suc'>
+        <view class='rest_cont'>
+          <image class='icon' src='/images/icon_exam.png'></image>
+          <text class='font_grey'>休息一下</text>
+          <text>共135道题，还有123道未作答</text>
+        </view>
+        <view class='modal_btn_box'>
+          <text class='modal_btn' bindtap="testContuine">继续答题</text> 
+        </view>
+    </view>
+    
+  </view>
+  <!--底部  -->
+  <view class='bottom'>
+    <view class='bottom_item' bindtap='showAll'>
+      <image src='/images/icon_qu_all.png'></image>
+    </view>
+    <view class='bottom_item' bindtap='rest'>
+      <text class='time'>30:00</text>
+      <image src='/images/icon_time.png'></image>
+    </view>
+  </view>
+
+  <!--考试部分  -->
+  <swiper style='height:100vh'>
+      <swiper-item>
+        <view class='exam_top'>
+          <text class='exam_top_left'>单项选择</text>
+          <view class='exam_top_right'>
+            <text class='cu'>{{question.index}}</text>
+            <text>/</text>
+            <text class='total'>{{question.total}}</text>
+          </view>
+        </view>
+        <scroll-view scroll-y="{{true}}" class='qu_cont'>
+          <!--题目类型及当前题目 -->
+          <!--答题  -->
+          <view class='answer_box'>
+            <!--问题  -->
+            <view class='question_box'>
+              <text class='question'>{{question.question[0].content}}</text>
+            </view>
+            <!--答案选项  -->
+            <view class='answer_list'>
+              <view class='answer_item {{activeIndex==index?"answer_item_active":""}}' wx:for="{{question.question[0].answer}}"  bindtap='answerQuestion' data-option='{{item.option}}' id='{{index}}' wx:key="unique">
+                <text class='answer_flag'>{{item.option}}</text>
+                <text>{{item.answer}}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+  </swiper>
+
+
+  <!--交卷  -->
+  <view class="layer {{layerStus==true ? 'show' : ''}}">
+    <scroll-view class='layer_cont' scroll-y="{{true}}">
+      <text class='qu_type'>单项选择</text>
+      <view class='qu_box clearfix'>
+        <text class='qu_num qu_num_answered'>1</text>
+        <text class='qu_num qu_num_answered'>2</text>
+        <text class='qu_num qu_num_answered'>3</text>
+        <text class='qu_num qu_num_answered'>4</text>
+        <text class='qu_num qu_num_answered'>6</text>
+        <text class='qu_num qu_num_answered'>1</text>
+        <text class='qu_num qu_num_answered'>2</text>
+        <text class='qu_num qu_num_answered'>3</text>
+        <text class='qu_num qu_num_answered'>4</text>
+        <text class='qu_num qu_num_answered'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>8</text>
+        <text class='qu_num'>9</text>
+        <text class='qu_num'>10</text>
+        <text class='qu_num'>11</text>
+        <text class='qu_num'>12</text>
+      </view>
+      <text class='qu_type'>多项选择</text>
+      <view class='qu_box'>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num qu_num_answered'>8</text>
+        <text class='qu_num qu_num_answered'>9</text>
+      </view>
+      <text class='qu_type'>判断题</text>
+      <view class='qu_box'>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+        <text class='qu_num'>1</text>
+        <text class='qu_num'>2</text>
+        <text class='qu_num'>3</text>
+        <text class='qu_num'>4</text>
+        <text class='qu_num'>6</text>
+        <text class='qu_num'>7</text>
+      </view>
+    </scroll-view>
+    <!--layercont  -->
+    <view class='footer'>
+      <view class='btn btn_outline' bindtap='testContinue'>
+        继续模拟
+      </view>
+      <view class='btn' bindtap='handIn'>
+        交卷
+      </view>
+    </view>
+  </view>
+  <!--交卷结束  -->
+
+</view>

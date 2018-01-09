@@ -1,0 +1,36 @@
+/* pages/exam/exam.wxss */ 
+.bottom{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5;height: 55rpx;padding-top: 15rpx;padding-bottom: 15rpx;background: #fff;z-index: 100}
+.bottom image{height:55rpx;width:55rpx}
+.bottom_item{width: 50%;text-align: center;position: relative;background: rgba(0, 0, 0, 0.0);}
+.time{position: absolute;top: 10rpx;left: 50%;width: 200rpx;margin-left: -100rpx;background: rgba(0, 0, 0, 0.0);height: 40rpx;color: #6a6a6a;font-size: 24rpx}
+
+ 
+.layer .footer{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5; background: #fff;z-index: 102;padding: 20rpx 0;}
+.layer .footer .btn{background: #4c86e5;color: #fff;text-align: center;width: 300rpx;padding:14rpx 0;border-radius: 5px;margin-left: 48rpx  ;border: 1px solid #4c86e5}
+.layer .footer .btn_outline{background: #fff;color: #4c86e5;border: 1px solid #4c86e5} 
+
+.layer_cont{padding:0 20rpx;display: flex;flex-direction: column;padding-right: 0; height: 90vh}
+
+.modal_bg{position: fixed;background:rgba(0, 0, 0, 0.5);height: 100%;width: 100%;top: 0px;left: 0px;z-index: 200;display: none}
+.modal_show{display: block}
+.modal_suc{width: 80%;background: #fff;border-radius: 5px;top: 20%;left: 10%;position: absolute}
+.rest_cont{display: flex;flex-direction: column;text-align: center;padding-top: 30rpx;padding-bottom: 40rpx;border-bottom: 1px solid #d7d7d7}
+.rest_cont .icon{width:130rpx;height: 130rpx;margin: 30rpx auto }
+.modal_btn_box{display:flex;flex-direction:row;padding: 10rpx 0;}
+.modal_btn{color: #4c86e5;text-align: center;width: 45%;display: inline-block;margin: 0px auto;padding: 20rpx 0;}
+
+.exam_top{display: flex;flex-direction: row;border-bottom: 1px solid #e5e5e5;color: #747474;padding:0 10px;border-top: 1px solid #e5e5e5;line-height: none;padding-top: 20rpx;padding-bottom: 20rpx;}
+.exam_top_left{width: 300rpx;font-size: 32rpx}
+.exam_top_right{width:450rpx;text-align: right }
+.cu{color: #4688ea;font-size: 32rpx}
+
+.answer_box{padding:15px 10px;color: #525252}
+.question{line-height: 45rpx}
+.qu_cont{margin-bottom: 0px;height: 90vh}
+.answer_list{margin-top: 50rpx}
+.answer_item{padding-left: 80rpx;position: relative;margin-bottom: 60rpx;}
+.answer_item .answer_flag{height: 60rpx;width: 60rpx;border-radius: 50%;background: #fff;border:1px solid #d9d9d9;display: block;line-height: 60rpx;text-align: center;color: #333;position: absolute;left: 0px;top:-15rpx}
+.answer_item_active{padding-left: 80rpx;position: relative;margin-bottom: 60rpx;}
+.answer_item_active .answer_flag{height: 60rpx;width: 60rpx;border-radius: 50%;background: #4c86e5;border:1px solid #4c86e5;display: block;line-height: 60rpx;text-align: center;color: #fff;position: absolute;left: 0px;top:-15rpx}
+/*已答  */
+.qu_num_answered{background: #4c86e5;color: #fff;border:1px solid #4c86e5;}

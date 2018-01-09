@@ -53,5 +53,10 @@ Page({
         })
       }
     })
+  },
+  enterTap:function(){
+    wx.navigateTo({
+      url: '/pages/exam/list/list'
+    })
   }
 })
