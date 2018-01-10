@@ -24,7 +24,7 @@ Page({
     });
     console.log(examId)
     console.log(num)
-    wx.navigateTo({
+    wx.reLaunch({
       url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num,//url跳转地址
       success: function (res) {
         console.log(res)

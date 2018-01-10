@@ -8,7 +8,7 @@
         <view class='rest_cont'>
           <image class='icon' src='/images/icon_exam.png'></image>
           <text class='font_grey'>休息一下</text>
-          <text>共135道题，还有123道未作答</text>
+          <text>共{{question.total}}道题，还有{{question.total - question.index + 1}}道未作答</text>
         </view>
         <view class='modal_btn_box'>
           <text class='modal_btn' bindtap="testContuine">继续答题</text> 
