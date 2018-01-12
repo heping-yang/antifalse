@@ -83,6 +83,7 @@ Page({
   enterExam: function (event) {
     console.log(event),
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
+    app.globalData.hId = this.guid();
       wx.navigateTo({
       url: "/pages/exam/exam/exam?examId=" + event.currentTarget.dataset.id + "&index=0",//url跳转地址
         success: function (res) {
@@ -92,5 +93,12 @@ Page({
           console.log(res)
         }
       })
+  },
+  //产生一个uuid
+  guid:function() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 }) 

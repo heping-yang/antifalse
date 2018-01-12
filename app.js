@@ -26,6 +26,7 @@ App({
   globalData: {
 //    globalUrl: "https://www.nxyqedu.com/antifalse/api",
     globalUrl: "http://localhost:8080/antifalse/api",
-    userInfo: null
+    userInfo: null,
+    h_id:""
   }
 })

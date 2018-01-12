@@ -2,8 +2,8 @@
 var app = getApp();
 var num = 0;
 var examId = "";
+var standard = "";
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -14,6 +14,7 @@ Page({
     layerStus: false,
     layerAnimation:{},
     question:null,
+    anwsers:null,
     activeIndex: 100
   },
   // 答题
@@ -24,8 +25,13 @@ Page({
     });
     console.log(examId)
     console.log(num)
+    console.log(standard)
+    var user_result = "0"
+    if (e.currentTarget.dataset.option == standard) {
+      user_result = "1"
+    }
     wx.reLaunch({
-      url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num,//url跳转地址
+      url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnwser=" + e.currentTarget.dataset.option + "&userResult=" + user_result,//url跳转地址
       success: function (res) {
         console.log(res)
       },
@@ -36,10 +42,42 @@ Page({
   },
   //查看全部题目
   showAll: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.globalUrl + "/exam",
+      data: {
+        method: "queryAnwsers",
+        hId: app.globalData.hId
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          anwsers: res.data.anwsers[0]
+        });
+        console.log(res.data.anwsers[0].answerRecord.data)
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
     this.setData({
       layerStus: true
     })
-    
+  },
+  selectQuestion :function(e){
+    console.log(e)
+    wx.reLaunch({
+      url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + e.currentTarget.dataset.index + "&type=select",//url跳转地址
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
   //继续模拟
   testContinue: function () {
@@ -80,13 +118,17 @@ Page({
       data: {
         method: "queryNextQuestion",
         examId: options.examId,
-        index: options.index
+        index: options.index,
+        userResult: options.userResult,
+        userAnwser: options.userAnwser,
+        hId: app.globalData.hId
       },
       success: function (res) {
         console.log(res.data);
         that.setData({
           question: res.data
         });
+        standard = res.data.question[0].standard
         num = res.data.index
         examId = res.data.question[0].examId
       },

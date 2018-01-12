@@ -63,85 +63,32 @@
   <view class="layer {{layerStus==true ? 'show' : ''}}">
     <scroll-view class='layer_cont' scroll-y="{{true}}">
       <text class='qu_type'>单项选择</text>
-      <view class='qu_box clearfix'>
-        <text class='qu_num qu_num_answered'>1</text>
-        <text class='qu_num qu_num_answered'>2</text>
-        <text class='qu_num qu_num_answered'>3</text>
-        <text class='qu_num qu_num_answered'>4</text>
-        <text class='qu_num qu_num_answered'>6</text>
-        <text class='qu_num qu_num_answered'>1</text>
-        <text class='qu_num qu_num_answered'>2</text>
-        <text class='qu_num qu_num_answered'>3</text>
-        <text class='qu_num qu_num_answered'>4</text>
-        <text class='qu_num qu_num_answered'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>8</text>
-        <text class='qu_num'>9</text>
-        <text class='qu_num'>10</text>
-        <text class='qu_num'>11</text>
-        <text class='qu_num'>12</text>
+      <view class='qu_box'>
+        <text wx:for="{{anwsers.answerRecord.data}}">
+          <text wx:if="{{item.anwser != '' && item.type == '1'}}" class='qu_num qu_num_answered' bindtap='selectQuestion' data-index='{{item.index}}'>{{item.index}}</text>
+          <text wx:if="{{item.anwser == '' && item.type == '1'}}" class='qu_num'>{{item.index}}</text>
+        </text>
       </view>
       <text class='qu_type'>多项选择</text>
       <view class='qu_box'>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num qu_num_answered'>8</text>
-        <text class='qu_num qu_num_answered'>9</text>
+        <text wx:for="{{anwsers.answerRecord.data}}">
+          <text wx:if="{{item.anwser != '' && item.type == '2'}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.anwser == '' && item.type == '2'}}" class='qu_num'>{{item.index}}</text>
+        </text>
       </view>
       <text class='qu_type'>判断题</text>
       <view class='qu_box'>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
-        <text class='qu_num'>1</text>
-        <text class='qu_num'>2</text>
-        <text class='qu_num'>3</text>
-        <text class='qu_num'>4</text>
-        <text class='qu_num'>6</text>
-        <text class='qu_num'>7</text>
+        <text wx:for="{{anwsers.answerRecord.data}}">
+          <text wx:if="{{item.anwser != '' && item.type == '3'}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.anwser == '' && item.type == '3'}}" class='qu_num'>{{item.index}}</text>
+        </text>
+      </view>
+      <text class='qu_type'>案例分析</text>
+      <view class='qu_box'>
+        <text wx:for="{{anwsers.answerRecord.data}}">
+          <text wx:if="{{item.anwser != '' && item.type == '4'}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.anwser == '' && item.type == '4'}}" class='qu_num'>{{item.index}}</text>
+        </text>
       </view>
     </scroll-view>
     <!--layercont  -->
