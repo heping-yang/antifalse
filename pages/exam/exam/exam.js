@@ -3,6 +3,7 @@ var app = getApp();
 var num = 0;
 var examId = "";
 var standard = "";
+var lastFlag = "";
 Page({
   /**
    * 页面的初始数据
@@ -19,26 +20,49 @@ Page({
   },
   // 答题
   answerQuestion: function (e) { 
+    var that = this;
     console.log(e)
     this.setData({
       activeIndex: e.currentTarget.id
     });
-    console.log(examId)
-    console.log(num)
-    console.log(standard)
     var user_result = "0"
     if (e.currentTarget.dataset.option == standard) {
       user_result = "1"
     }
-    wx.reLaunch({
-      url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnwser=" + e.currentTarget.dataset.option + "&userResult=" + user_result,//url跳转地址
-      success: function (res) {
-        console.log(res)
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
+    if (lastFlag == "1"){
+      wx.reLaunch({
+        url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnwser=" + e.currentTarget.dataset.option + "&userResult=" + user_result,//url跳转地址
+        success: function (res) {
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
+    }else{
+      wx.request({
+        url: app.globalData.globalUrl + "/exam",
+        data: {
+          method: "queryNextQuestion",
+          examId: examId,
+          index: num,
+          userResult: user_result,
+          userAnwser: e.currentTarget.dataset.option,
+          hId: app.globalData.hId
+        },
+        success: function (res) {
+          that.setData({
+            modalShow: true
+          })
+        },
+        fail: function (error) {
+          console.log(error);
+          that.setData({
+            arr_res: '返回异常'
+          })
+        }
+      })
+    }
   },
   //查看全部题目
   showAll: function () {
@@ -67,10 +91,11 @@ Page({
       layerStus: true
     })
   },
-  selectQuestion :function(e){
+  //选择某一个题
+  selectQuestion:function(e){
     console.log(e)
     wx.reLaunch({
-      url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + e.currentTarget.dataset.index + "&type=select",//url跳转地址
+      url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + (e.currentTarget.dataset.index - 1) + "&type=select",//url跳转地址
       success: function (res) {
         console.log(res)
       },
@@ -84,15 +109,11 @@ Page({
     this.setData({
       layerStus: false
     })
-
-   
-
-
   },
   //交卷
   handIn: function () {
     wx.redirectTo({
-      url: '../examreport/examreport',
+      url: '/pages/exam/report/report',
     })
   },
   //休息
@@ -121,7 +142,8 @@ Page({
         index: options.index,
         userResult: options.userResult,
         userAnwser: options.userAnwser,
-        hId: app.globalData.hId
+        hId: app.globalData.hId,
+        type: options.type
       },
       success: function (res) {
         console.log(res.data);
@@ -131,6 +153,7 @@ Page({
         standard = res.data.question[0].standard
         num = res.data.index
         examId = res.data.question[0].examId
+        lastFlag = res.data.lastFlag
       },
       fail: function (error) {
         console.log(error);

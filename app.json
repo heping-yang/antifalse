@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/exam/list/list",
-    "pages/exam/exam/exam"
+    "pages/exam/exam/exam",
+    "pages/exam/report/report",
+    "pages/exam/analysis/analysis"
   ],
   "window":{
     "backgroundTextStyle":"light",

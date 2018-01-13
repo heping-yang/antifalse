@@ -1,0 +1,102 @@
+<!--pages/exam/exam.wxml-->
+<view class='container'>
+  <!--底部  -->
+  <view class='bottom'>
+    <view class='bottom_item' bindtap='backHome'>
+      <image src='/images/icon_home.png'></image>
+    </view>
+    <view class='bottom_item' bindtap='showAll'>
+      <image src='/images/icon_qu_all.png'></image>
+    </view>
+  </view>
+  <!--交卷  -->
+
+  <!--考试部分  -->
+  <swiper style='height:100vh'>
+    <block wx:for="{{wrongs}}" wx:key="unique">
+      <swiper-item>
+        <view class='exam_top'>
+          <text class='exam_top_left'>单项选择</text>
+          <view class='exam_top_right'>
+            <text class='cu'>{{item.index}}</text>
+            <text>/</text>
+            <text class='total'>{{wrongs.length}}</text>
+          </view>
+        </view>
+        <scroll-view scroll-y="{{true}}" class='qu_cont'>
+          <!--题目类型及当前题目 -->
+          <!--答题  -->
+          <view class='answer_box'>
+            <!--问题  -->
+            <view class='question_box'>
+              <text class='question'>{{item.content}}</text>
+            </view>
+            <!--答案选项  -->
+            <view class='answer_list'>
+              <view class='answer_item' wx:for="{{item.answer}}" wx:for-item="itemAnswer" wx:key="unique">
+                <text class='answer_flag  {{item.standard==itemAnswer.option?"answer_flag_correct":""}} {{item.anwser==itemAnswer.option&&item.standard!=itemAnswer.option?"answer_flag_wrong":""}}'>{{itemAnswer.option}}</text>
+                <text>{{itemAnswer.answer}}</text>
+              </view>
+            </view>
+          </view>
+          <!--答案分析  -->
+          <view class='exam_analysis'>
+            <view class='line'></view>
+            <view class='exam_analysis_cont'>
+              <text>答案</text>
+              <view class='exam_analysis_text'>
+                <text>正确答案</text>
+                <text class='font_green'>{{item.standard}}</text>
+                <text>，您的答案</text>
+                <text class='font_red'>{{item.anwser}}</text>
+              </view>
+
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </block>
+
+  </swiper>
+
+
+
+  <view class="layer {{layerStus==true ? 'show' : ''}}">
+    <scroll-view class='layer_cont' scroll-y="{{true}}">
+      <text class='qu_type'>单项选择</text>
+      <view class='qu_box clearfix'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '1' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '1' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+      </view>
+      <text class='qu_type'>多项选择</text>
+      <view class='qu_box'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '2' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '2' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+      </view>
+      <text class='qu_type'>判断题</text>
+      <view class='qu_box'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '3' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '3' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+      </view>
+      <text class='qu_type'>案例分析</text>
+      <view class='qu_box'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '4' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '4' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+      </view>
+    </scroll-view>
+    <!--layercont  -->
+    <view class='footer'>
+      <view class='btn' bindtap='back'>
+        返回
+      </view>
+    </view>
+  </view>
+</view>

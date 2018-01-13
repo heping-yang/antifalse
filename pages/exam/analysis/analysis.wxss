@@ -1,0 +1,30 @@
+/* pages/exam/exam.wxss */
+.exam_top{display: flex;flex-direction: row;border-bottom: 1px solid #e5e5e5;color: #747474;padding:0 10px;border-top: 1px solid #e5e5e5;line-height: none;padding-top: 20rpx;padding-bottom: 20rpx;}
+.exam_top_left{width: 300rpx;font-size: 32rpx}
+.exam_top_right{width:450rpx;text-align: right }
+.cu{color: #4688ea;font-size: 32rpx}
+
+.answer_box{padding:15px 10px;color: #525252}
+.question{line-height: 45rpx}
+.qu_cont{margin-bottom: 0px;height: 90vh}
+.answer_list{margin-top: 50rpx}
+.answer_item{padding-left: 80rpx;position: relative;margin-bottom: 60rpx;}
+.answer_flag{height: 60rpx;width: 60rpx;border-radius: 50%;background: #fff;border:1px solid #d9d9d9;display: block;line-height: 60rpx;text-align: center;color: #333;position: absolute;left: 0px;top:-15rpx}
+.answer_flag_correct{background: #41d497;border: 1px solid #41d497;color: #fff}
+.answer_flag_wrong{background: #fc5e5e;border: 1px solid #fc5e5e;color: #fff}
+
+.bottom{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5;height: 55rpx;padding-top: 15rpx;padding-bottom: 15rpx;background: #fff;z-index: 100}
+.bottom image{height:55rpx;width:55rpx}
+.bottom_item{width: 50%;text-align: center;position: relative;background: rgba(0, 0, 0, 0.0);}
+
+.exam_analysis{display: flex;flex-direction: column;width:100%}
+
+.exam_analysis_cont{display: flex;flex-direction: column;padding:26rpx 20rpx;color: #cacaca}
+.exam_analysis_text{display: flex;flex-direction: row;font-size: 30rpx;color: #747474;margin-top: 26rpx}
+
+
+ 
+.layer .footer{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5; background: #fff;z-index: 102;padding: 20rpx 0;}
+.layer .footer .btn{background: #4c86e5;color: #fff;text-align: center;width: 300rpx;padding:14rpx 0;border-radius: 5px;margin-left: 48rpx  ;border: 1px solid #4c86e5;margin: 0px auto} 
+
+.layer_cont{padding:0 20rpx;display: flex;flex-direction: column;padding-right: 0; height: 90vh}

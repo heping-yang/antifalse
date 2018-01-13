@@ -1,0 +1,63 @@
+<view class='container pad_bt60'>
+  <!--底部  -->
+  <view class='footer'>
+    <view class='btn btn_outline' bindtap='allAnswer'>
+      查看错题答案
+    </view>
+  </view>
+
+  <!--分数  -->
+  <view class='score_panel'>
+    <view class='score'>
+      <text class='my_score'>{{report.totalscore}}</text>
+      <text class='total_score'>/100分</text>
+    </view>
+    <view class='score_analysis'>
+      <view class='score_analysis_item'>
+        <text class='font_grey'>正确</text>
+        <text>{{report.answerRecord.rightCnt}}</text>
+      </view>
+      <view class='score_analysis_item'>
+        <text class='font_grey'>错误</text>
+        <text>{{report.answerRecord.wrongCnt}}</text>
+      </view>
+      <view class='score_analysis_item'>
+        <text class='font_grey'>总用时</text>
+        <text>02:30</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='line'></view>
+
+  <view class='qu_num_list'>
+    <text class='qu_type'>单项选择</text>
+    <view class='qu_box clearfix'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '1' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '1' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+    </view>
+    <text class='qu_type'>多项选择</text>
+    <view class='qu_box'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '2' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '2' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+    </view>
+    <text class='qu_type'>判断题</text>
+    <view class='qu_box'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '3' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '3' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+    </view>
+    <text class='qu_type'>案例分析</text>
+    <view class='qu_box'>
+        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
+          <text wx:if="{{item.type == '4' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '4' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+        </text>
+    </view>
+  </view>
+</view>

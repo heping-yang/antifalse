@@ -64,30 +64,30 @@
     <scroll-view class='layer_cont' scroll-y="{{true}}">
       <text class='qu_type'>单项选择</text>
       <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}">
-          <text wx:if="{{item.anwser != '' && item.type == '1'}}" class='qu_num qu_num_answered' bindtap='selectQuestion' data-index='{{item.index}}'>{{item.index}}</text>
-          <text wx:if="{{item.anwser == '' && item.type == '1'}}" class='qu_num'>{{item.index}}</text>
+        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '1' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '1' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
       <text class='qu_type'>多项选择</text>
       <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}">
-          <text wx:if="{{item.anwser != '' && item.type == '2'}}" class='qu_num qu_num_answered'>{{item.index}}</text>
-          <text wx:if="{{item.anwser == '' && item.type == '2'}}" class='qu_num'>{{item.index}}</text>
+        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '2' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '2' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
       <text class='qu_type'>判断题</text>
       <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}">
-          <text wx:if="{{item.anwser != '' && item.type == '3'}}" class='qu_num qu_num_answered'>{{item.index}}</text>
-          <text wx:if="{{item.anwser == '' && item.type == '3'}}" class='qu_num'>{{item.index}}</text>
+        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '3' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '3' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
       <text class='qu_type'>案例分析</text>
       <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}">
-          <text wx:if="{{item.anwser != '' && item.type == '4'}}" class='qu_num qu_num_answered'>{{item.index}}</text>
-          <text wx:if="{{item.anwser == '' && item.type == '4'}}" class='qu_num'>{{item.index}}</text>
+        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '4' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '4' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
     </scroll-view>
