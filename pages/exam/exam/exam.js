@@ -11,6 +11,7 @@ Page({
   data: {
     //弹框
     modalShow:false,
+    handInModalShow: false,
     //全部题目
     layerStus: false,
     layerAnimation:{},

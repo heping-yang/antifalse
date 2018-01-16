@@ -12,7 +12,7 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function() {
     console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
@@ -25,34 +25,42 @@ Page({
   },
   payment:function(){
     wx.request({
-      url: app.globalData.globalUrl,
+      url: app.globalData.globalUrl + "/wsordersubmit",
       data: {
-        'openid': 'oe7H80FPDvTYI7317jpD91UoCiSE',
-        'total_free': '1'
+        method: "payOrder",
+        openid: app.globalData.openid,
+        productId: 'pro01',
+        productName:'365',
+        orderId: this.guid(),
+        phone:'18888888888',
+        proddesc:'365',
+        prodFee: '1'
       },
       success: function (res) {
-        console.log("res=" + res);
-        var count = res.data.indexOf("\r\n\r\n<!DOC");
-        console.log("count=" + count);
-        var str = res.data.substring(0, count);
-        var js = JSON.parse(str);
-        console.log("timeStamp=" + js.timeStamp);
-        console.log("nonceStr=" + js.nonceStr);
-        console.log("package=" + js.package);
-        console.log("paySign=" + js.paySign);
-        console.log("out_trade_no=" + js.out_trade_no);
+        console.log(res);
+        console.log("timeStamp=" + res.data.body.timeStamp);
+        console.log("nonceStr=" + res.data.body.nonceStr);
+        console.log("package=" + res.data.body.package);
+        console.log("paySign=" + res.data.body.paySign);
         wx.requestPayment({
-          'timeStamp': js.timeStamp,
-          'nonceStr': js.nonceStr,
-          'package': js.package,
+          'timeStamp': res.data.body.timeStamp,
+          'nonceStr': res.data.body.nonceStr,
+          'package': res.data.body.package,
           'signType': 'MD5',
-          'paySign': js.paySign,
+          'paySign': res.data.body.paySign,
           success: function (res) {
             wx.showToast({ title: '完成' });
           }
         })
       }
     })
+  },
+  //产生一个uuid
+  guid: function () {
+    return 'xxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   },
   enterTap:function(){
     wx.navigateTo({
