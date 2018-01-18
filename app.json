@@ -5,7 +5,11 @@
     "pages/exam/list/list",
     "pages/exam/exam/exam",
     "pages/exam/report/report",
-    "pages/exam/analysis/analysis"
+    "pages/exam/analysis/analysis",
+    "pages/user/user/user",
+    "pages/user/pay/pay",
+    "pages/user/status/status",
+    "pages/announcement/announcement"
   ],
   "window":{
     "backgroundTextStyle":"light",

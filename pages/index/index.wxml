@@ -1,11 +1,47 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class='top'>
+     <view class='user_info'> 
+      <text class='font_big'>{{userInfo.nickName}}</text>
+      <text class='phone_num'>18795087679</text> 
+    </view> 
+    <image class='top_img' src='/images/index_top_bg.png'></image>
   </view>
-  <view class="usermotto">
+  
+  <image class='banner' src='/images/banner.png'></image>
+  
+  <view class='nav'>
+    <view class='nav_item' bindtap="announcementbind">
+      <image class='nav_icon' src='/images/notice.png'></image>
+      <text>平台公告</text>
+      <text class='notice_num'>3</text>
+   </view>
+    <view class='nav_item'>
+      <image class='nav_icon' src='/images/score_inquiry.png'></image>
+      <text>成绩查询</text>
+    </view>
+    <view class='nav_item' bindtap="paybind">
+      <image class='nav_icon' src='/images/member.png'></image>
+      <text>成为会员</text>
+    </view>
   </view>
-  <button bindtap="payment">支付</button>
-  <button bindtap="enterTap">进入</button>
+  
+
+  <view class='footer_menu'>
+    <view class='line'></view>
+    <view class='menu'>
+        <view class='menu_item menu_active'>
+          <image class='menu_item_icon' src='/images/icon_home_active.png'></image>
+          <text>首页</text>
+        </view>
+        <view class='menu_item' bindtap='enterExam'>
+          <image class='menu_item_icon' src='/images/icon_examlist.png'></image>
+          <text>在线模拟</text>
+        </view>
+        <view class='menu_item' bindtap='enterUserCenter'>
+          <image class='menu_item_icon' src='/images/icon_user.png'></image>
+          <text>我的</text>
+        </view>
+    </view>
+  </view>
 </view>

@@ -1,0 +1,42 @@
+/* pages/user/userstatus/status.wxss */
+page{background: #ededed}
+.user_top{display: flex;flex-direction: row;background: #fff;padding: 20rpx}
+.avatar{width: 105rpx;height: 105rpx;margin-right: 20rpx;border-radius: 50%}
+.user_info{display: flex;flex-direction: column;}
+.hide{display: none}
+.phone_num{font-size: 34rpx;color: #333333;font-weight: 500;margin-top: 15rpx;margin-bottom: 4rpx}
+.font1{font-size: 28rpx;color: #7e7e7e;display: none}
+.font_blue{color: #4c87e5;font-size: 26rpx}
+.user_login{display: flex;flex-direction: row;margin-top: 30rpx;color: #333}
+
+.show{display: block}
+
+
+.buy_cont{  width: 100%;display: flex;flex-direction: column;z-index: 10;margin-top: 20rpx }  
+.mt{margin-top: 20rpx}
+.buy_cont .whiteline{background: #fff;height: 20rpx}
+.buy_cont .buy_tit{background: #fff;padding: 20rpx;color: #333}
+
+.buy_cont .goods{display: flex;flex-direction: row;background: #4c87e5;padding: 20rpx;color: #fff}
+.buy_cont .goods_detail{display: flex;flex-direction: column;width:600rpx}
+.buy_cont .font_s{font-size: 24rpx}
+.buy_cont .goods_price{width:150rpx;text-align: right;font-size: 55rpx}
+
+.buy_cont .pay_mode{display: flex;flex-direction: row;background: #fff;padding: 20rpx}
+.buy_cont .pay_text{ color: #333;width: 600rpx;display: flex;flex-direction: row}
+.buy_cont .pay_weixin{height: 36rpx;width: 36rpx;margin-right: 20rpx}
+.buy_cont .pay_select_cont{width: 150rpx;text-align: right;}
+.buy_cont .pay_select{height: 34rpx;width: 34rpx}
+
+.pay_btn{background: #ec463d;border-top: 1px solid #ec463d;color: #ededed;padding: 26rpx 0;text-align: center;font-size: 40rpx;margin-top: 20rpx}
+
+.privilege_wrap{width: 100%;background: #fff;padding: 40rpx 0;font-size: 26rpx}
+.privilege{display: flex;flex-direction: row;text-align: center;width:693rpx ;margin:0rpx auto;background: #fff}
+.privilege_item{width: 33.33%;position: relative;display: flex;flex-direction: column;color: #7a7a7a}
+.privilege_icon{width: 75rpx;height: 75rpx;margin: 0px auto;margin-bottom: 10rpx }
+
+.footer{position: fixed;width: 750rpx;display: flex;flex-direction: row;left:0px;bottom: 0px}
+.footer_item{width: 50%;text-align: center;font-size: 40rpx;padding: 26rpx 0}
+.footer_item_l{background: #fff;border-top: 1px solid #e5e5e5;color: #333; }
+.footer_item_r{background: #ec463d;border-top: 1px solid #ec463d;color: #ededed}
+

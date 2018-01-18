@@ -46,5 +46,21 @@
       </view>
     </swiper-item>
   </swiper>
-
+  <view class='footer_menu'>
+    <view class='line'></view>
+    <view class='menu'>
+        <view class='menu_item' bindtap='goHome'>
+          <image class='menu_item_icon' src='/images/icon_home.png'></image>
+          <text>首页</text>
+        </view>
+        <view class='menu_item menu_active'>
+          <image class='menu_item_icon' src='/images/icon_examlist_active.png'></image>
+          <text>在线模拟</text>
+        </view>
+        <view class='menu_item' bindtap='enterUserCenter'>
+          <image class='menu_item_icon' src='/images/icon_user.png'></image>
+          <text>我的</text>
+        </view>
+    </view>
+  </view>
 </view>

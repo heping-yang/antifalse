@@ -1,0 +1,55 @@
+<!--pages/user/userstatus/status.wxml-->
+<view class='container'>
+  <view class='user_top'>
+    <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+    <view class='user_info '>
+      <text class='phone_num'>18795087679</text>
+      <text class='font1 {{memberStu==0?"show":""}}'>您还不是会员，立即购买吧！</text>
+      <text class='font1 font_blue {{memberStu==1?"show":""}}'>会员有效期:2018-01-01至2018-02-01</text>
+    </view> 
+  </view>
+  <!--user_top  -->
+  <view class='buy_cont'>
+    <text class='buy_tit'>会员购买</text>
+    <view class='goods'>
+      <view class='goods_detail'>
+        <text>月度VIP会员</text>
+        <text class='font_s'>一个人会员</text>
+      </view>
+      <view class='goods_price'>
+        <text class='font_s'>￥</text><text>20</text> 
+      </view>
+    </view>
+    <view class='whiteline'></view>
+    <text class='buy_tit mt'>在线支付方式</text>
+    <view class='pay_mode'>
+      <view class='pay_text'>
+        <image class='pay_weixin' src='../../../images/pay_weixin.png'></image>
+        <text class='pay_text'>微信支付</text>
+      </view> 
+      <view class='pay_select_cont'>
+        <image class='pay_select' src='../../../images/pay_select.png' ></image>
+      </view> 
+    </view>
+    <!--pay_mode  -->
+    <text class='buy_tit mt'>会员特权</text>
+    
+    <view class='privilege_wrap'>
+      <view class='privilege'>
+        <view class='privilege_item'>
+          <image class='privilege_icon' src='../../../images/privilege_icon3.png' ></image>
+          <text>海量题库</text>
+        </view>
+        <view class='privilege_item'>
+          <image class='privilege_icon' src='../../../images/privilege_icon2.png' ></image>
+          <text>不限次数</text>
+        </view>
+        <view class='privilege_item'>
+          <image class='privilege_icon' src='../../../images/privilege_icon1.png' ></image>
+          <text>考前真题</text>
+        </view>
+      </view>
+    </view> 
+  </view>
+  <!--buy_cont  -->
+</view>

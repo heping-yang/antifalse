@@ -1,0 +1,53 @@
+<!--pages/user/user.wxml-->
+<view class='container'>
+  <view class='user_top'>
+    <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+    <view class='user_info {{userStu==1?"hide":""}}'>
+      <text class='font_big'>{{userInfo.nickName}}</text>
+      <text class='phone_num'>18795087679</text>
+    </view>
+
+    <view class='user_login {{userStu==0?"hide":""}}'>
+      <text class='font_m'>登录</text>
+      <text>/</text> 
+      <text class='font_m'>注册</text> 
+    </view>
+  </view>
+  <!--user_top  -->
+  <view class='user_list'>
+    <view class='user_list_item'>
+      <image class='user_icon' src='/images/user_icon3.png'></image>
+      <text>考试成绩查询</text> 
+      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+    </view>
+    <view class='user_list_item' bindtap='memberStatus'>
+      <image class='user_icon' src='/images/user_icon2.png'></image>
+      <text>会员状态</text> 
+      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+    </view>
+    <view class='user_list_item'>
+      <image class='user_icon' src='/images/user_icon1.png'></image>
+      <text>关于我们</text> 
+      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+    </view>
+  </view> 
+
+  <view class='footer_menu'>
+    <view class='line'></view>
+    <view class='menu'>
+        <view class='menu_item' bindtap='goHome'>
+          <image class='menu_item_icon' src='/images/icon_home.png'></image>
+          <text>首页</text>
+        </view>
+        <view class='menu_item' bindtap='enterExam'>
+          <image class='menu_item_icon' src='/images/icon_examlist.png'></image>
+          <text>在线模拟</text>
+        </view>
+        <view class='menu_item menu_active'>
+          <image class='menu_item_icon' src='/images/icon_user_active.png'></image>
+          <text>我的</text>
+        </view>
+    </view>
+  </view>
+  <!--footer_menu  -->
+</view>

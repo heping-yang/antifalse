@@ -77,7 +77,8 @@ Page({
       success: function (res) {
         console.log(res.data);
         that.setData({
-          anwsers: res.data.anwsers[0]
+          anwsers: res.data.anwsers[0],
+          layerStus: true
         });
         console.log(res.data.anwsers[0].answerRecord.data)
       },
@@ -87,9 +88,6 @@ Page({
           arr_res: '返回异常'
         })
       }
-    })
-    this.setData({
-      layerStus: true
     })
   },
   //选择某一个题

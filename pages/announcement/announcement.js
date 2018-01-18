@@ -35,7 +35,7 @@ Page({
         method: "list"
       },
       success: function (res) {
-        console.log(res);
+        console.log(res.data);
         that.setData({
           examlist: res.data.list
         });

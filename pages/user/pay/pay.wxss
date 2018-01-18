@@ -1,0 +1,47 @@
+/* pages/exambuy/exambuy.wxss */
+.page_pd{padding-bottom: 120rpx}
+.goods_banner{width: 750rpx;height: 424rpx;margin-bottom: 10rpx}
+.goods_info{width:690rpx;margin: 0px auto ;display: flex;flex-direction: column}
+
+.goods_tit{display: flex;flex-direction: row;margin: 20rpx 0;margin-bottom: 10rpx}
+.tit{color: #333;width: 500rpx;font-weight: bold}
+.sales{width: 190rpx;text-align: right;font-size: 24rpx}
+
+.intro{line-height: 50rpx;margin-bottom: 0rpx}
+
+.footer{position: fixed;width: 750rpx;display: flex;flex-direction: row;left:0px;bottom: 0px}
+.footer_item{width: 50%;text-align: center;font-size: 40rpx;padding: 26rpx 0}
+.footer_item_l{background: #fff;border-top: 1px solid #e5e5e5;color: #333; }
+.footer_item_r{background: #ec463d;border-top: 1px solid #ec463d;color: #ededed}
+
+.buy_overlay{position: fixed;width: 100%;height: 100%;top: 0px;left: 0px;z-index: 1;background: rgba(0, 0, 0, 0.65);display: none;}
+.show{display: block}
+.buy_cont{background: #ededed;position: fixed;bottom: 0px;left: 0px;width: 100%;display: flex;flex-direction: column;z-index: 10; 
+transition: All 0.4s ease; 
+-webkit-transition: All 0.4s ease; 
+  transform: rotate(0deg) scale(1) translate(0%,100%); 
+-webkit-transform: rotate(0deg) scale(1) translate(0%,1000%); 
+} 
+.buy_cont_show{background: #ededed;position: fixed;bottom: 0px;left: 0px;width: 100%;display: flex;flex-direction: column;z-index: 10;
+transition: All 0.4s ease; 
+-webkit-transition: All 0.4s ease; 
+ transform: rotate(0deg) scale(1) translate(0%,0%); 
+-webkit-transform: rotate(0deg) scale(1) translate(0%,0%); 
+ } 
+.mt{margin-top: 20rpx}
+.buy_cont .whiteline{background: #fff;height: 20rpx}
+.buy_cont .buy_tit{background: #fff;padding: 20rpx;color: #333}
+
+.buy_cont .goods{display: flex;flex-direction: row;background: #4c87e5;padding: 20rpx;color: #fff}
+.buy_cont .goods_detail{display: flex;flex-direction: column;width:600rpx}
+.buy_cont .font_s{font-size: 24rpx}
+.buy_cont .goods_price{width:150rpx;text-align: right;font-size: 55rpx}
+
+.buy_cont .pay_mode{display: flex;flex-direction: row;background: #fff;padding: 20rpx}
+.buy_cont .pay_text{ color: #333;width: 600rpx;display: flex;flex-direction: row}
+.buy_cont .pay_weixin{height: 36rpx;width: 36rpx;margin-right: 20rpx}
+.buy_cont .pay_select_cont{width: 150rpx;text-align: right;}
+.buy_cont .pay_select{height: 34rpx;width: 34rpx}
+
+.pay_btn{background: #ec463d;border-top: 1px solid #ec463d;color: #ededed;padding: 26rpx 0;text-align: center;font-size: 40rpx;margin-top: 20rpx}
+

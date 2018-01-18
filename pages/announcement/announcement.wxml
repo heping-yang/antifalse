@@ -1,0 +1,19 @@
+<!--pages/examlist/examlist.wxml-->
+<view class='container'>
+    <swiper-item class="test_sheet">
+      <scroll-view scroll-y="{{true}}" style='height:100%'>
+        <block wx:for="{{examlist}}" wx:key="unique">
+          <view class='test_sheet_list'  data-id="{{item.examId}}" bindtap="enterExam">
+            <view class='test_tit_box'>
+              <text class='test_tit'>{{item.name}}</text>
+              <image class='enter_exam' src='/images/enter_exam.png'></image>
+            </view>
+            <view class='test_info'>
+              <text>共<text class='num'>{{item.totalCount}}</text>题</text>
+              <text>满分<text class='num'>{{item.totalScore}}</text>分</text>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+</view>
