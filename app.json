@@ -9,7 +9,8 @@
     "pages/user/user/user",
     "pages/user/pay/pay",
     "pages/user/status/status",
-    "pages/announcement/announcement"
+    "pages/announcement/announcement",
+    "pages/announcement/webview/webview"
   ],
   "window":{
     "backgroundTextStyle":"light",

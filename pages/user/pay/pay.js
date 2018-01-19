@@ -29,6 +29,10 @@ Page({
   },
 
   payment: function () {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading'
+    })
     wx.request({
       url: app.globalData.globalUrl + "/wsordersubmit",
       data: {

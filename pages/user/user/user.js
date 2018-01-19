@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userStu:0,//1登录状态 0未登录
+    userStu:1,//1登录状态 0未登录
     userInfo:{}
   },
   //底部菜单

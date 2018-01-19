@@ -12,11 +12,12 @@ Page({
     //弹框
     modalShow:false,
     handInModalShow: false,
+    lastmodalShow:false,
     //全部题目
     layerStus: false,
     layerAnimation:{},
     question:null,
-    anwsers:null,
+    answers:null,
     activeIndex: 100
   },
   // 答题
@@ -32,7 +33,7 @@ Page({
     }
     if (lastFlag == "1"){
       wx.reLaunch({
-        url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnwser=" + e.currentTarget.dataset.option + "&userResult=" + user_result,//url跳转地址
+        url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnswer=" + e.currentTarget.dataset.option + "&userResult=" + user_result,//url跳转地址
         success: function (res) {
           console.log(res)
         },
@@ -48,12 +49,12 @@ Page({
           examId: examId,
           index: num,
           userResult: user_result,
-          userAnwser: e.currentTarget.dataset.option,
+          userAnswer: e.currentTarget.dataset.option,
           hId: app.globalData.hId
         },
         success: function (res) {
           that.setData({
-            modalShow: true
+            lastmodalShow: true
           })
         },
         fail: function (error) {
@@ -68,19 +69,21 @@ Page({
   //查看全部题目
   showAll: function () {
     var that = this;
+    that.setData({
+      layerStus: true
+    });
     wx.request({
       url: app.globalData.globalUrl + "/exam",
       data: {
-        method: "queryAnwsers",
+        method: "queryAnswers",
         hId: app.globalData.hId
       },
       success: function (res) {
         console.log(res.data);
         that.setData({
-          anwsers: res.data.anwsers[0],
-          layerStus: true
+          answers: res.data.answers[0]
         });
-        console.log(res.data.anwsers[0].answerRecord.data)
+        console.log(res.data.answers[0].answerRecord.data)
       },
       fail: function (error) {
         console.log(error);
@@ -121,10 +124,24 @@ Page({
       modalShow:true
     })
   },
+  //返回首页
+  home: function () {
+    this.setData({
+      handInModalShow: true,
+    })
+  },
   //继续考试
   testContuine:function(){
     this.setData({
-      modalShow: false
+      modalShow: false,
+      handInModalShow: false,
+      lastmodalShow: false
+    })
+  },
+  //首页
+  goHome: function () {
+    wx.reLaunch({
+      url: '/pages/index/index'
     })
   },
   /**
@@ -140,7 +157,7 @@ Page({
         examId: options.examId,
         index: options.index,
         userResult: options.userResult,
-        userAnwser: options.userAnwser,
+        userAnswer: options.userAnswer,
         hId: app.globalData.hId,
         type: options.type
       },

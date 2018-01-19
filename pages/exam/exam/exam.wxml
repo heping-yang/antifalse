@@ -16,21 +16,80 @@
     </view>
   </view>
 
+  <!--最后一题  -->
+  <view class='modal_bg {{lastmodalShow==true?"modal_show":""}}'>
+    <view class='modal_suc'>
+        <view class='rest_cont'>
+          <image class='icon' src='/images/icon_exam.png'></image>
+          <text class='font_grey'>休息一下</text>
+          <text>当前最后一题已答完</text>
+        </view>
+        <view class='modal_btn_box'>
+          <text class='modal_btn' bindtap="handIn">交卷</text>
+          <text class='modal_btn_outline' bindtap="testContuine">返回</text>
+        </view>
+    </view>
+  </view>
+
   <!--交卷弹框  -->
   <view class='modal_bg {{handInModalShow==true?"modal_show":""}}'>
     <view class='modal_suc'>
         <view class='rest_cont'>
           <image class='icon' src='/images/icon_exam.png'></image>
           <!-- <text class='font_grey'>休息一下</text> -->
-          <text>共135道题，还有123道未作答</text>
+          <text>共{{question.total}}道题，还有{{question.total - question.index + 1}}道未作答</text>
         </view>
         <view class='modal_btn_box'>
-          <text class='modal_btn_outline' bindtap="showAll">查看答题卡</text> 
-          <text class='modal_btn' bindtap="handIn">交卷</text> 
+          <text class='modal_btn_outline' bindtap="goHome">返回首页</text> 
+          <text class='modal_btn' bindtap="testContuine">继续答题</text> 
         </view>
     </view> 
   </view>
 
+  <!--交卷  -->
+  <view class="layer {{layerStus==true ? 'show' : ''}}">
+    <scroll-view class='layer_cont' scroll-y="{{true}}">
+      <text class='qu_type'>单项选择</text>
+      <view class='qu_box'>
+        <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '1' && item.answer != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '1' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
+        </text>
+      </view>
+      <text class='qu_type'>多项选择</text>
+      <view class='qu_box'>
+        <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '2' && item.answer != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '2' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
+        </text>
+      </view>
+      <text class='qu_type'>判断题</text>
+      <view class='qu_box'>
+        <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '3' && item.answer != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '3' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
+        </text>
+      </view>
+      <text class='qu_type'>案例分析</text>
+      <view class='qu_box'>
+        <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '4' && item.answer != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
+          <text wx:if="{{item.type == '4' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
+        </text>
+      </view>
+    </scroll-view>
+    <!--layercont  -->
+    <view class='footer'>
+      <view class='btn btn_outline' bindtap='testContinue'>
+        继续模拟
+      </view>
+      <view class='btn' bindtap='handIn'>
+        交卷
+      </view>
+    </view>
+  </view>
+  <!--交卷结束  -->
+  
   <!--底部  -->
   <view class='bottom'>
     <view class='bottom_item' bindtap='showAll'>
@@ -39,6 +98,9 @@
     <view class='bottom_item' bindtap='rest'>
       <text class='time'>30:00</text>
       <image src='/images/icon_time.png'></image>
+    </view>
+    <view class='bottom_item' bindtap='home'> 
+      <image src='/images/icon_qu_home.png'></image>
     </view>
   </view>
 
@@ -72,50 +134,5 @@
         </scroll-view>
       </swiper-item>
   </swiper>
-
-
-  <!--交卷  -->
-  <view class="layer {{layerStus==true ? 'show' : ''}}">
-    <scroll-view class='layer_cont' scroll-y="{{true}}">
-      <text class='qu_type'>单项选择</text>
-      <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
-          <text wx:if="{{item.type == '1' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
-          <text wx:if="{{item.type == '1' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
-        </text>
-      </view>
-      <text class='qu_type'>多项选择</text>
-      <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
-          <text wx:if="{{item.type == '2' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
-          <text wx:if="{{item.type == '2' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
-        </text>
-      </view>
-      <text class='qu_type'>判断题</text>
-      <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
-          <text wx:if="{{item.type == '3' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
-          <text wx:if="{{item.type == '3' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
-        </text>
-      </view>
-      <text class='qu_type'>案例分析</text>
-      <view class='qu_box'>
-        <text wx:for="{{anwsers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
-          <text wx:if="{{item.type == '4' && item.anwser != ''}}" class='qu_num qu_num_answered'>{{item.index}}</text>
-          <text wx:if="{{item.type == '4' && item.anwser == ''}}" class='qu_num'>{{item.index}}</text>
-        </text>
-      </view>
-    </scroll-view>
-    <!--layercont  -->
-    <view class='footer'>
-      <view class='btn btn_outline' bindtap='testContinue'>
-        继续模拟
-      </view>
-      <view class='btn' bindtap='handIn'>
-        交卷
-      </view>
-    </view>
-  </view>
-  <!--交卷结束  -->
 
 </view>
