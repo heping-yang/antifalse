@@ -9,8 +9,11 @@
     "pages/user/user/user",
     "pages/user/pay/pay",
     "pages/user/status/status",
+    "pages/user/grade/grade",
     "pages/announcement/announcement",
-    "pages/announcement/webview/webview"
+    "pages/login/login/login",
+    "pages/login/register/register",
+    "pages/login/respwd/respwd"
   ],
   "window":{
     "backgroundTextStyle":"light",

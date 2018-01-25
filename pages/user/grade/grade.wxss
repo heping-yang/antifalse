@@ -1,0 +1,37 @@
+/* pages/scoreinquiry/scoreinquiry.wxss */
+page{ 
+	background: linear-gradient(top, #508ae7, #78acfe);
+	background: -webkit-linear-gradient(top, #508ae7, #78acfe);  
+
+}
+.scoreinquiry_wrap{width: 650rpx;margin: 30rpx auto;background: #fff;border-radius: 5px;display: flex;flex-direction: column;align-items: center;color: #333}
+.art{width:536rpx;height: 156rpx;margin: 0px auto }
+.avatar{width: 120rpx;height: 120rpx;border-radius: 50%;margin: 0px auto;margin-top: -15%;margin-bottom: 20rpx}
+
+.exam_tit{font-size: 26rpx;margin-top: 30rpx}
+
+.exam_result{font-size: 36rpx;margin-top: 40rpx;display: none}
+
+.red{color: #fc5e5d;}
+.blue{color: #3484fe;}
+.line_box{width: 90%;text-align: center;height: 40rpx;padding: 30rpx auto;display: flex;flex-direction: column;margin: 30rpx auto;margin-top: 40rpx}
+.line_box .font1{color: #999;background: #fff;padding: 0px 10px;position: relative;z-index: 10;width: 40%;margin: 0px auto;font-size: 26rpx}
+.line{width: 96%;margin: 0px auto;height: 1px;background: #e3e3e3;margin-top: -20rpx}
+
+.score_detail{display: flex;flex-direction: row;width: 90%;margin: 0px auto;align-items: center}
+.score_detail .font{height: 46rpx;line-height: 46rpx;color: #7b7b7b}
+.score_item{display: flex;flex-direction: column;width: 33.33%;text-align: center;border-right: 1rpx solid #e3e3e3}
+.score_item:nth-last-child(1){border-right: 0rpx solid #e3e3e3}
+.exam_icon{width:131rpx;height: 136rpx;display: block;margin: 0px auto;display: none }
+
+.font_red{color: #fc5e5d;height: 90rpx;line-height: 90rpx;font-size: 40rpx }
+.font_green{color: #42d496;height: 90rpx;line-height:90rpx;font-size: 40rpx; }
+
+.tips{margin-top: 40rpx;width: 100%}
+.tips_cont{background: #e1edff;width: 100%;padding: 20rpx 0;color: #535456;font-size: 24rpx; line-height: 36rpx; display: flex;flex-direction: row}
+.tips_icon{width: 36rpx;height: 36rpx;margin-left: 70rpx;margin-right: 10rpx;display: inline-block}
+
+.btn_home{width: 528rpx;height: 80rpx;margin: 25px auto ;background:#3374da;box-shadow: 0 3px 2px rgba(21, 116, 218, 0.36);color: #fff;text-align: center; line-height:80rpx;border-radius: 5px}
+
+.hide{display: none}
+.show{display: block}

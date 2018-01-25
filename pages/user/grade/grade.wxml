@@ -1,0 +1,42 @@
+<!--pages/scoreinquiry/scoreinquiry.wxml--> 
+<view class='container'>
+  <view class='scoreinquiry_wrap'>
+    <image class='art' src='/images/scoreinquiry_bg.png'></image>
+    <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+    <text>{{userInfo.nickName}}</text>
+
+    <text class='exam_tit'>{{grade.kstime}}反假币考试成绩</text>
+
+    <text class='exam_result red {{examResult==0?"show":""}}'>很遗憾，你没能通过本次考试</text>
+    <text class='exam_result blue {{examResult==1?"show":""}}'>恭喜你通过本次考试</text>
+    
+    <view class='line_box'>
+      <text class='font1'>考试成绩如下</text>
+      <view class='line'></view>
+    </view>
+
+    <view class='score_detail'>
+     <view class='score_item'>
+      <text class='font'>理论成绩</text>   
+      <text class='hide font_red {{grade.llgrade=="不合格"?"show":""}}'>不合格</text>   
+      <text class='hide font_green {{grade.llgrade=="合格"?"show":""}}'>合格</text>   
+     </view>
+     <view class='score_item'>
+      <text class='font'>实操成绩</text>   
+      <text class=' font_green'>{{grade.scgrade}}</text>   
+     </view>
+     <view class='score_item'>
+       <image class='exam_icon {{examResult==0?"show":""}}' src='/images/no.png'></image>
+       <image class='exam_icon {{examResult==1?"show":""}}' src='/images/yes.png'></image>
+     </view>
+    </view>  
+    <view  class='hide tips {{examResult==0?"show":""}}'>
+      <view class='  tips_cont '> 
+          <image class='tips_icon' src='/images/tips_icon.png'></image>
+          <text>实操成绩将为你保留至{{grade.keepTime}}</text> 
+      </view>
+    </view>
+
+    <view class='btn_home' bindtap='goHome'>返回首页</view>
+  </view>
+</view>

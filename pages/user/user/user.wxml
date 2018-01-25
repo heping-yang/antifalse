@@ -2,12 +2,11 @@
 <view class='container'>
   <view class='user_top'>
     <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
-    <view class='user_info {{userStu==1?"hide":""}}'>
+    <view class='user_info {{loginstatus == 0?"hide":""}}'>
       <text class='font_big'>{{userInfo.nickName}}</text>
-      <text class='phone_num'>18795087679</text>
+      <text class='phone_num'>{{user.telnum}}</text>
     </view>
-
-    <view class='user_login {{userStu==0?"hide":""}}'>
+    <view class='user_login {{loginstatus == 1?"hide":""}}' bindtap='loginbind'>
       <text class='font_m'>登录</text>
       <text>/</text> 
       <text class='font_m'>注册</text> 
@@ -15,7 +14,7 @@
   </view>
   <!--user_top  -->
   <view class='user_list'>
-    <view class='user_list_item'>
+    <view class='user_list_item' bindtap="gradebind">
       <image class='user_icon' src='/images/user_icon3.png'></image>
       <text>考试成绩查询</text> 
       <image class='user_arrow_r'  src='/images/arrow_r.png'></image>

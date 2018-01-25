@@ -1,0 +1,24 @@
+<!--pages/login/login.wxml-->
+<!--pages/register/register.wxml-->
+<view class='container'>  
+  <view class='form_wrap'>
+    <view class="section">
+      <input maxlength="11" placeholder="手机号" value="{{telnum}}" type="number" maxlength="11" bindinput='iptelnum' auto-focus/>
+    </view>  
+
+    <view class="section">
+      <input password type="number" value="{{password}}" placeholder="密码" maxlength='32' bindinput='ippwd'/>
+    </view>
+    
+
+    <view class='tips_box'>
+      <text class='tips'>{{tipsText}}</text>
+      <text class='forget_passward' bindtap='resetpassword'>忘记密码</text>  
+    </view>
+
+    <view class='button {{btnStus==false?"btn":" "}}'>登录</view>
+    <view class='button {{btnStus==true?"btn_active":" "}}' bindtap="logintap">登录</view>
+
+    <text class='btnregister' bindtap='goregister'>注册新用户</text>
+  </view>
+</view>

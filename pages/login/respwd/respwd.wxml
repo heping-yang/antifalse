@@ -1,0 +1,29 @@
+<!--pages/resetpassword/resetpassword.wxml--> 
+<view class='container'>  
+
+  <view class='form_wrap'>
+    <view class="section">
+      <input maxlength="11" placeholder="手机号" type="number" value="{{telnum}}" bindinput='iptelnum' auto-focus/>
+    </view> 
+    
+    <view class="section code_wrap">
+      <input type="number" placeholder="验证码" value="{{smscode}}" bindinput='ipsmscode'/>
+      <text class='code_btn' bindtap='getsmscode'>{{codeText}}</text>
+    </view>
+
+    <view class="section">
+      <input password type="number" placeholder="密码" bindinput='ippassword' value="{{password}}"/>
+    </view>
+
+    <view class="section">
+      <input password type="number" placeholder="确认密码" value="{{repassword}}" bindinput="iprepassword" />
+    </view> 
+   <view class='tips_box'>
+      <text class='tips'>{{tipsText}}</text>   
+    </view>
+
+    <view class='button {{btnStus==false?"btn":" "}}' >保存</view>
+    <view class='button {{btnStus==true?"btn_active":" "}}' bindtap='submitbnt' >保存</view>
+  </view>  
+
+</view>

@@ -3,7 +3,7 @@
   <view class='top'>
      <view class='user_info'> 
       <text class='font_big'>{{userInfo.nickName}}</text>
-      <text class='phone_num'>18795087679</text> 
+      <text class='phone_num'>{{user.telnum}}</text> 
     </view> 
     <image class='top_img' src='/images/index_top_bg.png'></image>
   </view>
@@ -16,7 +16,7 @@
       <text>平台公告</text>
       <text class='notice_num'>3</text>
    </view>
-    <view class='nav_item'>
+    <view class='nav_item' bindtap="gradebind">
       <image class='nav_icon' src='/images/score_inquiry.png'></image>
       <text>成绩查询</text>
     </view>

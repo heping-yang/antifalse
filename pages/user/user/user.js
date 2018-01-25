@@ -6,8 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userStu:1,//1登录状态 0未登录
-    userInfo:{}
+    loginstatus:0,//1登录状态 0未登录
+    userInfo:{},
+    user:{}
+  },
+  loginbind:function(){
+    wx.navigateTo({
+      url: '/pages/login/login/login'
+    })
   },
   //底部菜单
   //首页
@@ -21,7 +27,14 @@ Page({
     wx.navigateTo({
       url: '/pages/exam/list/list'
     })
-  }, 
+  },
+
+  //成绩查询
+  gradebind: function () {
+    wx.navigateTo({
+      url: '/pages/user/grade/grade'
+    })
+  },
   //会员状态
   memberStatus: function () {
     wx.navigateTo({ 
@@ -38,7 +51,9 @@ Page({
     app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
-        userInfo: userInfo
+        userInfo: userInfo,
+        loginstatus: app.globalData.loginstatus,
+        user: app.globalData.user
       })
     })
   },

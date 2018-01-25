@@ -1,4 +1,4 @@
-// pages/user/userstatus/status.js
+// pages/scoreinquiry/scoreinquiry.js
 var app = getApp()
 Page({
 
@@ -6,11 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    memberStu:0,//会员1  非会员0
-    userInfo: {},
-    user:{}
+    examResult:1 ,//0未通过 1通过
+    userInfo:{},
+    grade:null
   },
-
+  //首页
+  goHome: function () {
+    wx.reLaunch({
+      url: '/pages/index/index'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,12 +25,38 @@ Page({
     app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
-        userInfo: userInfo,
-        user: app.globalData.user
+        userInfo: userInfo
       })
-      if (that.data.user.userstatus>1){
+    })
+    wx.request({
+      url: app.globalData.globalUrl + "/user",
+      data: {
+        method: "queryGrade",
+        idcard: app.globalData.user.idcard
+      },
+      success: function (res) {
+        console.log(res.data);
         that.setData({
-          memberStu: 1
+          grade:res.data.grade
+        });
+        if (res.data.grade == "无记录"){
+
+        }else{
+          if (res.data.grade == '通过'){
+            that.setData({
+              examResult: 1
+            });
+          }else{
+            that.setData({
+              examResult: 0
+            });
+          }
+        }
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
         })
       }
     })

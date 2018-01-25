@@ -51,6 +51,8 @@ App({
 //    globalUrl: "http://localhost:8080/antifalse/api",
     userInfo: null,
     openid:"",
-    h_id:""
+    h_id:"",
+    user:{},
+    loginstatus:0
   }
 })

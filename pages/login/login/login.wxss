@@ -1,0 +1,25 @@
+/* pages/login/login.wxss */ 
+.form_wrap{width: 540rpx;margin: 0px auto;display: flex;flex-direction: column;margin-top: 100rpx}
+.section{border-bottom: 1px solid #d4d4d4;margin-bottom: 20rpx}
+.section input{height: 80rpx}
+input-placeholder{font-size: 30rpx}
+.code_wrap{display: flex;flex-direction: row}
+input.code{width: 300rpx;}
+.code_btn{width: 240rpx;text-align: right;line-height: 80rpx;font-size: 26rpx}
+
+
+.button{display: none}
+.btn{width: 540rpx;height: 90rpx;margin: 20px auto ;background:#d8d8d8; color: #666;text-align: center; line-height:90rpx;border-radius: 5px;display:block }
+.btn_active{width: 540rpx;height: 90rpx;margin: 20px auto ;background:#3374da; color: #fff;text-align: center; line-height:90rpx;border-radius: 5px;display: block}
+
+
+
+.btn{width: 540rpx;height: 90rpx;margin: 20px auto ;background:#d8d8d8; color: #666;text-align: center; line-height:90rpx;border-radius: 5px;display:block;font-size: 30rpx }
+.btn_active{width: 540rpx;height: 90rpx;margin: 20px auto ;background:#3374da; color: #fff;text-align: center; line-height:90rpx;border-radius: 5px;display: block;font-size: 30rpx}
+
+
+ .forget_passward{width: 140rpx;text-align: right;display: block;font-size: 24rpx}
+ .btnregister{text-align: center;display: block;font-size: 24rpx;color: #1f91fb}
+
+.tips_box{display: flex;flex-direction: row;width:100%;font-size: 24rpx}
+.tips_box .tips{width: 400rpx;color: #f1021e}

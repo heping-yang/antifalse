@@ -3,6 +3,7 @@ var app = getApp()
 Page({
   data: {
     examlist: null,
+    typelist: null,
     isSelect: false,
     winWidth: 0,
     winHeight: 0,
@@ -37,7 +38,8 @@ Page({
       success: function (res) {
         console.log(res);
         that.setData({
-          examlist: res.data.list
+          examlist: res.data.list,
+          typelist: res.data.typelist
         });
       },
       fail: function (error) {

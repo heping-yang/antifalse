@@ -4,7 +4,8 @@ var app = getApp()
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {}
+    userInfo: {},
+    user:{}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -23,6 +24,12 @@ Page({
   paybind: function() {
     wx.navigateTo({
       url: '/pages/user/pay/pay'
+    })
+  },
+  //成绩查询
+  gradebind: function () {
+    wx.navigateTo({
+      url: '/pages/user/grade/grade'
     })
   },
   announcementbind:function(){
@@ -44,7 +51,8 @@ Page({
     app.getUserInfo(function(userInfo){
       //更新数据
       that.setData({
-        userInfo:userInfo
+        userInfo:userInfo,
+        user: app.globalData.user
       })
     })
   },
