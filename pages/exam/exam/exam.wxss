@@ -38,3 +38,6 @@
 .answer_item_active .answer_flag{height: 60rpx;width: 60rpx;border-radius: 50%;background: #4c86e5;border:1px solid #4c86e5;display: block;line-height: 60rpx;text-align: center;color: #fff;position: absolute;left: 5px;top:50%;margin-top: -30rpx}
 /*已答  */
 .qu_num_answered{background: #4c86e5;color: #fff;border:1px solid #4c86e5;}
+
+.confirm_btn_wrap{display: flex;align-items: center;margin-bottom: 60rpx;}
+.confirm_btn{width: 260rpx;height: 70rpx;border: 1px solid #2389f1;border-radius: 3px;line-height: 70rpx;margin: 0px auto;color: #2389f1}

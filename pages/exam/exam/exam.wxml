@@ -108,7 +108,18 @@
   <swiper style='height:100vh'>
       <swiper-item>
         <view class='exam_top'>
-          <text class='exam_top_left'>单项选择</text>
+          <block wx:if="{{question.question[0].type == 1}}">
+            <text class='exam_top_left'>单项选择</text>
+          </block>
+          <block wx:if="{{question.question[0].type == 2}}">
+            <text class='exam_top_left'>多项选择</text>
+          </block>
+          <block wx:if="{{question.question[0].type == 3}}">
+            <text class='exam_top_left'>判断题</text>
+          </block>
+          <block wx:if="{{question.question[0].type == 4}}">
+            <text class='exam_top_left'>案例分析</text>
+          </block>
           <view class='exam_top_right'>
             <text class='cu'>{{question.index}}</text>
             <text>/</text>
@@ -122,17 +133,22 @@
             <!--问题  -->
             <view class='question_box'>
               <text class='question'>{{question.question[0].content}}</text>
+              <block wx:if="{{question.question[0].picflag != null && question.question[0].picflag != 0}}">
+                <image class='qu_img' src='https://www.nxyqedu.com/antifalse/resources/images/{{question.question[0].picflag}}.jpg'></image>
+              </block>
             </view>
             <!--答案选项  -->
             <view class='answer_list'>
-              <view class='answer_item {{activeIndex==index?"answer_item_active":""}}' wx:for="{{question.question[0].answer}}"  bindtap='answerQuestion' data-option='{{item.option}}' id='{{index}}' wx:key="unique">
+              <view class='answer_item {{activeIndex[index].option==index?"answer_item_active":""}}' wx:for="{{question.question[0].answer}}"  bindtap='answerQuestion' data-option='{{item.option}}' id='{{index}}' wx:key="unique">
                 <text class='answer_flag'>{{item.option}}</text>
                 <text>{{item.answer}}</text>
               </view>
+            </view>
+            <view class='confirm_btn_wrap' wx:if="{{question.question[0].type == 2 || question.question[0].type == 4}}">
+              <text class='confirm_btn'>确定</text>
             </view>
           </view>
         </scroll-view>
       </swiper-item>
   </swiper>
-
 </view>

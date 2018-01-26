@@ -18,52 +18,57 @@ Page({
     layerAnimation:{},
     question:null,
     answers:null,
-    activeIndex: 100
+    activeIndex: [{ "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }]
   },
   // 答题
   answerQuestion: function (e) { 
     var that = this;
     console.log(e)
-    this.setData({
-      activeIndex: e.currentTarget.id
-    });
-    var user_result = "0"
-    if (e.currentTarget.dataset.option == standard) {
-      user_result = "1"
-    }
-    if (lastFlag == "1"){
-      wx.reLaunch({
-        url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnswer=" + e.currentTarget.dataset.option + "&userResult=" + user_result,//url跳转地址
-        success: function (res) {
-          console.log(res)
-        },
-        fail: function (res) {
-          console.log(res)
-        }
-      })
+    console.log(this.data.activeIndex)
+    this.data.activeIndex[e.currentTarget.id].option = e.currentTarget.id
+    //单选题和判断题
+    if (that.data.question.question[0].type == 1 || that.data.question.question[0].type == 3){
+      var user_result = "0"
+      if (e.currentTarget.dataset.option == standard) {
+        user_result = "1"
+      }
+      if (lastFlag == "1"){
+        wx.reLaunch({
+          url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnswer=" + e.currentTarget.dataset.option + "&userResult=" + user_result,//url跳转地址
+          success: function (res) {
+            console.log(res)
+          },
+          fail: function (res) {
+            console.log(res)
+          }
+        })
+      }else{
+        wx.request({
+          url: app.globalData.globalUrl + "/exam",
+          data: {
+            method: "queryNextQuestion",
+            examId: examId,
+            index: num,
+            userResult: user_result,
+            userAnswer: e.currentTarget.dataset.option,
+            hId: app.globalData.hId
+          },
+          success: function (res) {
+            that.setData({
+              lastmodalShow: true
+            })
+          },
+          fail: function (error) {
+            console.log(error);
+            that.setData({
+              arr_res: '返回异常'
+            })
+          }
+        })
+      }
     }else{
-      wx.request({
-        url: app.globalData.globalUrl + "/exam",
-        data: {
-          method: "queryNextQuestion",
-          examId: examId,
-          index: num,
-          userResult: user_result,
-          userAnswer: e.currentTarget.dataset.option,
-          hId: app.globalData.hId
-        },
-        success: function (res) {
-          that.setData({
-            lastmodalShow: true
-          })
-        },
-        fail: function (error) {
-          console.log(error);
-          that.setData({
-            arr_res: '返回异常'
-          })
-        }
-      })
+     //多选题和案例分析
+      
     }
   },
   //查看全部题目
