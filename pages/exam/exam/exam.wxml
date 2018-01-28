@@ -49,6 +49,7 @@
   <!--交卷  -->
   <view class="layer {{layerStus==true ? 'show' : ''}}">
     <scroll-view class='layer_cont' scroll-y="{{true}}">
+      <block wx:if='{{examtype==0||examtype==1}}'>
       <text class='qu_type'>单项选择</text>
       <view class='qu_box'>
         <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
@@ -56,6 +57,8 @@
           <text wx:if="{{item.type == '1' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==2}}'>
       <text class='qu_type'>多项选择</text>
       <view class='qu_box'>
         <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
@@ -63,6 +66,8 @@
           <text wx:if="{{item.type == '2' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==3}}'>
       <text class='qu_type'>判断题</text>
       <view class='qu_box'>
         <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
@@ -70,6 +75,8 @@
           <text wx:if="{{item.type == '3' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==4}}'>
       <text class='qu_type'>案例分析</text>
       <view class='qu_box'>
         <text wx:for="{{answers.answerRecord.data}}" wx:key="unique" bindtap='selectQuestion' data-index='{{item.index}}'>
@@ -77,6 +84,7 @@
           <text wx:if="{{item.type == '4' && item.answer == ''}}" class='qu_num'>{{item.index}}</text>
         </text>
       </view>
+      </block>
     </scroll-view>
     <!--layercont  -->
     <view class='footer'>
@@ -139,12 +147,49 @@
             </view>
             <!--答案选项  -->
             <view class='answer_list'>
-              <view class='answer_item {{activeIndex[index].option==index?"answer_item_active":""}}' wx:for="{{question.question[0].answer}}"  bindtap='answerQuestion' data-option='{{item.option}}' id='{{index}}' wx:key="unique">
-                <text class='answer_flag'>{{item.option}}</text>
-                <text>{{item.answer}}</text>
-              </view>
+               <!-- <view class='answer_item {{activeIndex==index?"answer_item_active":""}}' wx:for="{{question.question[0].answer}}"  bindtap='answerQuestion' data-option='{{item.option}}' id='{{index}}' wx:key="{{index}}">
+                  <text class='answer_flag'>{{item.option}}</text>
+                  <text>{{item.answer}}</text>
+                </view>
+                -->
+            <block wx:if='{{question.question[0].answer[0].option != null}}'>
+                <view class='answer_item {{optionA?"answer_item_active":""}}' bindtap='answerQuestion' data-option='{{question.question[0].answer[0].option}}'>
+                  <text class='answer_flag'>{{question.question[0].answer[0].option}}</text>
+                  <text>{{question.question[0].answer[0].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{question.question[0].answer[1].option != null}}'>
+                <view class='answer_item {{optionB?"answer_item_active":""}}' bindtap='answerQuestion' data-option='{{question.question[0].answer[1].option}}'>
+                  <text class='answer_flag'>{{question.question[0].answer[1].option}}</text>
+                  <text>{{question.question[0].answer[1].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{question.question[0].answer[2].option != null}}'>
+                <view class='answer_item {{optionC?"answer_item_active":""}}' bindtap='answerQuestion' data-option='{{question.question[0].answer[2].option}}'>
+                  <text class='answer_flag'>{{question.question[0].answer[2].option}}</text>
+                  <text>{{question.question[0].answer[2].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{question.question[0].answer[3].option != null}}'>
+                <view class='answer_item {{optionD?"answer_item_active":""}}' bindtap='answerQuestion' data-option='{{question.question[0].answer[3].option}}'>
+                  <text class='answer_flag'>{{question.question[0].answer[3].option}}</text>
+                  <text>{{question.question[0].answer[3].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{question.question[0].answer[4].option != null}}'>
+                <view class='answer_item {{optionE?"answer_item_active":""}}' bindtap='answerQuestion' data-option='{{question.question[0].answer[4].option}}'>
+                  <text class='answer_flag'>{{question.question[0].answer[4].option}}</text>
+                  <text>{{question.question[0].answer[4].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{question.question[0].answer[5].option != null}}'>
+                <view class='answer_item {{optionF?"answer_item_active":""}}' bindtap='answerQuestion' data-option='{{question.question[0].answer[5].option}}'>
+                  <text class='answer_flag'>{{question.question[0].answer[5].option}}</text>
+                  <text>{{question.question[0].answer[5].answer}}</text>
+                </view>
+            </block>
             </view>
-            <view class='confirm_btn_wrap' wx:if="{{question.question[0].type == 2 || question.question[0].type == 4}}">
+            <view class='confirm_btn_wrap' wx:if="{{question.question[0].type == 2 || question.question[0].type == 4}}" bindtap='submitbnt'>
               <text class='confirm_btn'>确定</text>
             </view>
           </view>

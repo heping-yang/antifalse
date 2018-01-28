@@ -7,8 +7,79 @@ Page({
    */
   data: {
     layerStus:false,
+    examtype:0,
     report: null,
-    wrongs: null
+    wrongs: null,
+    optionA: false,
+    optionB: false,
+    optionC: false,
+    optionD: false,
+    optionE: false,
+    optionF: false
+  },
+  changeOption: function (standard){
+    if (standard.indexOf('A')>=0){
+      this.SetData({
+       optionA: true
+      })
+    }
+    if (standard.indexOf('B') >= 0) {
+      this.SetData({
+        optionB: true
+      })
+    }
+    if (standard.indexOf('C') >= 0) {
+      this.SetData({
+        optionC: true
+      })
+    }
+    if (standard.indexOf('D') >= 0) {
+      this.SetData({
+        optionD: true
+      })
+    }
+    if (standard.indexOf('E') >= 0) {
+      this.SetData({
+        optionE: true
+      })
+    }
+    if (standard.indexOf('F') >= 0) {
+      this.SetData({
+        optionF: true
+      })
+    }
+  },
+  getOption: function (standard) {
+    if (standard.indexOf('A') >= 0) {
+      this.SetData({
+        optionA: true
+      })
+    }
+    if (standard.indexOf('B') >= 0) {
+      this.SetData({
+        optionB: true
+      })
+    }
+    if (standard.indexOf('C') >= 0) {
+      this.SetData({
+        optionC: true
+      })
+    }
+    if (standard.indexOf('D') >= 0) {
+      this.SetData({
+        optionD: true
+      })
+    }
+    if (standard.indexOf('E') >= 0) {
+      this.SetData({
+        optionE: true
+      })
+    }
+    if (standard.indexOf('F') >= 0) {
+      this.SetData({
+        optionF: true
+      })
+    }
   },
   //返回首页
   backHome:function(){
@@ -32,6 +103,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      examtype: app.globalData.examtype
+    })
     var that = this;
     wx.showToast({
       title: '加载中',

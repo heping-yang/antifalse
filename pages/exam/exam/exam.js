@@ -15,17 +15,77 @@ Page({
     lastmodalShow:false,
     //全部题目
     layerStus: false,
+    examtype : 0,
     layerAnimation:{},
     question:null,
     answers:null,
-    activeIndex: [{ "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }, { "option": "" }]
+    optionA: false,
+    optionB: false,
+    optionC: false,
+    optionD: false,
+    optionE: false,
+    optionF: false,
+  },
+  changeOption:function(option){
+    switch (option) {
+      case 'A':
+        this.setData({
+          optionA : !this.data.optionA
+        })
+        break;
+      case 'B':
+        this.setData({
+          optionB: !this.data.optionB
+        })
+        break;
+      case 'C':
+        this.setData({
+          optionC: !this.data.optionC
+        })
+        break;
+      case 'D':
+        this.setData({
+          optionD: !this.data.optionD
+        })
+        break;
+      case 'E':
+        this.setData({
+          optionE: !this.data.optionE
+        })
+        break;
+      case 'F':
+        this.setData({
+          optionF: !this.data.optionF
+        })
+        break;
+    }
+  },
+  getOption: function (){
+    var answsers = ""
+    if (this.data.optionA){
+      answsers += 'A'
+    }
+    if (this.data.optionB) {
+      answsers += 'B'
+    }
+    if (this.data.optionC) {
+      answsers += 'C'
+    }
+    if (this.data.optionD) {
+      answsers += 'D'
+    }
+    if (this.data.optionE) {
+      answsers += 'E'
+    }
+    if (this.data.optionF) {
+      answsers += 'F'
+    }
+    return answsers
   },
   // 答题
-  answerQuestion: function (e) { 
-    var that = this;
-    console.log(e)
-    console.log(this.data.activeIndex)
-    this.data.activeIndex[e.currentTarget.id].option = e.currentTarget.id
+  answerQuestion: function (e) {
+    var that = this
+    this.changeOption(e.currentTarget.dataset.option)
     //单选题和判断题
     if (that.data.question.question[0].type == 1 || that.data.question.question[0].type == 3){
       var user_result = "0"
@@ -66,9 +126,49 @@ Page({
           }
         })
       }
-    }else{
-     //多选题和案例分析
-      
+    }
+  },
+  //多选提交
+  submitbnt:function(){
+    var that = this
+    var user_result = "0"
+    var tempAnswser = this.getOption()
+    if (tempAnswser == standard) {
+      user_result = "1"
+    }
+    if (lastFlag == "1") {
+      wx.reLaunch({
+        url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + num + "&userAnswer=" + tempAnswser + "&userResult=" + user_result,//url跳转地址
+        success: function (res) {
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
+    } else {
+      wx.request({
+        url: app.globalData.globalUrl + "/exam",
+        data: {
+          method: "queryNextQuestion",
+          examId: examId,
+          index: num,
+          userResult: user_result,
+          userAnswer: tempAnswser,
+          hId: app.globalData.hId
+        },
+        success: function (res) {
+          that.setData({
+            lastmodalShow: true
+          })
+        },
+        fail: function (error) {
+          console.log(error);
+          that.setData({
+            arr_res: '返回异常'
+          })
+        }
+      })
     }
   },
   //查看全部题目
@@ -155,16 +255,24 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var that = this;
+    var method = "queryNextQuestion"
+    if (app.globalData.examtype != 0){
+      method = "queryNextTypeQuestion"
+      that.setData({
+        examtype: app.globalData.examtype
+      })
+    }
     wx.request({
       url: app.globalData.globalUrl + "/exam",
       data: {
-        method: "queryNextQuestion",
+        method: method,
         examId: options.examId,
         index: options.index,
         userResult: options.userResult,
         userAnswer: options.userAnswer,
         hId: app.globalData.hId,
-        type: options.type
+        type: options.type,
+        examtype: app.globalData.examtype
       },
       success: function (res) {
         console.log(res.data);

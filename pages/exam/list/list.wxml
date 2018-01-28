@@ -31,16 +31,16 @@
     <swiper-item class="test_type">
       <view class='test_type_list'>
         <view class='test_type_wrap'>
-          <view class="test {{currentTab2==0 ? 'active' : ''}}" data-current="0" catchtap='isSelection'>单选题（{{typelist[0].TYPECNT}}）</view>
-          <view class="test {{currentTab2==1 ? 'active' : ''}}" data-current="1" catchtap='isSelection'>多选题（{{typelist[1].TYPECNT}}）</view>
+          <view class="test {{currentTab2==1 ? 'active' : ''}}" data-current="1" catchtap='isSelection'>单选题（{{typelist[0].TYPECNT}}）</view>
+          <view class="test {{currentTab2==2 ? 'active' : ''}}" data-current="2" catchtap='isSelection'>多选题（{{typelist[1].TYPECNT}}）</view>
         </view>
         <view class='test_type_wrap'>
-          <view class="test {{currentTab2==2 ? 'active' : ''}}" data-current="2" catchtap='isSelection'>判断题（{{typelist[2].TYPECNT}}）</view>
-          <view class="test {{currentTab2==3 ? 'active' : ''}}" data-current="3" catchtap='isSelection'>案例分析（{{typelist[3].TYPECNT}}）</view>
+          <view class="test {{currentTab2==3 ? 'active' : ''}}" data-current="3" catchtap='isSelection'>判断题（{{typelist[2].TYPECNT}}）</view>
+          <view class="test {{currentTab2==4 ? 'active' : ''}}" data-current="4" catchtap='isSelection'>案例分析（{{typelist[3].TYPECNT}}）</view>
         </view>
       </view>
 
-      <view class='btn_begain' bindtap="enterExam">
+      <view class='btn_begain' bindtap="enterTypeExam">
         <image class='btn_icon' src='/images/enter_exam2.png'></image>
         <text>开始答题</text>
       </view>

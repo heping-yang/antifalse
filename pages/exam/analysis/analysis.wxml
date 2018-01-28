@@ -13,6 +13,7 @@
 
   <view class="layer {{layerStus==true ? 'show' : ''}}">
     <scroll-view class='layer_cont' scroll-y="{{true}}">
+      <block wx:if='{{examtype==0||examtype==1}}'>
       <text class='qu_type'>单项选择</text>
       <view class='qu_box clearfix'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
@@ -20,6 +21,8 @@
           <text wx:if="{{item.type == '1' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
       </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==2}}'>
       <text class='qu_type'>多项选择</text>
       <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
@@ -27,6 +30,8 @@
           <text wx:if="{{item.type == '2' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
       </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==3}}'>
       <text class='qu_type'>判断题</text>
       <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
@@ -34,6 +39,8 @@
           <text wx:if="{{item.type == '3' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
       </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==4}}'>
       <text class='qu_type'>案例分析</text>
       <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
@@ -41,6 +48,7 @@
           <text wx:if="{{item.type == '4' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
       </view>
+      </block>
     </scroll-view>
     <!--layercont  -->
     <view class='footer'>
@@ -55,7 +63,18 @@
     <block wx:for="{{wrongs}}" wx:key="unique">
       <swiper-item>
         <view class='exam_top'>
-          <text class='exam_top_left'>单项选择</text>
+          <block wx:if="{{item.type == 1}}">
+            <text class='exam_top_left'>单项选择</text>
+          </block>
+          <block wx:if="{{item.type == 2}}">
+            <text class='exam_top_left'>多项选择</text>
+          </block>
+          <block wx:if="{{item.type == 3}}">
+            <text class='exam_top_left'>判断题</text>
+          </block>
+          <block wx:if="{{item.type == 4}}">
+            <text class='exam_top_left'>案例分析</text>
+          </block>
           <view class='exam_top_right'>
             <text class='cu'>{{item.index}}</text>
             <text>/</text>
@@ -72,10 +91,38 @@
             </view>
             <!--答案选项  -->
             <view class='answer_list'>
+              <block wx:if="{{item.type == 1 || item.type == 3}}">
               <view class='answer_item' wx:for="{{item.answers}}" wx:for-item="itemAnswer" wx:key="unique">
-                <text class='answer_flag  {{item.standard==itemAnswer.option?"answer_flag_correct":""}} {{item.answer==itemAnswer.option&&item.standard!=itemAnswer.option?"answer_flag_wrong":""}}'>{{itemAnswer.option}}</text>
+                <text class='answer_flag  {{item.standard == itemAnswer.option?"answer_flag_correct":""}} {{item.answer==itemAnswer.option&&item.standard!=itemAnswer.option?"answer_flag_wrong":""}}'>{{itemAnswer.option}}</text>
                 <text>{{itemAnswer.answer}}</text>
               </view>
+              </block>
+              <block wx:if="{{item.type == 2 || item.type == 4}}">
+              <view class='answer_item' wx:if='{{item.answers[0].option != null}}'>
+                <text class='answer_flag  {{item.standardA=="A"?"answer_flag_correct":""}}'>{{item.answers[0].option}}</text>
+                <text>{{item.answers[0].answer}}</text>
+              </view>
+              <view class='answer_item' wx:if='{{item.answers[1].option != null}}'>
+                <text class='answer_flag  {{item.standardB=="B"?"answer_flag_correct":""}} '>{{item.answers[1].option}}</text>
+                <text>{{item.answers[1].answer}}</text>
+              </view>
+              <view class='answer_item' wx:if='{{item.answers[2].option != null}}'>
+                <text class='answer_flag  {{item.standardC=="C"?"answer_flag_correct":""}} '>{{item.answers[2].option}}</text>
+                <text>{{item.answers[2].answer}}</text>
+              </view>
+              <view class='answer_item' wx:if='{{item.answers[3].option != null}}'>
+                <text class='answer_flag  {{item.standardD=="D"?"answer_flag_correct":""}} '>{{item.answers[3].option}}</text>
+                <text>{{item.answers[3].answer}}</text>
+              </view>
+              <view class='answer_item' wx:if='{{item.answers[4].option != null}}'>
+                <text class='answer_flag  {{item.standardE=="E"?"answer_flag_correct":""}} '>{{item.answers[4].option}}</text>
+                <text>{{item.answers[4].answer}}</text>
+              </view>
+              <view class='answer_item' wx:if='{{item.answers[5].option != null}}'>
+                <text class='answer_flag  {{item.standardF=="F"?"answer_flag_correct":""}} '>{{item.answers[5].option}}</text>
+                <text>{{item.answers[5].answer}}</text>
+              </view>
+              </block>
             </view>
           </view>
           <!--答案分析  -->

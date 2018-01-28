@@ -1,5 +1,6 @@
 // pages/examlist/examlist.js
 var app = getApp()
+var examtypeId = ''
 Page({
   data: {
     examlist: null,
@@ -82,6 +83,8 @@ Page({
   },
   //按类型选题
   isSelection: function (e) {
+    app.globalData.examtype = e.target.dataset.current
+    examtypeId = "type0" + e.target.dataset.current
     var that = this;
     if (this.data.currentTab2 === e.target.dataset.current) {
       return ;
@@ -91,15 +94,14 @@ Page({
       })
     }
   },
-
-
   //进入考试
   enterExam: function (event) {
+    app.globalData.examtype = 0
     console.log(event),
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
     app.globalData.hId = this.guid();
       wx.navigateTo({
-      url: "/pages/exam/exam/exam?examId=" + event.currentTarget.dataset.id + "&index=0",//url跳转地址
+        url: "/pages/exam/exam/exam?examId=" + event.currentTarget.dataset.id + "&index=0&examtype=" + app.globalData.examtype,//url跳转地址
         success: function (res) {
           console.log(res)
         },
@@ -107,6 +109,22 @@ Page({
           console.log(res)
         }
       })
+
+  },
+  //进入考试
+  enterTypeExam: function () {
+    console.log(event),
+      //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
+      app.globalData.hId = this.guid();
+    wx.navigateTo({
+      url: "/pages/exam/exam/exam?examId=" + examtypeId + "&index=0&examtype=" + app.globalData.examtype,//url跳转地址
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
   //产生一个uuid
   guid:function() {
