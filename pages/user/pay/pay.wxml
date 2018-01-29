@@ -3,22 +3,16 @@
     <image class='goods_banner' src='/images/goods_banner.jpg'></image>  
   <view class='goods_info'>
     <view class='goods_tit'>
-      <text class='tit'>模拟试题介绍</text>
-      <text class='sales'>386人已购买</text>
+      <text class='tit'>月度会员介绍</text>
+      <text class='sales'>{{count}}人已购买</text>
     </view>
-    <text class='intro'>反假货币培训考试服务中心（简称考试中心）成立于2008年，主要职责是为各金融机构与企事业单位相关从业人员提供专业的反假货币知识培训、咨询，以及《反假货币培训考试合格证》考试、假币识别实操操作考试的组织工作。考试中心根植于中原大地，深耕细做反假货币培训十年，立足中原倾心服务全国。
-    </text>
-
-    <view class='goods_tit'>
-      <text  class='tit'>月度会员介绍</text> 
-    </view>
-    <text class='intro'>此外，考试中心通过引入标准化的考试管理方法和规范培训考试操作流程，使各商业银行从繁琐的培训、考试工作中解脱出来，使培训考试管理工作得到有效的提升。</text> 
+    <text class='intro'>{{product.description}}</text>
   </view>
   <!--goods_info  -->
 
   <view class='footer'> 
-    <view class='footer_item footer_item_l'>￥10/月</view>
-    <view  class='footer_item footer_item_r' catchtap='modal_suc'>购买月度VIP</view>
+    <view class='footer_item footer_item_l'>￥{{product.amount}}/{{product.unit}}</view>
+    <view  class='footer_item footer_item_r' catchtap='modal_suc'>购买{{product.productName}}</view>
   </view>
 </view>
 <!--container  -->
@@ -28,11 +22,10 @@
   <text class='buy_tit'>会员购买</text>
   <view class='goods'>
     <view class='goods_detail'>
-      <text>月度VIP会员</text>
-      <text class='font_s'>一个人会员</text>
+      <text>{{product.productName}}</text>
     </view>
     <view class='goods_price'>
-      <text class='font_s'>￥</text><text>20</text> 
+      <text class='font_s'>￥</text><text>{{product.amount}}</text> 
     </view>
   </view>
   <view class='whiteline'></view>

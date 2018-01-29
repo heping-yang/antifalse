@@ -28,3 +28,5 @@
 .layer .footer .btn{background: #4c86e5;color: #fff;text-align: center;width: 300rpx;padding:14rpx 0;border-radius: 5px;margin-left: 48rpx  ;border: 1px solid #4c86e5;margin: 0px auto} 
 
 .layer_cont{padding:0 20rpx;display: flex;flex-direction: column;padding-right: 0; height: 90vh}
+
+.exam_analysis{display: flex;flex-direction: column;width:100%;margin-bottom: 100rpx}

@@ -7,7 +7,11 @@ Page({
    */
   data: {
     modalBg: false,
-    modalCont:false
+    modalCont:false,
+    user:{},
+    userInfo:{},
+    product:{},
+    count:0
   },
   modal_suc: function () {
     this.setData({
@@ -25,27 +29,64 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    //调用应用实例的方法获取全局数据
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo,
+        user: app.globalData.user
+      })
+      if (that.data.user.userstatus > 1) {
+        wx.navigateTo({
+          url: '/pages/user/status/status'
+        })
+      }
+    })
+    wx.request({
+      url: app.globalData.globalUrl + "/user",
+      data: {
+        method: "queryProduct",
+        idcard: that.data.user.idcard,
+        userstatus: that.data.user.userstatus
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          product: res.data.product,
+          count: res.data.count
+        });
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
   },
 
   payment: function () {
+    var that = this
     wx.showToast({
       title: '加载中',
-      icon: 'loading'
+      icon: 'loading',
+      duration: 1500
     })
     wx.request({
       url: app.globalData.globalUrl + "/wsordersubmit",
       data: {
         method: "payOrder",
         openid: app.globalData.openid,
-        productId: 'pro01',
-        productName: '365',
+        productId: that.data.product.productId,
+        productName: that.data.product.productName,
         orderId: this.guid(),
-        phone: '18888888888',
-        proddesc: '365',
+        phone: that.data.user.telnum,
+        proddesc: that.data.product.productName,
         prodFee: '1'
       },
       success: function (res) {
+        wx.hideToast();
         console.log(res);
         console.log("timeStamp=" + res.data.body.timeStamp);
         console.log("nonceStr=" + res.data.body.nonceStr);

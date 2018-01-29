@@ -14,11 +14,10 @@
     <text class='buy_tit'>会员购买</text>
     <view class='goods'>
       <view class='goods_detail'>
-        <text>月度VIP会员</text>
-        <text class='font_s'>一个人会员</text>
+        <text>{{product.productName}}</text>
       </view>
       <view class='goods_price'>
-        <text class='font_s'>￥</text><text>20</text> 
+        <text class='font_s'>￥</text><text>{{product.amount}}</text> 
       </view>
     </view>
     <view class='whiteline'></view>
@@ -58,9 +57,9 @@
   <view class='footer'> 
     <view class='footer_item footer_item_l'>
       <text>总计</text>
-      <text class='font_red'>￥10/月</text>
+      <text class='font_red'>￥{{product.amount}}/{{product.unit}}</text>
     </view>
-    <view  class='footer_item footer_item_r'>确认支付</view>
+    <view  class='footer_item footer_item_r' bindtap='payment'>确认支付</view>
   </view>
   </block>
 </view>

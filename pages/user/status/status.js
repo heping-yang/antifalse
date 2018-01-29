@@ -8,7 +8,8 @@ Page({
   data: {
     memberStu:0,//会员1  非会员0
     userInfo: {},
-    user:{}
+    user:{},
+    product: {}
   },
 
   /**
@@ -27,10 +28,76 @@ Page({
         that.setData({
           memberStu: 1
         })
+      }else{
+        wx.request({
+          url: app.globalData.globalUrl + "/user",
+          data: {
+            method: "queryProduct",
+            idcard: that.data.user.idcard,
+            userstatus: that.data.user.userstatus
+          },
+          success: function (res) {
+            console.log(res);
+            that.setData({
+              product: res.data.product
+            });
+          },
+          fail: function (error) {
+            console.log(error);
+            that.setData({
+              arr_res: '返回异常'
+            })
+          }
+        })
       }
     })
   },
-
+  payment: function () {
+    var that = this
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 1500
+    })
+    wx.request({
+      url: app.globalData.globalUrl + "/wsordersubmit",
+      data: {
+        method: "payOrder",
+        openid: app.globalData.openid,
+        productId: that.data.product.productId,
+        productName: that.data.product.productName,
+        orderId: this.guid(),
+        phone: that.data.user.telnum,
+        proddesc: that.data.product.productName,
+        prodFee: '1'
+      },
+      success: function (res) {
+        wx.hideToast();
+        console.log(res);
+        console.log("timeStamp=" + res.data.body.timeStamp);
+        console.log("nonceStr=" + res.data.body.nonceStr);
+        console.log("package=" + res.data.body.package);
+        console.log("paySign=" + res.data.body.paySign);
+        wx.requestPayment({
+          'timeStamp': res.data.body.timeStamp,
+          'nonceStr': res.data.body.nonceStr,
+          'package': res.data.body.package,
+          'signType': 'MD5',
+          'paySign': res.data.body.paySign,
+          success: function (res) {
+            wx.showToast({ title: '完成' });
+          }
+        })
+      }
+    })
+  },
+  //产生一个uuid
+  guid: function () {
+    return 'xxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
