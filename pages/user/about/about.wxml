@@ -1,0 +1,20 @@
+<!--pages/about/about.wxml-->
+<view class='container'>
+  <view class='code_box'> 
+    <image class='code' src='https://www.nxyqedu.com/antifalse/resources/images/code.jpg'></image>
+    <text class='vesion'>版本：V1.0</text>
+  </view>
+  <view class='box'>
+    <text class='box_tit'>客服热线</text>
+    <text class='box_text'>0951-5034710</text>
+  </view>
+   <view class='box'>
+    <text class='box_tit'>开发者</text>
+    <text class='box_text'>宁夏银桥教育培训中心</text>
+  </view>
+
+  <view class='copyright'>
+    <text>宁夏银桥教育培训中心  版权所有</text>
+    <text>Copyright @ 2017 Nxfhb.All Rights Reserved</text>
+  </view>
+</view>

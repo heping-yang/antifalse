@@ -10,6 +10,7 @@
     "pages/user/pay/pay",
     "pages/user/status/status",
     "pages/user/grade/grade",
+    "pages/user/about/about",
     "pages/announcement/announcement",
     "pages/login/login/login",
     "pages/login/register/register",

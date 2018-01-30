@@ -10,7 +10,9 @@ Page({
     winHeight: 0,
     // tab切换  
     currentTab: 0,
-    currentTab2:0
+    currentTab2:0,
+    userInfo: {},
+    user: {}
   },
   isSelection() {
     this.setData({
@@ -31,6 +33,14 @@ Page({
   },
   onLoad: function () {
     var that = this;
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo,
+        loginstatus: app.globalData.loginstatus,
+        user: app.globalData.user
+      })
+    })
     wx.request({
       url: app.globalData.globalUrl + "/exam",
       data: {
@@ -113,7 +123,6 @@ Page({
   },
   //进入考试
   enterTypeExam: function () {
-    console.log(event),
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
       app.globalData.hId = this.guid();
     wx.navigateTo({

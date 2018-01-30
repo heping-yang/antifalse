@@ -29,4 +29,4 @@
 
 .layer_cont{padding:0 20rpx;display: flex;flex-direction: column;padding-right: 0; height: 90vh}
 
-.exam_analysis{display: flex;flex-direction: column;width:100%;margin-bottom: 100rpx}
+.exam_analysis{display: flex;flex-direction: column;width:100%;padding-bottom: 100rpx}

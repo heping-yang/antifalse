@@ -130,8 +130,7 @@
           </block>
           <view class='exam_top_right'>
             <text class='cu'>{{question.index}}</text>
-            <text>/</text>
-            <text class='total'>{{question.total}}</text>
+            <text class='total'>{{question.symbol}}{{question.total}}</text>
           </view>
         </view>
         <scroll-view scroll-y="{{true}}" class='qu_cont'>
@@ -147,11 +146,6 @@
             </view>
             <!--答案选项  -->
             <view class='answer_list'>
-               <!-- <view class='answer_item {{activeIndex==index?"answer_item_active":""}}' wx:for="{{question.question[0].answer}}"  bindtap='answerQuestion' data-option='{{item.option}}' id='{{index}}' wx:key="{{index}}">
-                  <text class='answer_flag'>{{item.option}}</text>
-                  <text>{{item.answer}}</text>
-                </view>
-                -->
             <block wx:if='{{question.question[0].answer[0].option != null}}'>
                 <view class='answer_item {{optionA?"answer_item_active":""}}' bindtap='answerQuestion' data-option='{{question.question[0].answer[0].option}}'>
                   <text class='answer_flag'>{{question.question[0].answer[0].option}}</text>

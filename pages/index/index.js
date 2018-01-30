@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
+var loginCheck = require("../../utils/loginCheck.js")
 Page({
   data: {
     motto: 'Hello World',
@@ -16,21 +17,27 @@ Page({
   //底部菜单跳转
   //在线模拟
   enterExam: function () {
-    wx.navigateTo({
-      url: '/pages/exam/list/list'
-    })
+    if (loginCheck.check('/pages/exam/list/list')){
+      wx.navigateTo({
+        url: '/pages/exam/list/list'
+      })
+    }
   },
   //成为会员
   paybind: function() {
-    wx.navigateTo({
-      url: '/pages/user/pay/pay'
-    })
+    if (loginCheck.check('/pages/user/pay/pay')) {
+      wx.navigateTo({
+        url: '/pages/user/pay/pay'
+      })
+    }
   },
   //成绩查询
   gradebind: function () {
-    wx.navigateTo({
-      url: '/pages/user/grade/grade'
-    })
+    if (loginCheck.check('/pages/user/grade/grade')) {
+      wx.navigateTo({
+        url: '/pages/user/grade/grade'
+      })
+    }
   },
   announcementbind:function(){
     wx.navigateTo({

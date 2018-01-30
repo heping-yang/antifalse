@@ -4,9 +4,10 @@ page{
 	background: -webkit-linear-gradient(top, #508ae7, #78acfe);  
 
 }
-.scoreinquiry_wrap{width: 650rpx;margin: 30rpx auto;background: #fff;border-radius: 5px;display: flex;flex-direction: column;align-items: center;color: #333}
-.art{width:536rpx;height: 156rpx;margin: 0px auto }
-.avatar{width: 120rpx;height: 120rpx;border-radius: 50%;margin: 0px auto;margin-top: -15%;margin-bottom: 20rpx}
+.scoreinquiry_wrap{width: 650rpx;margin: 30rpx auto;background: #fff;border-radius: 5px;display: flex;flex-direction: column;align-items: center;color: #333;}
+.hide{display: none}
+.art{width:536rpx;height:258rpx;margin: 0px auto;display: none }
+.avatar{width: 120rpx;height: 120rpx;border-radius: 50%;margin: 0px auto;margin-top: -25%;margin-bottom: 20rpx;z-index: 10}
 
 .exam_tit{font-size: 26rpx;margin-top: 30rpx}
 
@@ -35,3 +36,8 @@ page{
 
 .hide{display: none}
 .show{display: block}
+
+.no_score_wrap{display: flex;flex-direction:column}
+.no_score_icon{width: 255rpx;height: 167rpx;display: block;margin: 0px auto;margin-top: 170rpx;margin-bottom: 37rpx}
+.no_score_tips{color: #a9a6aa;text-align: center;width: 100%;margin-bottom: 100rpx}
+.btn_home{margin-bottom: 185rpx}

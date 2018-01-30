@@ -8,7 +8,8 @@ Page({
   data: {
     examResult:1 ,//0未通过 1通过
     userInfo:{},
-    grade:null
+    grade:null,
+    scoreStu:0
   },
   //首页
   goHome: function () {
@@ -40,9 +41,15 @@ Page({
           grade:res.data.grade
         });
         if (res.data.grade == "无记录"){
-
+          that.setData({
+            scoreStu: 2
+          });
         }else{
-          if (res.data.grade == '通过'){
+          that.setData({
+            scoreStu: 1
+          });
+
+          if (res.data.grade.grade == "通过"){
             that.setData({
               examResult: 1
             });

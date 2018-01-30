@@ -1,7 +1,7 @@
 // pages/user/user.js
 var app = getApp();
+var loginCheck = require("../../../utils/loginCheck.js")
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -24,22 +24,34 @@ Page({
   },
   //在线模拟
   enterExam: function () {
-    wx.navigateTo({
-      url: '/pages/exam/list/list'
-    })
+    if (loginCheck.check('/pages/exam/list/list')) {
+      wx.navigateTo({
+        url: '/pages/exam/list/list'
+      })
+    }
   },
 
   //成绩查询
   gradebind: function () {
-    wx.navigateTo({
-      url: '/pages/user/grade/grade'
-    })
+    if (loginCheck.check('/pages/user/grade/grade')) {
+      wx.navigateTo({
+        url: '/pages/user/grade/grade'
+      })
+    }
   },
   //会员状态
   memberStatus: function () {
-    wx.navigateTo({ 
-      url: '/pages/user/status/status'
-    })
+    if (loginCheck.check('/pages/user/status/status')) {
+      wx.navigateTo({
+        url: '/pages/user/status/status'
+      })
+    }
+  },
+  //关于我们
+  abouttap: function () {
+      wx.navigateTo({
+        url: '/pages/user/about/about'
+      })
   },
 
   /**

@@ -1,13 +1,14 @@
 <!--pages/scoreinquiry/scoreinquiry.wxml--> 
 <view class='container'>
-  <view class='scoreinquiry_wrap'>
-    <image class='art' src='/images/scoreinquiry_bg.png'></image>
+  <view class='scoreinquiry_wrap {{scoreStu !=1?"hide":" "}}'>
+    <image class='art {{examResult==0?"show":""}}' src='/images/scoreinquiry_bg.png'></image>
+    <image class='art  {{examResult==1?"show":""}}'  src='/images/scoreinquiry_bg2.png'></image>
     <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
     <text>{{userInfo.nickName}}</text>
 
     <text class='exam_tit'>{{grade.kstime}}反假币考试成绩</text>
 
-    <text class='exam_result red {{examResult==0?"show":""}}'>很遗憾，你没能通过本次考试</text>
+    <text class='exam_result red {{examResult==0?"show":""}}'>很遗憾，您未能通过本次考试</text>
     <text class='exam_result blue {{examResult==1?"show":""}}'>恭喜你通过本次考试</text>
     
     <view class='line_box'>
@@ -37,6 +38,13 @@
       </view>
     </view>
 
+    <view class='btn_home' bindtap='goHome'>返回首页</view>
+  </view>
+  <view class='scoreinquiry_wrap {{scoreStu==2?"show":"hide"}}'>
+    <view class='no_score_wrap'>
+        <image class='no_score_icon ' src='/images/no_score.png'></image>
+        <text class='no_score_tips'>暂无考试成绩</text>
+    </view>
     <view class='btn_home' bindtap='goHome'>返回首页</view>
   </view>
 </view>

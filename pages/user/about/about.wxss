@@ -1,0 +1,9 @@
+/* pages/about/about.wxss */
+page{background: #ededed}
+.code_box{display: flex;flex-direction: column;text-align: center;background: #fff;padding: 20rpx 0}
+.code{width:257rpx;height: 257rpx;display: block;margin: 0px auto}
+.vesion{color: #8b8b8b;padding: 20rpx 0}
+.box{display: flex;flex-direction: column;border-bottom: 1px solid #d3d3d3;width: 700rpx;margin: 0px auto;padding: 30rpx 0;margin-top: 25rpx}
+.box_tit{color: #333;font-size: 32rpx;margin-bottom: 35rpx}
+.copyright{text-align: center;font-size: 24rpx;margin-top:100rpx;display: flex;flex-direction: column;color: #afafaf}
+.copyright text{margin-bottom: 10rpx}

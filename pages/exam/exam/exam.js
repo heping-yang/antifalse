@@ -4,6 +4,7 @@ var num = 0;
 var examId = "";
 var standard = "";
 var lastFlag = "";
+var method = "queryNextQuestion";
 Page({
   /**
    * 页面的初始数据
@@ -106,12 +107,13 @@ Page({
         wx.request({
           url: app.globalData.globalUrl + "/exam",
           data: {
-            method: "queryNextQuestion",
+            method: method,
             examId: examId,
             index: num,
             userResult: user_result,
             userAnswer: e.currentTarget.dataset.option,
-            hId: app.globalData.hId
+            hId: app.globalData.hId,
+            examtype: app.globalData.examtype
           },
           success: function (res) {
             that.setData({
@@ -150,12 +152,13 @@ Page({
       wx.request({
         url: app.globalData.globalUrl + "/exam",
         data: {
-          method: "queryNextQuestion",
+          method: method,
           examId: examId,
           index: num,
           userResult: user_result,
           userAnswer: tempAnswser,
-          hId: app.globalData.hId
+          hId: app.globalData.hId,
+          examtype: app.globalData.examtype
         },
         success: function (res) {
           that.setData({
@@ -255,7 +258,6 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var that = this;
-    var method = "queryNextQuestion"
     if (app.globalData.examtype != 0){
       method = "queryNextTypeQuestion"
       that.setData({
