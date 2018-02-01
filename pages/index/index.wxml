@@ -2,19 +2,19 @@
 <view class="container">
   <view class='top'>
      <view class='user_info'> 
-      <text class='font_big'>{{userInfo.nickName}}</text>
+      <text class='font_big'>HI,{{userInfo.nickName}}</text>
       <text class='phone_num'>{{user.telnum}}</text> 
     </view> 
     <image class='top_img' src='/images/index_top_bg.png'></image>
   </view>
   
-  <image class='banner' src='/images/banner.png'></image>
+  <image class='banner' src='/images/banner.png' bindtap='enterExam'></image>
   
   <view class='nav'>
     <view class='nav_item' bindtap="announcementbind">
       <image class='nav_icon' src='/images/notice.png'></image>
       <text>平台公告</text>
-      <text class='notice_num'>3</text>
+      <!--<text class='notice_num'>3</text>-->
    </view>
     <view class='nav_item' bindtap="gradebind">
       <image class='nav_icon' src='/images/score_inquiry.png'></image>

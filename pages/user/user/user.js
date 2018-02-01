@@ -53,7 +53,29 @@ Page({
         url: '/pages/user/about/about'
       })
   },
-
+  loginout:function(){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确认退出您的账号?',
+      success: function (res) {
+        if (res.confirm) {
+          that.setData({
+            loginstatus: 0
+          })
+          app.globalData.loginstatus = 0;
+          app.globalData.user = null
+          // wx.showToast({
+          //   title: '已退出',
+          //   icon: 'success',
+          //   duration: 2000,
+          // })
+        } else if (res.cancel) {
+          
+        }
+      }
+    })  
+  },
   /**
    * 生命周期函数--监听页面加载
    */

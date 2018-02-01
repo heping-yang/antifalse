@@ -12,7 +12,7 @@
 .footer{position: fixed;width: 750rpx;display: flex;flex-direction: row;left:0px;bottom: 0px}
 .footer_item{width: 50%;text-align: center;font-size: 40rpx;padding: 26rpx 0}
 .footer_item_l{background: #fff;border-top: 1px solid #e5e5e5;color: #333; }
-.footer_item_r{background: #ec463d;border-top: 1px solid #ec463d;color: #ededed}
+.footer_item_r{background: #fc5e5d;border-top: 1px solid #ec463d;color: #ededed}
 
 .buy_overlay{position: fixed;width: 100%;height: 100%;top: 0px;left: 0px;z-index: 1;background: rgba(0, 0, 0, 0.65);display: none;}
 .show{display: block}
@@ -43,5 +43,4 @@ transition: All 0.4s ease;
 .buy_cont .pay_select_cont{width: 150rpx;text-align: right;}
 .buy_cont .pay_select{height: 34rpx;width: 34rpx}
 
-.pay_btn{background: #ec463d;border-top: 1px solid #ec463d;color: #ededed;padding: 26rpx 0;text-align: center;font-size: 40rpx;margin-top: 20rpx}
-
+.pay_btn{background: #fc5e5d;border-top: 1px solid #ec463d;color: #ededed;padding: 26rpx 0;text-align: center;font-size: 40rpx;margin-top: 20rpx}

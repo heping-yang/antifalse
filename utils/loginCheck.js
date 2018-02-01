@@ -15,11 +15,14 @@ function check(url) {
         telnum: app.globalData.user.telnum
       },
       success: function (res) {
-        app.globalData.user = res.data.user
+        if (app.globalData.user.userstatus != res.data.user.userstatus){
+          app.globalData.user = res.data.user
+          return false
+        }
       }
     })
   }
-  if ((url == "/pages/exam/list/list" && app.globalData.user.userstatus == 1) || (url == "/pages/user/grade/grade" && app.globalData.user.userstatus == 1)){
+  if (url == "/pages/exam/list/list" && app.globalData.user.userstatus == 1){
       wx.navigateTo({
         url: '/pages/user/pay/pay'
       })

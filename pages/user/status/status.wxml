@@ -15,6 +15,7 @@
     <view class='goods'>
       <view class='goods_detail'>
         <text>{{product.productName}}</text>
+        <text class='font_s'>1个月会员</text>
       </view>
       <view class='goods_price'>
         <text class='font_s'>￥</text><text>{{product.amount}}</text> 
@@ -53,6 +54,12 @@
     </view> 
   </view>
   <!--buy_cont  -->
+  <navigator wx:if="{{memberStu==1}}" url='/pages/exam/list/list'>
+    <view class='btn_begain'>
+      <image class='btn_icon' src='/images/enter_exam2.png'></image>
+      <text>在线模拟</text>
+    </view>
+  </navigator>
   <block wx:if='{{memberStu==0}}'>
   <view class='footer'> 
     <view class='footer_item footer_item_l'>

@@ -93,7 +93,7 @@ Page({
   //发送验证码
   getsmscode:function(){
     var that = this;
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
     if (telnum.length == 11 && myreg.test(telnum)){
       if (that.data.codeText == '获取验证码') {
         timer = setInterval(function () {

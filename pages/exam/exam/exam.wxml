@@ -113,8 +113,8 @@
   </view>
 
   <!--考试部分  -->
-  <swiper style='height:100vh'>
-      <swiper-item>
+  <view style='height:100vh' class='exam_item_wrap {{isloaded?"exam_item_wrap_show":""}}'>
+      <view>
         <view class='exam_top'>
           <block wx:if="{{question.question[0].type == 1}}">
             <text class='exam_top_left'>单项选择</text>
@@ -188,6 +188,6 @@
             </view>
           </view>
         </scroll-view>
-      </swiper-item>
-  </swiper>
+      </view>
+  </view>
 </view>

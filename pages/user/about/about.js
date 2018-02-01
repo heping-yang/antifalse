@@ -7,7 +7,11 @@ Page({
   data: {
   
   },
-
+  dialing: function (event) {
+    wx.makePhoneCall({
+      phoneNumber: '0951-5034710' //仅为示例，并非真实的电话号码
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

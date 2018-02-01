@@ -38,4 +38,9 @@ page{background: #ededed}
 .footer{position: fixed;width: 750rpx;display: flex;flex-direction: row;left:0px;bottom: 0px}
 .footer_item{width: 50%;text-align: center;font-size: 40rpx;padding: 26rpx 0}
 .footer_item_l{background: #fff;border-top: 1px solid #e5e5e5;color: #333; }
-.footer_item_r{background: #ec463d;border-top: 1px solid #ec463d;color: #ededed}
+.footer_item_r{background: #fc5e5d;border-top: 1px solid #ec463d;color: #ededed}
+
+
+.btn_begain{width:700rpx;margin: 40rpx auto;background: #4c87e5;color: #fff;border-radius: 5px;padding: 20rpx 0;text-align: center;display: flex;flex-direction: row;}
+.btn_begain text{text-align: center;font-size: 30rpx;width:150rpx;text-align: center}
+.btn_icon{height:35rpx;width: 35rpx;margin-right: 10rpx;margin-left:250rpx}

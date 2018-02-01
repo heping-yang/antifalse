@@ -73,10 +73,12 @@ Page({
      * 滑动切换tab 
      */
   bindChange: function (e) {
-
     var that = this;
     that.setData({ currentTab: e.detail.current });
-
+    if (e.detail.current == "test_type")
+      that.setData({ currentTab2: 1});
+      examtypeId = "type01";
+    }
   },
   /** 
    * 点击tab切换 

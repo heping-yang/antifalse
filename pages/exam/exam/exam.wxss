@@ -27,13 +27,13 @@
 .cu{color: #4688ea;font-size: 32rpx}
 
 .answer_box{padding:15px 10px;color: #525252;text-align: center}
-.question{line-height: 45rpx;display: flex;text-align: left}
+.question{line-height:50rpx;display: flex;text-align: left;color: #333;font-size: 34rpx}
 .qu_cont{margin-bottom: 0px;height: 90vh}
 .qu_img{ margin: 0px auto}
 .answer_list{margin-top: 50rpx;text-align: left}
-.answer_item{position: relative;padding:15px 0;margin-bottom: 10px;padding-left: 85rpx}
+.answer_item{position: relative;padding:15px 0;margin-bottom: 10px;padding-left: 85rpx;color: #333;}
 .answer_item:hover{background: #f4f5f6}
-.answer_item .answer_flag{height: 60rpx;width: 60rpx;border-radius: 50%;background: #fff;border:1px solid #d9d9d9;display: block;line-height: 60rpx;text-align: center;color: #333;position: absolute;left: 5px;top:50%;margin-top: -30rpx;}
+.answer_item .answer_flag{height: 60rpx;width: 60rpx;border-radius: 50%;background: #fff;border:1px solid #4c86e5;display: block;line-height: 60rpx;text-align: center;color: #4c86e5;position: absolute;left: 5px;top:50%;margin-top: -30rpx;}
 .answer_item_active{}
 .answer_item_active .answer_flag{height: 60rpx;width: 60rpx;border-radius: 50%;background: #4c86e5;border:1px solid #4c86e5;display: block;line-height: 60rpx;text-align: center;color: #fff;position: absolute;left: 5px;top:50%;margin-top: -30rpx}
 /*已答  */
@@ -41,3 +41,13 @@
 
 .confirm_btn_wrap{display: flex;align-items: center;margin-bottom: 60rpx;}
 .confirm_btn{width: 260rpx;height: 70rpx;border: 1px solid #2389f1;border-radius: 3px;line-height: 70rpx;margin: 0px auto;color: #2389f1}
+.exam_item_wrap{
+  transition: All 0.4s ease; 
+-webkit-transition: All 0.4s ease; 
+  transform: rotate(0deg) scale(1) translate(100%,0%); 
+-webkit-transform: rotate(0deg) scale(1) translate(100%,0%); 
+}
+.exam_item_wrap_show{
+  transform: rotate(0deg) scale(1) translate(0%,0%); 
+-webkit-transform: rotate(0deg) scale(1) translate(0%,0%);  
+}

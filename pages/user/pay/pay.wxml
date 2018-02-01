@@ -23,6 +23,7 @@
   <view class='goods'>
     <view class='goods_detail'>
       <text>{{product.productName}}</text>
+      <text class='font_s'>1个月会员</text>
     </view>
     <view class='goods_price'>
       <text class='font_s'>￥</text><text>{{product.amount}}</text> 

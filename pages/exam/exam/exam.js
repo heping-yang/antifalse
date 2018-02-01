@@ -14,6 +14,7 @@ Page({
     modalShow:false,
     handInModalShow: false,
     lastmodalShow:false,
+    isloaded:false,
     //全部题目
     layerStus: false,
     examtype : 0,
@@ -279,7 +280,8 @@ Page({
       success: function (res) {
         console.log(res.data);
         that.setData({
-          question: res.data
+          question: res.data,
+          isloaded:true
         });
         standard = res.data.question[0].standard
         num = res.data.index
