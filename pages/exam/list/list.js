@@ -1,6 +1,7 @@
 // pages/examlist/examlist.js
 var app = getApp()
-var examtypeId = ''
+var examtypeId = 'type01'
+app.globalData.examtype = '1'
 Page({
   data: {
     examlist: null,
@@ -10,7 +11,7 @@ Page({
     winHeight: 0,
     // tab切换  
     currentTab: 0,
-    currentTab2:0,
+    currentTab2:1,
     userInfo: {},
     user: {}
   },
@@ -72,13 +73,10 @@ Page({
   /** 
      * 滑动切换tab 
      */
-  bindChange: function (e) {
+  bindChange:function (e) {
+    console.log(e)
     var that = this;
     that.setData({ currentTab: e.detail.current });
-    if (e.detail.current == "test_type")
-      that.setData({ currentTab2: 1});
-      examtypeId = "type01";
-    }
   },
   /** 
    * 点击tab切换 
@@ -107,7 +105,7 @@ Page({
     }
   },
   //进入考试
-  enterExam: function (event) {
+  enterExam:function (event) {
     app.globalData.examtype = 0
     console.log(event),
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
@@ -144,4 +142,4 @@ Page({
       return v.toString(16);
     });
   }
-}) 
+})

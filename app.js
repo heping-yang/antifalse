@@ -54,6 +54,6 @@ App({
     h_id:"",
     user:{},
     loginstatus:0,
-    examtype:0
+    examtype:1
   }
 })

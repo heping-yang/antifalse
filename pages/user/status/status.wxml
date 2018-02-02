@@ -54,12 +54,12 @@
     </view> 
   </view>
   <!--buy_cont  -->
-  <navigator wx:if="{{memberStu==1}}" url='/pages/exam/list/list'>
-    <view class='btn_begain'>
+  <block wx:if="{{memberStu==1}}">
+    <view class='btn_begain' bindtap='enterExam'>
       <image class='btn_icon' src='/images/enter_exam2.png'></image>
       <text>在线模拟</text>
     </view>
-  </navigator>
+  </block>
   <block wx:if='{{memberStu==0}}'>
   <view class='footer'> 
     <view class='footer_item footer_item_l'>

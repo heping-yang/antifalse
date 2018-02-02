@@ -1,5 +1,6 @@
 // pages/user/userstatus/status.js
 var app = getApp()
+var loginCheck = require("../../../utils/loginCheck.js")
 Page({
 
   /**
@@ -11,7 +12,13 @@ Page({
     user:{},
     product: {}
   },
-
+  enterExam: function () {
+    if (loginCheck.check('/pages/exam/list/list')) {
+      wx.navigateTo({
+        url: '/pages/exam/list/list'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

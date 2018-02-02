@@ -4,7 +4,7 @@
   <view class='next {{nextStus==true?"next_show":""}}'> 
     <view class='form_wrap'>
       <view class="section">
-        <input placeholder="真实姓名" value='{{username}}' bindinput='ipusername' auto-focus />
+        <input placeholder="真实姓名" value='{{username}}' bindinput='ipusername'/>
       </view>
       
       
