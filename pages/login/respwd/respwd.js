@@ -14,6 +14,7 @@ Page({
    */
   data: {
     btnStus:false,
+    telinputStus: false,
     tipsText: "",
     telnum: "",
     password: "",
@@ -60,6 +61,13 @@ Page({
     if (password != repassword) {
       this.setData({
         tipsText: "两次密码输入不一致"
+      })
+      return
+    }
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+    if (telnum.length != 11 && !myreg.test(telnum)) {
+      this.setData({
+        tipsText: "手机号码输入有误！"
       })
       return
     }
@@ -115,6 +123,7 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
     if (telnum.length == 11 && myreg.test(telnum)) {
       if (that.data.codeText == '获取验证码') {
+        that.setData({ telinputStus: true })
         timer = setInterval(function () {
           if (timecnt <= 1) {
             console.log(timecnt)

@@ -28,7 +28,7 @@
 
   <view class='form_wrap'>
     <view class="section">
-      <input maxlength="11" placeholder="手机号" type="number" value="{{telnum}}" bindinput='iptelnum' auto-focus/>
+      <input maxlength="11" placeholder="手机号" type="number" value="{{telnum}}" bindinput='iptelnum' disabled='{{telinputStus}}' auto-focus/>
     </view> 
     
     <view class="section code_wrap">
