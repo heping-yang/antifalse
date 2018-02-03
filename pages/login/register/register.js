@@ -75,6 +75,7 @@ Page({
   },
   // 下一步
   next:function(){
+    var that = this
     if (password != repassword){
       this.setData({
         tipsText: "两次密码输入不一致"
@@ -88,14 +89,35 @@ Page({
       })
       return
     }
-    if (smscode != bksmscode) {
+    if (smscode.length != 6 ||smscode != bksmscode) {
       this.setData({
         tipsText: "验证码输入错误"
       })
       return
     }
-    this.setData({
-      nextStus: true 
+    wx.request({
+      url: app.globalData.globalUrl + "/smsVerify",
+      data: {
+        method: "userIsExist",
+        telnum: telnum
+      },
+      success: function (res) {
+        if (res.data.isExist == '0'){
+          that.setData({
+            nextStus: true
+          })
+        }else{
+          that.setData({
+            tipsText: "账号已存在"
+          })
+        }
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
     })
   },
   //发送验证码

@@ -71,7 +71,7 @@ Page({
       })
       return
     }
-    if (smscode != bksmscode) {
+    if (smscode.length != 6 || smscode != bksmscode) {
       this.setData({
         tipsText: "验证码输入错误"
       })

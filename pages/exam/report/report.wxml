@@ -8,7 +8,7 @@
 
   <!--分数  -->
   <view class='score_panel'>
-    <view class='score'>
+    <view class='score' wx:if='{{examtype == 0}}'>
       <text class='my_score'>{{report.totalscore}}</text>
       <text class='total_score'>/100分</text>
     </view>
@@ -23,7 +23,7 @@
       </view>
       <view class='score_analysis_item'>
         <text class='font_grey'>总用时</text>
-        <text>02:30</text>
+        <text>{{report.usedtime}}</text>
       </view>
     </view>
   </view>

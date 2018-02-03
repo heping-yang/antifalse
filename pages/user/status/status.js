@@ -1,6 +1,7 @@
 // pages/user/userstatus/status.js
 var app = getApp()
 var loginCheck = require("../../../utils/loginCheck.js")
+var timeFmt = require("../../../utils/timeFmt.js")
 Page({
 
   /**
@@ -8,6 +9,8 @@ Page({
    */
   data: {
     memberStu:0,//会员1  非会员0
+    stime:null,
+    etime:null,
     userInfo: {},
     user:{},
     product: {}
@@ -29,7 +32,9 @@ Page({
       //更新数据
       that.setData({
         userInfo: userInfo,
-        user: app.globalData.user
+        user: app.globalData.user,
+        stime: timeFmt.formatTime(app.globalData.user.effstart.time,'Y-M-D'),
+        etime: timeFmt.formatTime(app.globalData.user.effend.time, 'Y-M-D')
       })
       if (that.data.user.userstatus>1){
         that.setData({

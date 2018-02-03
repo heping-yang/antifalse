@@ -258,12 +258,22 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    console.log(options.examtype)
     var that = this;
-    if (app.globalData.examtype != 0){
-      method = "queryNextTypeQuestion"
-      that.setData({
-        examtype: app.globalData.examtype
-      })
+    if (options.examtype != null && options.examtype != ''){
+      if (options.examtype > 0){
+        method = "queryNextTypeQuestion"
+        that.setData({
+          examtype: app.globalData.examtype
+        })
+
+      }else{
+        method = "queryNextQuestion"
+        that.setData({
+          examtype: options.examtype
+        })
+        app.globalData.examtype = 0
+      }
     }
     wx.request({
       url: app.globalData.globalUrl + "/exam",
@@ -289,7 +299,7 @@ Page({
         lastFlag = res.data.lastFlag
       },
       fail: function (error) {
-        console.log(error);
+        that.onLoad(options);
         that.setData({
           arr_res: '返回异常'
         })

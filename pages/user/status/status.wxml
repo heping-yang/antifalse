@@ -5,7 +5,7 @@
     <view class='user_info '>
       <text class='phone_num'>{{user.telnum}}</text>
       <text class='font1 {{memberStu==0?"show":""}}'>您还不是会员，立即购买吧！</text>
-      <text class='font1 font_blue {{memberStu==1?"show":""}}'>会员有效期:2018-01-01至2018-02-01</text>
+      <text class='font1 font_blue {{memberStu==1?"show":""}}'>会员有效期:{{stime}}至{{etime}}</text>
     </view> 
   </view>
   <!--user_top  -->

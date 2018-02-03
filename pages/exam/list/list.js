@@ -34,6 +34,8 @@ Page({
   },
   onLoad: function () {
     var that = this;
+    examtypeId = 'type01'
+    app.globalData.examtype = '1'
     app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
@@ -77,6 +79,11 @@ Page({
     console.log(e)
     var that = this;
     that.setData({ currentTab: e.detail.current });
+    if (e.detail.current == 1){
+      examtypeId = 'type01'
+      app.globalData.examtype = '1'
+      that.setData({currentTab2 : '1'})
+    }
   },
   /** 
    * 点击tab切换 
@@ -106,12 +113,11 @@ Page({
   },
   //进入考试
   enterExam:function (event) {
-    app.globalData.examtype = 0
     console.log(event),
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
     app.globalData.hId = this.guid();
       wx.navigateTo({
-        url: "/pages/exam/exam/exam?examId=" + event.currentTarget.dataset.id + "&index=0&examtype=" + app.globalData.examtype,//url跳转地址
+        url: "/pages/exam/exam/exam?examId=" + event.currentTarget.dataset.id + "&index=0&examtype=0",//url跳转地址
         success: function (res) {
           console.log(res)
         },
