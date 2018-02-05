@@ -4,6 +4,9 @@
     <view class='btn btn_outline' bindtap='allAnswer'>
       查看错题答案
     </view>
+    <view class='btn btn_outline' bindtap='goHome'>
+      返回首页
+    </view>
   </view>
 
   <!--分数  -->

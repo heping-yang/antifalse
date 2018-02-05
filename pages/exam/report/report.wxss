@@ -1,6 +1,7 @@
 /* pages/examreport/examreport.wxss */ 
-.footer{display: flex;flex-direction: column;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5; background: #fff;z-index: 102;padding: 20rpx 0;-ms-flex-align: center}
-.footer .btn{background: #4c86e5;color: #fff;text-align: center;width: 300rpx;padding:14rpx 0;border-radius: 5px;border: 1px solid #4c86e5;margin: 0px auto}
+.footer{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5; background: #fff;z-index: 102;padding: 20rpx 0;-ms-flex-align: center}
+.footer .btn{background: #4c86e5;color: #fff;text-align: center;width: 330rpx;padding:14rpx 0;border-radius: 5px;border: 1px solid #4c86e5;margin: 0px auto}
+.footer  .btn_outline{background: #fff;color:#4c86e5;border:1px solid #4c86e5 }
 
 .score_panel{display: flex;flex-direction: column}
 .score{text-align: center;font-size: 24rpx; }
@@ -8,6 +9,3 @@
 .score_analysis{display: flex;flex-direction: row;text-align: center;margin: 50rpx 0}
 .score_analysis_item{width: 33.3%;text-align: center;display: flex;flex-direction: column;border-right: 1px solid #e5e5e5;line-height: 50rpx}
 .score_analysis_item:nth-last-child(1){border-right: 0px solid #e5e5e5}
-
-
-
