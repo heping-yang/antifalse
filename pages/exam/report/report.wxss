@@ -9,3 +9,18 @@
 .score_analysis{display: flex;flex-direction: row;text-align: center;margin: 50rpx 0}
 .score_analysis_item{width: 33.3%;text-align: center;display: flex;flex-direction: column;border-right: 1px solid #e5e5e5;line-height: 50rpx}
 .score_analysis_item:nth-last-child(1){border-right: 0px solid #e5e5e5}
+
+
+/*题号列表  */
+.qu_num_list{padding-left: 30rpx}
+/*题目类型  */
+.qu_type{border-left: 8rpx solid #4c86e5;color: #747474;padding-left: 20rpx;display: block;margin-top: 30rpx;font-size: 30rpx}
+/*题号  */
+.qu_num{height: 80rpx;width: 80rpx;border-radius: 50%;background: #fff;border:1rpx solid #d6d6d6;line-height: 80rpx;text-align: center;color: #4688ea;margin-right:34rpx;margin-top: 30rpx;display: inline-block}
+.qu_num:nth-of-type(6n){margin-right: 0px}
+/*已答  */
+.qu_num_answered{background: #4c86e5;color: #fff;border:1rpx solid #4c86e5;}
+/*答对  */
+.qu_num_correct{background: #41d497;color: #fff;border:1rpx solid #41d497;}
+/*答错  */
+.qu_num_wrong{background: #fc5e5e;color: #fff;border:1rpx solid #fc5e5e;}

@@ -65,7 +65,9 @@ Page({
           })
           app.globalData.loginstatus = 0;
           app.globalData.user = null
-          that.loginbind()
+          wx.reLaunch({
+            url: '/pages/index/index'
+          })
         } 
       }
     })  

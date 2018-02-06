@@ -2,7 +2,7 @@
 <view class="container">
   <view class='top'>
      <view class='user_info'>
-      <text class='font_large {{loginstatus==0?"show":""}}' bindtap='loginbind'>请登录</text> 
+      <text class='font_large {{loginstatus==0?"show":""}}' bindtap='loginbind'>登录</text> 
       <text class='font_big {{loginstatus==1?"show":""}}'>HI,{{user.username}}</text> 
       <text class='phone_num {{loginstatus==1?"show":""}}'>{{user.telnum}}</text> 
     </view> 

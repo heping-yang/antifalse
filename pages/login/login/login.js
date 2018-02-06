@@ -39,7 +39,8 @@ Page({
       data: {
         method: "login",
         telnum:telnum,
-        password:password
+        password:password,
+        openid: app.globalData.openid
       },
       success: function (res) {
         console.log(res);
@@ -59,7 +60,7 @@ Page({
         }else{
           that.setData({
             btnStus: false,
-            tipsText: "手机号或密码有误请重新输入",
+            tipsText: res.data.msg,
             telnum : "",
             password: ""
           })

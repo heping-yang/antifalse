@@ -118,6 +118,7 @@ Page({
             examtype: app.globalData.examtype
           },
           success: function (res) {
+            stoptime()
             that.setData({
               lastmodalShow: true
             })
@@ -163,6 +164,7 @@ Page({
           examtype: app.globalData.examtype
         },
         success: function (res) {
+          stoptime()
           that.setData({
             lastmodalShow: true
           })
@@ -178,6 +180,7 @@ Page({
   },
   //查看全部题目
   showAll: function () {
+    stoptime()
     var that = this;
     that.setData({
       layerStus: true
@@ -218,6 +221,7 @@ Page({
   },
   //继续模拟
   testContinue: function () {
+    count_down(this);
     this.setData({
       layerStus: false
     })
@@ -246,12 +250,14 @@ Page({
   },
   //返回首页
   home: function () {
+    stoptime()
     this.setData({
       handInModalShow: true,
     })
   },
   //继续考试
   testContuine:function(){
+    count_down(this);
     this.setData({
       modalShow: false,
       handInModalShow: false,
