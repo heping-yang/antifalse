@@ -22,7 +22,8 @@ Page({
       url: app.globalData.globalUrl + "/exam",
       data: {
         method: "queryExamReport",
-        hId: app.globalData.hId
+        hId: app.globalData.hId,
+        usedtime: app.globalData.total_micro_second
       },
       success: function (res) {
         console.log(res.data);

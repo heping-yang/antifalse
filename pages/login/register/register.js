@@ -96,12 +96,13 @@ Page({
       return
     }
     wx.request({
-      url: app.globalData.globalUrl + "/smsVerify",
+      url: app.globalData.globalUrl + "/user",
       data: {
         method: "userIsExist",
         telnum: telnum
       },
       success: function (res) {
+        console.log(res);
         if (res.data.isExist == '0'){
           that.setData({
             nextStus: true

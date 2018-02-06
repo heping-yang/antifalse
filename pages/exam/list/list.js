@@ -114,6 +114,8 @@ Page({
   //进入考试
   enterExam:function (event) {
     console.log(event),
+    app.globalData.total_micro_second = 50 * 60 * 1000
+    
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
     app.globalData.hId = this.guid();
       wx.navigateTo({
@@ -130,7 +132,8 @@ Page({
   //进入考试
   enterTypeExam: function () {
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
-      app.globalData.hId = this.guid();
+    app.globalData.hId = this.guid();
+    app.globalData.total_micro_second = 50 * 60 * 1000
     wx.navigateTo({
       url: "/pages/exam/exam/exam?examId=" + examtypeId + "&index=0&examtype=" + app.globalData.examtype,//url跳转地址
       success: function (res) {

@@ -2,7 +2,7 @@
 .bottom{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5;height: 55rpx;padding-top: 15rpx;padding-bottom: 15rpx;background: #fff;z-index: 100}
 .bottom image{height:55rpx;width:55rpx}
 .bottom_item{width: 33.33%;text-align: center;position: relative;background: rgba(0, 0, 0, 0.0);}
-.time{position: absolute;top: 10rpx;left: 50%;width: 200rpx;margin-left: -100rpx;background: rgba(0, 0, 0, 0.0);height: 40rpx;color: #6a6a6a;font-size: 24rpx}
+.time{position: absolute;top: 11rpx;left: 50%;width: 200rpx;margin-left: -100rpx;background: rgba(0, 0, 0, 0.0);height: 40rpx;color: #6a6a6a;font-size: 24rpx}
 
  
 .layer .footer{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5; background: #fff;z-index: 102;padding: 20rpx 0;}

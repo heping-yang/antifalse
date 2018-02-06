@@ -7,14 +7,17 @@ page{background: #ededed}
 .font_big{font-size: 34rpx;color: #333333;font-weight: 500;margin-top: 10rpx;margin-bottom: 4rpx}
 .font_big{font-size: 40rpx;color: #333333;font-weight: bold}
 .phone_num{font-size: 30rpx;color: #7e7e7e;}
-.user_login{display: flex;flex-direction: row;margin-top: 30rpx;color: #333}
+.user_login{display: flex;flex-direction: row;margin-top: 35rpx;color: #333}
+.user_login text{margin: 0px 5rpx}
 
 .user_list{display: flex;flex-direction: column;background: #fff;margin-top: 20rpx}
-.user_list_item{display: flex;flex-direction: row;position: relative;border-bottom: 1px solid #e5e5e5;width: 730rpx;margin-left: 20rpx;padding: 30rpx 0;line-height: 35rpx;color: #333}
-.user_icon{width: 35rpx;height: 35rpx;margin-right:20rpx }
-.user_arrow_r{width: 30rpx;height: 30rpx;position: absolute;right: 20rpx;top:20rpx}
+.user_list_item{display: flex;flex-direction: row;position: relative;border-bottom: 1px solid #e5e5e5;width: 730rpx;margin-left: 20rpx;padding: 40rpx 0;line-height: 35rpx;color: #333}
+.user_list_item text{line-height: 35rpx;height: 35rpx;padding-left: 50rpx; }
+.user_icon{width: 35rpx;height: 35rpx;margin-right:20rpx;position: absolute;top: 38rpx;left: 0rpx; }
+.user_arrow_r{width: 30rpx;height: 30rpx;position: absolute;right: 20rpx;top:50rpx}
 
 .btn_exit{width: 750rpx;height: 90rpx;text-align: center;background: #fff;color: #333;line-height: 90rpx;margin-top: 100rpx}
 
 .btn_exit_hide{display: none}
 .hide{display: none}
+.font_m{font-size: 30rpx;margin-right: 5rpx}

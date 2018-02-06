@@ -1,25 +1,4 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-/**index.wxss**/
 .container {
   height: 100%;
   display: flex;
@@ -34,8 +13,9 @@ image{display: block}
   flex-direction: column;
   position: absolute;top: 20rpx;left: 35rpx
 }
-.font_big{font-size: 40rpx;color: #333333;font-weight: bold}
-.phone_num{font-size: 32rpx;color: #7e7e7e;margin-top:12rpx}
+.font_large{font-size: 50rpx;color: #333333;font-weight: bold;display: none}
+.font_big{font-size: 40rpx;color: #333333;font-weight: bold;display: none}
+.phone_num{font-size: 32rpx;color: #7e7e7e;margin-top:12rpx;display: none}
 .top_img{width:750rpx;height: 149rpx}
 
 .banner{width: 711rpx;height: 302rpx;margin: 0px auto}
@@ -49,3 +29,5 @@ background: linear-gradient(top, #fb7d61, #fb5a65);
   border-radius: 50%;line-height: 30rpx;text-align: center;color: #fff;top: -8rpx;right:75rpx;font-size: 24rpx
 } 
 
+
+.show{display: block}

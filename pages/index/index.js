@@ -6,7 +6,14 @@ Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
-    user:{}
+    user:{},
+    loginstatus : 0
+  },
+  //请登录
+  loginbind: function () {
+    wx.navigateTo({
+      url: '/pages/login/login/login'
+    })
   },
   //事件处理函数
   bindViewTap: function() {
@@ -59,7 +66,8 @@ Page({
       //更新数据
       that.setData({
         userInfo:userInfo,
-        user: app.globalData.user
+        user: app.globalData.user,
+        loginstatus: app.globalData.loginstatus
       })
     })
   },

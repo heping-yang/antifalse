@@ -65,14 +65,8 @@ Page({
           })
           app.globalData.loginstatus = 0;
           app.globalData.user = null
-          // wx.showToast({
-          //   title: '已退出',
-          //   icon: 'success',
-          //   duration: 2000,
-          // })
-        } else if (res.cancel) {
-          
-        }
+          that.loginbind()
+        } 
       }
     })  
   },

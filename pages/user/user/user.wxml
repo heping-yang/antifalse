@@ -3,7 +3,7 @@
   <view class='user_top'>
     <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
     <view class='user_info {{loginstatus == 0?"hide":""}}'>
-      <text class='font_big'>HI,{{userInfo.nickName}}</text>
+      <text class='font_big'>HI,{{user.username}}</text>
       <text class='phone_num'>{{user.telnum}}</text>
     </view>
     <view class='user_login {{loginstatus == 1?"hide":""}}' bindtap='loginbind'>

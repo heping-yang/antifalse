@@ -47,13 +47,14 @@ App({
   },
 
   globalData: {
-    globalUrl: "https://www.nxyqedu.com/antifalse/api",
-//    globalUrl: "http://localhost:8080/antifalse/api",
+//    globalUrl: "https://www.nxyqedu.com/antifalse/api",
+    globalUrl: "http://localhost:8080/antifalse/api",
     userInfo: null,
     openid:"",
     h_id:"",
     user:{},
     loginstatus:0,
-    examtype:1
+    examtype:1,
+    total_micro_second: 50 * 60 * 1000
   }
 })
