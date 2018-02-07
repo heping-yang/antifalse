@@ -1,0 +1,19 @@
+/* pages/history/history.wxss */ 
+  
+.list_cont{height: 100%}
+/*整套体  */
+.test_sheet{}
+.test_sheet_list{display: flex;flex-direction:column;border-bottom: 1px solid #e5e5e5;padding: 10px}
+.test_tit_box{display: flex;flex-direction: row}
+.test_tit{width: 710rpx;display: block;font-size: 32rpx;color: #000;font-weight: bold}
+.enter_exam{width: 40rpx ;height:40rpx}
+.test_info{color: #999;display: flex;flex-direction: row;margin-top: 10rpx;width: 550rpx}
+.test_info text{margin-right: 30rpx}
+.test_info text .num{margin: 0px 3px}
+.num_blue{color: #3c89fa}
+.test_tit_wrap{display: flex;flex-direction: row;display: flex}
+.symbol{background: #fc5e5d;color: #fff;font-size: 24rpx;text-align: center;display: inline-block;padding: 4rpx 10rpx;border-radius: 3px;margin-right: 10rpx}
+.history_date{width: 200rpx;margin-top: 10rpx;text-align: right;color: #a2a2a2}
+.test_wrap{display: flex;flex-direction: row}
+
+ 

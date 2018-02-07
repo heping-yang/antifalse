@@ -14,7 +14,8 @@
     "pages/announcement/announcement",
     "pages/login/login/login",
     "pages/login/register/register",
-    "pages/login/respwd/respwd"
+    "pages/login/respwd/respwd",
+    "pages/exam/history/history"
   ],
   "window":{
     "backgroundTextStyle":"light",

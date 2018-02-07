@@ -1,7 +1,7 @@
 <view class='container pad_bt60'>
   <!--底部  -->
   <view class='footer'>
-    <view class='btn btn_outline' bindtap='allAnswer'>
+    <view class='btn' bindtap='allAnswer'>
       查看错题答案
     </view>
     <view class='btn btn_outline' bindtap='goHome'>

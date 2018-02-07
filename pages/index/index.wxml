@@ -11,19 +11,27 @@
   
   <image class='banner' src='/images/banner.png' bindtap='enterExam'></image>
   
-  <view class='nav'>
-    <view class='nav_item' bindtap="announcementbind">
-      <image class='nav_icon' src='/images/notice.png'></image>
-      <text>平台公告</text>
-      <!--<text class='notice_num'>3</text>-->
-   </view>
-    <view class='nav_item' bindtap="gradebind">
-      <image class='nav_icon' src='/images/score_inquiry.png'></image>
-      <text>成绩查询</text>
+  <view class='nav_wrap'>
+    <view class='nav'>
+      <view class='nav_item' bindtap="announcementbind">
+        <image class='nav_icon' src='/images/notice.png'></image>
+        <text>平台公告</text>
+        <!--<text class='notice_num'>3</text>-->
+      </view>
+      <view class='nav_item' bindtap="gradebind">
+        <image class='nav_icon' src='/images/score_inquiry.png'></image>
+        <text>成绩查询</text>
+      </view>
+      <view class='nav_item' bindtap="paybind">
+        <image class='nav_icon' src='/images/member.png'></image>
+        <text>成为会员</text>
+      </view>
     </view>
-    <view class='nav_item' bindtap="paybind">
-      <image class='nav_icon' src='/images/member.png'></image>
-      <text>成为会员</text>
+    <view class='nav'>
+      <view class='nav_item'>
+        <image class='nav_icon' src='/images/notice.png'></image>
+        <text>模拟历史</text> 
+      </view>
     </view>
   </view>
   

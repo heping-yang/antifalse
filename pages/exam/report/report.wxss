@@ -16,7 +16,7 @@
 /*题目类型  */
 .qu_type{border-left: 8rpx solid #4c86e5;color: #747474;padding-left: 20rpx;display: block;margin-top: 30rpx;font-size: 30rpx}
 /*题号  */
-.qu_num{height: 80rpx;width: 80rpx;border-radius: 50%;background: #fff;border:1rpx solid #d6d6d6;line-height: 80rpx;text-align: center;color: #4688ea;margin-right:34rpx;margin-top: 30rpx;display: inline-block}
+.qu_num{height: 80rpx;width: 80rpx;border-radius: 50%;background: #fff;border:1rpx solid #d6d6d6;line-height: 80rpx;text-align: center;color: #4688ea;margin-right:36rpx;margin-top: 30rpx;display: inline-block}
 .qu_num:nth-of-type(6n){margin-right: 0px}
 /*已答  */
 .qu_num_answered{background: #4c86e5;color: #fff;border:1rpx solid #4c86e5;}

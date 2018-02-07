@@ -1,0 +1,19 @@
+<!--pages/history/history.wxml-->
+<view class='container'>
+
+  <block wx:for="{{testList}}" wx:key="unique">
+    <view class='test_sheet_list' bindtap="enterExam">
+      <view class='test_tit_box'>
+        <text class='test_tit'>{{item.testtit}}</text>
+      </view>
+      <view class='test_wrap'>
+        <view class='test_info'>
+          <text>共<text class='num'>{{item.testqus}}</text>题</text>
+          <text>得分<text class='num num_blue'>{{item.testsocre}}</text>分</text>
+        </view>
+        <text class='history_date'>2018.01.18</text>
+      </view>
+    </view>
+  </block>
+
+</view>
