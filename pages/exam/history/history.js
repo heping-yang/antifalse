@@ -1,4 +1,5 @@
 // pages/history/history.js
+var app = getApp()
 Page({
 
   /**
@@ -44,14 +45,33 @@ Page({
         testqus: "207",
         testsocre: "100"
       }
-    ]
+    ],
+    historylist:null
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: app.globalData.globalUrl + "/exam",
+      data: {
+        method: "queryHistoryList",
+        telnum: app.globalData.user.telnum
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          historylist: res.data.list
+        });
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
   },
 
   /**
@@ -103,17 +123,30 @@ Page({
   
   },
   //进入考试
-  enterExam: function (event) {
-    console.log(event),
+  enterExam: function (e) {
+    console.log(e),
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
-      wx.navigateTo({
-        url: "../exam/exam?id=" + event.currentTarget.dataset.id,//url跳转地址
-        success: function (res) {
-          console.log(res)
-        },
-        fail: function (res) {
-          console.log(res)
-        }
-      })
-  }
+    app.globalData.hId = e.currentTarget.dataset.item.hId
+    app.globalData.total_micro_second = parseInt(e.currentTarget.dataset.item.surplustime)
+    if (e.currentTarget.dataset.item.examType != '0'){
+      app.globalData.examType = e.currentTarget.dataset.item.examType
+    }
+    wx.navigateTo({
+      url: "/pages/exam/exam/exam?examId=" + e.currentTarget.dataset.item.examId + "&index=" + (parseInt(e.currentTarget.dataset.item.indexnum) -  1) + "&type=select&examtype=" + parseInt(e.currentTarget.dataset.item.examType),//url跳转地址
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+  },
+    //
+  enterReport: function (e) {
+    app.globalData.examtype = e.currentTarget.dataset.item.examType
+    app.globalData.hId = e.currentTarget.dataset.item.hId
+    wx.navigateTo({
+      url: '/pages/exam/report/report',
+    })
+  },
 })

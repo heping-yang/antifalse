@@ -46,10 +46,27 @@ Page({
       })
     }
   },
+  //平台公告
   announcementbind:function(){
     wx.navigateTo({
       url: '/pages/announcement/announcement'
     })
+  },
+  //模拟历史
+  historybind: function () {
+    if (loginCheck.check('/pages/user/grade/grade')) {
+      wx.navigateTo({
+        url: '/pages/exam/history/history'
+      })
+    }
+  },
+  //在线报名
+  onlineRegbind: function () {
+    if (loginCheck.check('/pages/user/grade/grade')) {
+      wx.navigateTo({
+        url: '/pages/exam/history/history'
+      })
+    }
   },
   //底部菜单
   //我的

@@ -186,6 +186,12 @@
             <view class='confirm_btn_wrap' wx:if="{{question.question[0].type == 2 || question.question[0].type == 4}}" bindtap='submitbnt'>
               <text class='confirm_btn'>确定</text>
             </view>
+            <view class='confirm_btn_wrap' wx:if="{{question.index != 1}}" bindtap='prebnt'>
+              <text class='confirm_btn'>上一题</text>
+            </view>
+            <view class='confirm_btn_wrap' wx:if="{{question.lastFlag == 1}}" bindtap='submitbnt'>
+              <text class='confirm_btn'>下一题</text>
+            </view>
           </view>
         </scroll-view>
       </view>

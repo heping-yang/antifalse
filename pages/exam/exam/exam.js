@@ -15,9 +15,9 @@ Page({
     handInModalShow: false,
     lastmodalShow:false,
     isloaded:false,
+    examtype:0,
     //全部题目
     layerStus: false,
-    examtype : 0,
     layerAnimation:{},
     question:null,
     answers:null,
@@ -115,7 +115,8 @@ Page({
             userResult: user_result,
             userAnswer: e.currentTarget.dataset.option,
             hId: app.globalData.hId,
-            examtype: app.globalData.examtype
+            examtype: app.globalData.examtype,
+            surplustime: app.globalData.total_micro_second
           },
           success: function (res) {
             stoptime()
@@ -162,7 +163,8 @@ Page({
           userAnswer: tempAnswser,
           hId: app.globalData.hId,
           examtype: app.globalData.examtype,
-          telnum: app.globalData.user.telnum
+          telnum: app.globalData.user.telnum,
+          surplustime: app.globalData.total_micro_second
         },
         success: function (res) {
           stoptime()
@@ -178,6 +180,49 @@ Page({
         }
       })
     }
+  },
+  //上一题
+  prebnt: function () {
+    var that = this
+    var user_result = "0"
+    var tempAnswser = this.getOption()
+    if (tempAnswser == standard) {
+      user_result = "1"
+    }
+    wx.request({
+      url: app.globalData.globalUrl + "/exam",
+      data: {
+        method: method,
+        examId: examId,
+        index: num,
+        userResult: user_result,
+        userAnswer: tempAnswser,
+        hId: app.globalData.hId,
+        examtype: app.globalData.examtype,
+        surplustime: app.globalData.total_micro_second
+      },
+      success: function (res) {
+        stoptime()
+        that.setData({
+          lastmodalShow: true
+        })
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
+    wx.reLaunch({
+      url: "/pages/exam/exam/exam?examId=" + examId + "&index=" + (num - 2) + "&type=select",//url跳转地址
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
   //查看全部题目
   showAll: function () {
@@ -279,19 +324,17 @@ Page({
     console.log(options)
     console.log(options.examtype)
     var that = this;
+    that.setData({ examtype: app.globalData.examtype })
     if (options.examtype != null && options.examtype != ''){
-      if (options.examtype > 0){
-        method = "queryNextTypeQuestion"
-        that.setData({
-          examtype: app.globalData.examtype
-        })
-
-      }else{
+      console.log(options.examtype)
+      if (options.examtype == 0){
+        that.setData({ examtype: options.examtype})
         method = "queryNextQuestion"
-        that.setData({
-          examtype: options.examtype
-        })
         app.globalData.examtype = 0
+      }else{
+        that.setData({ examtype: options.examtype })
+        method = "queryNextTypeQuestion"
+        app.globalData.examtype = options.examtype
       }
     }
     wx.request({
@@ -305,7 +348,8 @@ Page({
         hId: app.globalData.hId,
         type: options.type,
         examtype: app.globalData.examtype,
-        telnum: app.globalData.user.telnum
+        telnum: app.globalData.user.telnum,
+        surplustime: app.globalData.total_micro_second
       },
       success: function (res) {
         console.log(res.data);
@@ -317,6 +361,7 @@ Page({
         num = res.data.index
         examId = res.data.question[0].examId
         lastFlag = res.data.lastFlag
+        that.getUserAnswer(res.data.userAnswer)
       },
       fail: function (error) {
         that.onLoad(options);
@@ -326,7 +371,39 @@ Page({
       }
     })
   },
-
+  //获取用户答案
+  getUserAnswer: function (userAnswer) {
+    if (userAnswer.indexOf('A') >= 0) {
+      this.setData({
+        optionA: true
+      })
+    }
+    if (userAnswer.indexOf('B') >= 0) {
+      this.setData({
+        optionB: true
+      })
+    }
+    if (userAnswer.indexOf('C') >= 0) {
+      this.setData({
+        optionC: true
+      })
+    }
+    if (userAnswer.indexOf('D') >= 0) {
+      this.setData({
+        optionD: true
+      })
+    }
+    if (userAnswer.indexOf('E') >= 0) {
+      this.setData({
+        optionE: true
+      })
+    }
+    if (userAnswer.indexOf('F') >= 0) {
+      this.setData({
+        optionF: true
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

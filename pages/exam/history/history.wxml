@@ -1,19 +1,33 @@
 <!--pages/history/history.wxml-->
 <view class='container'>
 
-  <block wx:for="{{testList}}" wx:key="unique">
-    <view class='test_sheet_list' bindtap="enterExam">
-      <view class='test_tit_box'>
-        <text class='test_tit'>{{item.testtit}}</text>
-      </view>
-      <view class='test_wrap'>
-        <view class='test_info'>
-          <text>共<text class='num'>{{item.testqus}}</text>题</text>
-          <text>得分<text class='num num_blue'>{{item.testsocre}}</text>分</text>
+  <block wx:for="{{historylist}}" wx:key="unique">
+    <block wx:if='{{item.totalscore != ""}}'>
+      <view class='test_sheet_list' data-item='{{item}}' bindtap="enterReport">
+        <view class='test_tit_box'>
+          <text class='test_tit'>{{item.examName}}</text>
         </view>
-        <text class='history_date'>2018.01.18</text>
+        <view class='test_wrap'>
+          <view class='test_info'>
+              <text>共<text class='num'>{{item.indexnum}}</text>题</text>
+              <text>得分<text class='num num_blue'>{{item.totalscore}}</text>分</text>
+          </view>
+          <text class='history_date'>{{item.starttime}}</text>
+        </view>
       </view>
-    </view>
+    </block>
+    <block wx:if='{{item.totalscore == ""}}'>
+      <view class='test_sheet_list' data-item='{{item}}' bindtap="enterExam">
+        <view class='test_tit_box'>
+          <text class='test_tit'>{{item.examName}}</text>
+        </view>
+        <view class='test_wrap'>
+          <view class='test_info'>
+              <text>第<text class='num'>{{item.indexnum}}</text>题</text>
+          </view>
+          <text class='history_date'>{{item.starttime}}</text>
+        </view>
+      </view>
+    </block>
   </block>
-
 </view>
