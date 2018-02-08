@@ -161,7 +161,8 @@ Page({
           userResult: user_result,
           userAnswer: tempAnswser,
           hId: app.globalData.hId,
-          examtype: app.globalData.examtype
+          examtype: app.globalData.examtype,
+          telnum: app.globalData.user.telnum
         },
         success: function (res) {
           stoptime()
@@ -303,7 +304,8 @@ Page({
         userAnswer: options.userAnswer,
         hId: app.globalData.hId,
         type: options.type,
-        examtype: app.globalData.examtype
+        examtype: app.globalData.examtype,
+        telnum: app.globalData.user.telnum
       },
       success: function (res) {
         console.log(res.data);
