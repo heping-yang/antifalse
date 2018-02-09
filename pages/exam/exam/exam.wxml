@@ -8,10 +8,11 @@
         <view class='rest_cont'>
           <image class='icon' src='/images/icon_exam.png'></image>
           <text class='font_grey'>休息一下</text>
-          <text>共{{question.total}}道题，还有{{question.total - question.index + 1}}道未作答</text>
+          <text>共{{question.total}}道题，还有{{noAnsweredCnt}}道未作答</text>
         </view>
         <view class='modal_btn_box'>
-          <text class='modal_btn' bindtap="rested">继续答题</text> 
+          <text class='modal_btn' bindtap="handIn">交卷</text>
+           <text class='modal_btn_outline' bindtap="rested">继续答题</text> 
         </view>
     </view>
   </view>
@@ -37,11 +38,11 @@
         <view class='rest_cont'>
           <image class='icon' src='/images/icon_exam.png'></image>
           <!-- <text class='font_grey'>休息一下</text> -->
-          <text>共{{question.total}}道题，还有{{question.total - question.index + 1}}道未作答</text>
+          <text>共{{question.total}}道题，还有{{noAnsweredCnt}}道未作答</text>
         </view>
         <view class='modal_btn_box'>
-          <text class='modal_btn_outline' bindtap="goHome">返回首页</text> 
-          <text class='modal_btn' bindtap="testContuine">继续答题</text> 
+          <text class='modal_btn' bindtap="goHome">返回首页</text> 
+          <text class='modal_btn_outline' bindtap="testContuine">继续答题</text> 
         </view>
     </view> 
   </view>
@@ -100,6 +101,12 @@
   
   <!--底部  -->
   <view class='bottom'>
+    <view class='bottom_item_arrow' wx:if="{{question.index != 1}}" bindtap='prebnt'>
+      <image class='arrow show' src='/images/icon_arrow_left.png'></image>
+    </view>
+    <view class='bottom_item_arrow' wx:if="{{question.index == 1}}">
+      <image class='arrow show' src='/images/icon_arrow_left_no.png'></image>
+    </view>
     <view class='bottom_item' bindtap='showAll'>
       <image src='/images/icon_qu_all.png'></image>
     </view>
@@ -109,6 +116,9 @@
     </view>
     <view class='bottom_item' bindtap='home'> 
       <image src='/images/icon_qu_home.png'></image>
+    </view>
+    <view class='bottom_item_arrow' bindtap='submitbnt'>
+      <image class='arrow show' src='/images/icon_arrow_right.png'></image>
     </view>
   </view>
 
@@ -182,15 +192,6 @@
                   <text>{{question.question[0].answer[5].answer}}</text>
                 </view>
             </block>
-            </view>
-            <view class='confirm_btn_wrap' wx:if="{{question.question[0].type == 2 || question.question[0].type == 4}}" bindtap='submitbnt'>
-              <text class='confirm_btn'>确定</text>
-            </view>
-            <view class='confirm_btn_wrap' wx:if="{{question.index != 1}}" bindtap='prebnt'>
-              <text class='confirm_btn'>上一题</text>
-            </view>
-            <view class='confirm_btn_wrap' wx:if="{{question.lastFlag == 1}}" bindtap='submitbnt'>
-              <text class='confirm_btn'>下一题</text>
             </view>
           </view>
         </scroll-view>

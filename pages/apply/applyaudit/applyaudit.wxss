@@ -1,0 +1,70 @@
+/* pages/applyaudit/applyaudit.wxss */ 
+
+.examinee_stu{background: #eef4fe;border: 1rpx solid #7cacf7;color: #3575de;padding: 25rpx 0px;text-align: center;width:60%;border-radius: 3px;margin: 20rpx auto;display: flex;flex-direction: column;text-align: center} 
+.examinee_stu_text{color: #ff6969;text-align: center}
+.tit{background: #eff0f2;color: #909090;font-size: 32rpx;padding: 25rpx 20rpx}
+
+.item{border-bottom: 1px solid #e5e5e5;padding: 30rpx 20rpx;display: flex;flex-direction: row}
+.item_name{color: #525252;width: 180rpx}
+.item_cont{color: #397fe9;width: 570rpx;position: relative}
+.item_cont text{color: #397fe9;width: 570rpx;position: relative;text-align: right;display: block}
+.section{width:500rpx}
+.picker{width: 500rpx;height: 20px;text-align: right}
+.select_arrow_r{width: 30rpx;height: 30rpx;position: absolute;right: 0rpx;top:8rpx;display: none}
+
+.item_long{border-bottom: 1px solid #e5e5e5;padding: 30rpx 20rpx;display: flex;flex-direction: row}
+.item_long .item_name{color: #525252;width: 300rpx}
+.item_long .item_cont{color: #397fe9;width: 450rpx;position: relative}
+.item_long .item_cont text{color: #397fe9;width: 450rpx;position: relative;text-align: right}
+.item_long .section{width:390rpx}
+.item_long .picker{width: 390rpx;height: 20px;text-align: right}
+
+.item_special_long{border-bottom: 1px solid #e5e5e5;padding: 30rpx 20rpx;display: flex;flex-direction: row}
+.item_special_long .item_name{color: #525252;width: 450rpx}
+.item_special_long .item_cont{color: #397fe9;width: 300rpx;position: relative;text-align: right; }
+.item_special_long .item_cont text{text-align: right;width: 300rpx;display: block}
+.apply_info{display: flex;flex-direction: column;padding-left: 60rpx;padding-right: 20rpx;margin: 15px 0;line-height: 1.8;font-size: 26rpx;color: #333;position: relative}
+.tips_icon{position: absolute;width: 28rpx;height: 28rpx;left: 10px;top: 5px}
+.font_grey{color: #717171}
+.font_blue{color: #4e87e1}
+.font_red{color: #ff005a}
+.font_bold{font-weight: bold}
+.apply_info_mb{margin-bottom: 70px}
+
+.btn_submit{width:650rpx;margin: 40rpx auto;background: #4c87e5;color: #fff;border-radius: 5px;padding: 30rpx 0;text-align: center;display: flex;flex-direction: column;display: none} 
+
+.bottom{
+  position: fixed;width: 750rpx;color:#ededed ;background: #ff6363;text-align: center;padding: 30rpx 0;left: 0px;bottom: 0px;margin-top: 140px; 
+}
+.show{display: block}
+
+.buy_overlay{position: fixed;width: 100%;height: 100%;top: 0px;left: 0px;z-index: 1;background: rgba(0, 0, 0, 0.65);display: none;}
+.show{display: block}
+.buy_cont{background: #ededed;position: fixed;bottom: 0px;left: 0px;width: 100%;display: flex;flex-direction: column;z-index: 10; 
+transition: All 0.4s ease; 
+-webkit-transition: All 0.4s ease; 
+  transform: rotate(0deg) scale(1) translate(0%,100%); 
+-webkit-transform: rotate(0deg) scale(1) translate(0%,1000%); 
+} 
+.buy_cont_show{background: #ededed;position: fixed;bottom: 0px;left: 0px;width: 100%;display: flex;flex-direction: column;z-index: 10;
+transition: All 0.4s ease; 
+-webkit-transition: All 0.4s ease; 
+ transform: rotate(0deg) scale(1) translate(0%,0%); 
+-webkit-transform: rotate(0deg) scale(1) translate(0%,0%); 
+ } 
+.mt{margin-top: 20rpx}
+.buy_cont .whiteline{background: #fff;height: 20rpx}
+.buy_cont .buy_tit{background: #fff;padding: 20rpx;color: #333}
+
+.buy_cont .goods{display: flex;flex-direction: row;background: #4c87e5;padding: 20rpx;color: #fff}
+.buy_cont .goods_detail{display: flex;flex-direction: column;width:600rpx}
+.buy_cont .font_s{font-size: 24rpx}
+.buy_cont .goods_price{width:150rpx;text-align: right;font-size: 55rpx}
+
+.buy_cont .pay_mode{display: flex;flex-direction: row;background: #fff;padding: 20rpx}
+.buy_cont .pay_text{ color: #333;width: 600rpx;display: flex;flex-direction: row}
+.buy_cont .pay_weixin{height: 36rpx;width: 36rpx;margin-right: 20rpx}
+.buy_cont .pay_select_cont{width: 150rpx;text-align: right;}
+.buy_cont .pay_select{height: 34rpx;width: 34rpx}
+
+.pay_btn{background: #fc5e5d;border-top: 1px solid #ec463d;color: #ededed;padding: 26rpx 0;text-align: center;font-size: 40rpx;margin-top: 20rpx}

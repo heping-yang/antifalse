@@ -100,6 +100,22 @@ Page({
           'paySign': res.data.body.paySign,
           success: function (res) {
             wx.showToast({ title: '完成' });
+            wx.request({
+              url: app.globalData.globalUrl + "/user",
+              data: {
+                method: "relogin",
+                telnum: app.globalData.user.telnum
+              },
+              success: function (res) {
+                if (app.globalData.user.userstatus != res.data.user.userstatus) {
+                  app.globalData.user = res.data.user
+                  return false
+                }
+              }
+            })
+            wx.reLaunch({
+              url: '/pages/index/index'
+            })
           }
         })
       }

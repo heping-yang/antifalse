@@ -21,6 +21,8 @@ Page({
     layerAnimation:{},
     question:null,
     answers:null,
+    answerCnt:0,
+    noAnswerCnt:0,
     optionA: false,
     optionB: false,
     optionC: false,
@@ -252,6 +254,39 @@ Page({
       }
     })
   },
+  //查看未作答题目
+  queryAnsweredCnt: function (param) {
+    var that = this;
+    wx.request({
+      url: app.globalData.globalUrl + "/exam",
+      data: {
+        method: "queryAnsweredCnt",
+        hId: app.globalData.hId
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          answeredCnt: res.data.answeredCnt,
+          noAnsweredCnt: res.data.noAnsweredCnt
+        });
+        if (param == "rest"){
+          that.setData({
+            modalShow: true
+          })
+        }else{
+          that.setData({
+            handInModalShow: true,
+          })
+        }
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
+  },
   //选择某一个题
   selectQuestion:function(e){
     console.log(e)
@@ -280,10 +315,8 @@ Page({
   },
   //休息
   rest:function(){
+    this.queryAnsweredCnt("rest")
     stoptime()
-    this.setData({
-      modalShow:true
-    })
   },
   //休息结束
   rested: function () {
@@ -296,10 +329,8 @@ Page({
   },
   //返回首页
   home: function () {
+    this.queryAnsweredCnt()
     stoptime()
-    this.setData({
-      handInModalShow: true,
-    })
   },
   //继续考试
   testContuine:function(){

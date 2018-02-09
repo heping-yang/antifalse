@@ -37,6 +37,6 @@
 .test_type_list .test{width: 45%;margin: 0px auto;text-align: center;padding: 12rpx 0;border: 1px solid #fff}
 .test_type_list .active{background: #fff;color: #4c87e5;border-radius: 5px;border: 1px solid #4c87e5}
 
-.btn_begain{width:700rpx;margin: 40rpx auto;background: #4c87e5;color: #fff;border-radius: 5px;padding: 20rpx 0;text-align: center;display: flex;flex-direction: row;}
-.btn_begain text{text-align: center;font-size: 30rpx;width:150rpx;text-align: center}
+.btn_begain{width:700rpx;margin: 40rpx auto;background: #4c87e5;color: #fff;border-radius: 5px;padding: 30rpx 0;text-align: center;display: flex;flex-direction: row;}
+.btn_begain text{text-align: center;font-size: 32rpx;width:150rpx;text-align: center}
 .btn_icon{height:35rpx;width: 35rpx;margin-right: 10rpx;margin-left:250rpx}

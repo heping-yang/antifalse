@@ -9,7 +9,7 @@
     </view>
   </view>
 
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height:92vh">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height:82vh">
     <!-- 整套题 -->
     <swiper-item class="test_sheet">
       <scroll-view scroll-y="{{true}}" style='height:100%'>

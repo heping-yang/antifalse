@@ -64,7 +64,7 @@ Page({
   onlineRegbind: function () {
     if (loginCheck.check('/pages/user/grade/grade')) {
       wx.navigateTo({
-        url: '/pages/exam/history/history'
+        url: '/pages/apply/applyonline/applyonline'
       })
     }
   },

@@ -1,7 +1,8 @@
 /* pages/exam/exam.wxss */ 
 .bottom{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5;height: 55rpx;padding-top: 15rpx;padding-bottom: 15rpx;background: #fff;z-index: 100}
 .bottom image{height:55rpx;width:55rpx}
-.bottom_item{width: 33.33%;text-align: center;position: relative;background: rgba(0, 0, 0, 0.0);}
+.bottom_item{width: 25%;text-align: center;position: relative;background: rgba(0, 0, 0, 0.0);}
+.bottom_item_arrow{width: 12.5%;text-align: center;position: relative;}
 .time{position: absolute;top: 11rpx;left: 50%;width: 200rpx;margin-left: -100rpx;background: rgba(0, 0, 0, 0.0);height: 40rpx;color: #6a6a6a;font-size: 24rpx}
 
  
@@ -39,15 +40,18 @@
 /*已答  */
 .qu_num_answered{background: #4c86e5;color: #fff;border:1px solid #4c86e5;}
 
-.confirm_btn_wrap{display: flex;align-items: center;margin-bottom: 60rpx;}
-.confirm_btn{width: 260rpx;height: 70rpx;border: 1px solid #2389f1;border-radius: 3px;line-height: 70rpx;margin: 0px auto;color: #2389f1}
+.confirm_btn_wrap{display: flex;align-items: center;width: 640rpx;margin: 60rpx auto;margin-bottom: 60px;}
+.confirm_btn{width: 260rpx;height: 70rpx;border: 1px solid #2389f1;border-radius: 3px;line-height: 70rpx;margin: 0px auto;color: #2389f1;display: block}
 .exam_item_wrap{
   transition: All 0.4s ease; 
 -webkit-transition: All 0.4s ease; 
-  transform: rotate(0deg) scale(1) translate(100%,0%); 
--webkit-transform: rotate(0deg) scale(1) translate(100%,0%); 
+  transform: rotate(0deg) scale(1) translate(0%,0%); 
+-webkit-transform: rotate(0deg) scale(1) translate(0%,0%); 
 }
 .exam_item_wrap_show{
   transform: rotate(0deg) scale(1) translate(0%,0%); 
 -webkit-transform: rotate(0deg) scale(1) translate(0%,0%);  
 }
+
+.arrow{display: none;} 
+.show{display: block;margin: 0px auto}

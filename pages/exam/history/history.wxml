@@ -10,7 +10,12 @@
         <view class='test_wrap'>
           <view class='test_info'>
               <text>共<text class='num'>{{item.indexnum}}</text>题</text>
-              <text>得分<text class='num num_blue'>{{item.totalscore}}</text>分</text>
+              <block wx:if='{{item.examType == 0}}'>
+                <text>得分<text class='num num_blue'>{{item.totalscore}}</text>分</text>
+              </block>
+              <block wx:if='{{item.examType != 0}}'>
+                <text>错题<text class='num num_blue'>{{item.answerRecord.wrongCnt}}</text>个</text>
+              </block>
           </view>
           <text class='history_date'>{{item.starttime}}</text>
         </view>

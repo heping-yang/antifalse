@@ -1,0 +1,123 @@
+<!--pages/applyonline/applyonline.wxml-->
+<view class='container'>
+  <view class='examinee_stu'>
+    <!--<text class='examinee_stu_item'>考生状态：<text class='examinee_stu_text '>未提交</text></text> --> 
+    <text class='examinee_stu_item'>未发布最新考试计划，敬请期待</text> 
+  </view>
+  <view class='tit'>
+    <text>基本信息</text>
+  </view>
+  <view class='item'>
+    <text class='item_name'>身份证号</text>
+    <text class='item_cont'>{{user.idcard}}</text>
+  </view>
+  <view class='item'>
+    <text class='item_name'>考生姓名</text>
+    <text class='item_cont'>{{user.username}}</text>
+  </view>
+  <view class='item'>
+    <text class='item_name'>手机号码</text>
+    <text class='item_cont'>{{user.telnum}}</text>
+  </view>
+  <view class='tit'>
+    <text>完善以下信息</text>
+  </view>
+
+  <view class='item'>
+    <text class='item_name'>民族</text>
+    <view class='item_cont'>
+      <image class='select_arrow_r' src='/images/arrow_r.png'></image>
+      <view class="section">
+        <picker bindchange="bindPickerNation" value="{{nationindex}}" range="{{nation}}">
+          <view class="picker">
+            {{nation[nationindex]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class='item'>
+    <text class='item_name'>银行所在地</text>
+    <view class='item_cont'>
+      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
+      <view class="section"> 
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+              {{region[1]}} {{region[2]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+   <view class='item'>
+    <text class='item_name'>银行名称</text>
+  <!--    <view class='item_cont'>
+      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
+      <text class='select_tips {{BackNameStu==true?"hide":""}}' >请选择</text>
+      <view class="section">
+        <picker bindchange="bindPickerBackName" value="{{subBackNameindex}}" range="{{backName}}">
+          <view class="picker">
+            {{backName[backNameindex]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+     -->
+  </view>
+
+   <view class='item'>
+    <text class='item_name'>支行名称</text>
+ <!--    <view class='item_cont'>
+      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
+      <text class='select_tips {{subBackNameStu==true?"hide":""}}' >请选择</text>
+      <view class="section">
+        <picker bindchange="bindPickerSubBackName" value="{{subBackNameindex}}" range="{{subBackName}}">
+          <view class="picker">
+            {{subBackName[subBackNameindex]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+        -->
+  </view>
+
+
+   <view class='item item_long'>
+    <text class='item_name'>申请考试地区时间</text>
+ <!--   <view class='item_cont'>
+      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image> 
+      <text class='select_tips {{examDateStu==true?"hide":""}}'  >请选择</text>
+      <view class="section">
+        <picker bindchange="bindPickerExamDate" value="{{examDateindex}}" range="{{examDate}}">
+          <view class="picker">
+            {{examDate[examDateindex]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    -->
+  </view>
+
+  <view class='item item_special_long'>
+    <text class='item_name'>您申请的考试报名剩余人数为:</text>
+    <text class='item_cont'>0</text>
+  </view>
+
+  <view class='apply_info {{applystu==1?"apply_info_mb":""}}'>
+   <image class='tips_icon' src='/images/tips_icon2.png'></image>
+   <text>1、请正确填写以上所有信息，提交之后将不能修改。</text>
+   <text>2、根据你所选择的考试时间，请于<text class='font_blue' >05月26日</text>前上传本人近期白底证件照。</text>
+   <text class='font_grey'>① 必须为照相馆正规拍摄，不得压缩修改；</text>
+   <text class='font_grey'>② 传至邮箱<text class='font_blue' >nxyqedu@163.com</text>，照片命名为（考生姓名身份证号.jpg）例如：张三640102199501010002.jpg；</text>
+   <view>3、审核完成后会通过<text class='font_bold'>宁夏银桥教育培训中心微信公众号</text><text class='font_red' >（点击关注）</text>，向你发送审核通过信息。你也可以随时浏览<text class='font_blue' >宁夏反假货币小程序</text> > <text class='font_blue' >考试报名页面</text>，查看本人当前状态，及时完成报名缴费。</view>  
+  </view>
+  
+  <view class='btn_submit_grey' bindtap=""> 
+     提交审核 
+  </view>
+   
+
+</view>
+<!--container  -->

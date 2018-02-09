@@ -29,11 +29,11 @@
     </view>
     <view class='nav'>
       <view class='nav_item' bindtap='historybind'>
-        <image class='nav_icon' src='/images/notice.png'></image>
+        <image class='nav_icon' src='/images/history.png'></image>
         <text>模拟历史</text> 
       </view>
       <view class='nav_item' bindtap='onlineRegbind'>
-        <image class='nav_icon' src='/images/notice.png'></image>
+        <image class='nav_icon' src='/images/apply.png'></image>
         <text>在线报名</text> 
       </view>
     </view>

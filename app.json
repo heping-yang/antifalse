@@ -15,7 +15,9 @@
     "pages/login/login/login",
     "pages/login/register/register",
     "pages/login/respwd/respwd",
-    "pages/exam/history/history"
+    "pages/exam/history/history",
+    "pages/apply/applyaudit/applyaudit",
+    "pages/apply/applyonline/applyonline"
   ],
   "window":{
     "backgroundTextStyle":"light",
