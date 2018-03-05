@@ -68,6 +68,12 @@ Page({
       })
     }
   },
+  //联系我们
+  goCantact: function() {
+    wx.navigateTo({
+      url: '/pages/user/about/about'
+    })
+  },
   //底部菜单
   //我的
   enterUserCenter: function () {

@@ -26,7 +26,7 @@
     </view>
     <view class='user_list_item' bindtap='abouttap'>
       <image class='user_icon' src='/images/user_icon1.png'></image>
-      <text>关于我们</text> 
+      <text>联系我们</text> 
       <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
     </view>
   </view> 

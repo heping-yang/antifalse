@@ -103,9 +103,11 @@
   <view class='bottom'>
     <view class='bottom_item_arrow' wx:if="{{question.index != 1}}" bindtap='prebnt'>
       <image class='arrow show' src='/images/icon_arrow_left.png'></image>
+      <text class='font_blue'>上一题</text>
     </view>
     <view class='bottom_item_arrow' wx:if="{{question.index == 1}}">
       <image class='arrow show' src='/images/icon_arrow_left_no.png'></image>
+      <text class='font_grey'>上一题</text>
     </view>
     <view class='bottom_item' bindtap='showAll'>
       <image src='/images/icon_qu_all.png'></image>
@@ -117,8 +119,13 @@
     <view class='bottom_item' bindtap='home'> 
       <image src='/images/icon_qu_home.png'></image>
     </view>
-    <view class='bottom_item_arrow' bindtap='submitbnt'>
+    <view class='bottom_item_arrow'  wx:if="{{question.lastFlag != 0}}" bindtap='submitbnt'>
+      <text class='font_blue'>下一题</text>
       <image class='arrow show' src='/images/icon_arrow_right.png'></image>
+    </view>
+    <view class='bottom_item_arrow' wx:if="{{question.lastFlag == 0}}" bindtap='submitbnt'>
+      <text class='font_grey'>下一题</text>
+      <image class='arrow show' src='/images/icon_arrow_right_no.png'></image>
     </view>
   </view>
 

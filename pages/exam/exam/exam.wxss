@@ -1,8 +1,8 @@
 /* pages/exam/exam.wxss */ 
 .bottom{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5;height: 55rpx;padding-top: 15rpx;padding-bottom: 15rpx;background: #fff;z-index: 100}
 .bottom image{height:55rpx;width:55rpx}
-.bottom_item{width: 25%;text-align: center;position: relative;background: rgba(0, 0, 0, 0.0);}
-.bottom_item_arrow{width: 12.5%;text-align: center;position: relative;}
+.bottom_item{width: 18.6%;text-align: center;position: relative;background: rgba(0, 0, 0, 0.0);}
+.bottom_item_arrow{width: 22%;display: flex;align-items: center }
 .time{position: absolute;top: 11rpx;left: 50%;width: 200rpx;margin-left: -100rpx;background: rgba(0, 0, 0, 0.0);height: 40rpx;color: #6a6a6a;font-size: 24rpx}
 
  
@@ -27,7 +27,7 @@
 .exam_top_right{width:450rpx;text-align: right }
 .cu{color: #4688ea;font-size: 32rpx}
 
-.answer_box{padding:15px 10px;color: #525252;text-align: center}
+.answer_box{padding:15px 10px;color: #525252;text-align: center;padding-right: 0rpx}
 .question{line-height:50rpx;display: flex;text-align: left;color: #333;font-size: 34rpx}
 .qu_cont{margin-bottom: 0px;height: 90vh}
 .qu_img{ margin: 0px auto}
@@ -45,13 +45,19 @@
 .exam_item_wrap{
   transition: All 0.4s ease; 
 -webkit-transition: All 0.4s ease; 
-  transform: rotate(0deg) scale(1) translate(0%,0%); 
--webkit-transform: rotate(0deg) scale(1) translate(0%,0%); 
+  transform: rotate(0deg) scale(1) translate(100%,0%); 
+-webkit-transform: rotate(0deg) scale(1) translate(100%,0%); 
 }
 .exam_item_wrap_show{
   transform: rotate(0deg) scale(1) translate(0%,0%); 
 -webkit-transform: rotate(0deg) scale(1) translate(0%,0%);  
 }
 
-.arrow{display: none;} 
-.show{display: block;margin: 0px auto}
+.arrow{display: none;width: 100%} 
+.font_grey{ color: #6a6a6a} 
+
+.show{margin: 0px auto;display: flex;flex-direction:row;width: 100%;align-items: center}
+.font_blue{ color: #397fe9} 
+
+.arrow_l{justify-content: flex-start}
+.arrow_r{justify-content: flex-end}
