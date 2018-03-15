@@ -1,5 +1,10 @@
 // pages/applyonline/applyonline.js
 var app = getApp()
+var pazonename = ''
+var padiquname = ''
+var panation = '汉族'
+var pabankName = ''
+var paexamDate = ''
 Page({
 
   /**
@@ -8,25 +13,31 @@ Page({
   data: {
      
     //民族
-    nation: ['汉族', '回族', '其他'],
+    nation: [],
     nationindex: 0,
     //银行名称
     BackNameStu:false,
     backName: [],
     //支行名称
     subBackNameStu:false,
-    subBackName: [],
+    subBackName: null,
    
     //申请考试时间
     examDateStu:false,
     examDate: [],
+    examAllownums: '',
+
+    submitflag:false,
+
+    checkEnd:"",
     
-    region: ['宁夏回族自治区', '银川市', '兴庆区'],
+    region: ['宁夏回族自治区', '', ''],
 
     multiArray: [['银川','石嘴山','中卫','固原', '吴忠'], ['兴庆区', '金凤区', '西夏', '贺兰县', '中宁县']], 
     multiIndex: [0, 0],
     userInfo: {},
-    user: {}
+    user: {},
+    ksstatus:'0'
   },
 
   /**
@@ -43,6 +54,27 @@ Page({
         user: app.globalData.user
       })
     })
+
+    wx.request({
+      url: app.globalData.globalUrl + "/apply",
+      data: {
+        method: "initApply",
+        idcard: this.data.user.idcard
+      },
+      success: function (res) {
+        that.setData({
+          nation: res.data.nation,
+          ksstatus : res.data.ksstatus
+        });
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
+
   },
 
   /**
@@ -99,20 +131,97 @@ Page({
     this.setData({
       nationindex: e.detail.value
     })
+    panation = this.data.nation[e.detail.value]
   },
   //
   bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var that = this;
+    console.log(e.detail.value)
+    console.log(e.detail.value[1])
+    console.log(e.detail.value[2])
+    pazonename = e.detail.value[2]
+    padiquname = e.detail.value[1]
     this.setData({
-      region: e.detail.value
+      region: e.detail.value,
+      BackNameStu: false,
+      BackNameStu: false,
+      backName: [],
+      //支行名称
+      subBackNameStu: false,
+      subBackName: null,
+
+      //申请考试时间
+      examDateStu: false,
+      examDate: [],
+      examAllownums: '',
+      examDateindex: '',
+      subBackNameindex:'',
+      backNameindex:'',
+      submitflag:false
+    })
+
+    wx.request({
+      url: app.globalData.globalUrl + "/apply",
+      data: {
+        method: "queryBankType",
+        zonename: pazonename,
+        diquname: e.detail.value[1]
+      },
+      success: function (res) {
+        console.log(res.data);
+        console.log(res.data.bankType);
+        that.setData({
+          backName : res.data.bankType,
+          examDate : res.data.examDate
+        });
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
     })
   },
   // 银行名称
   bindPickerBackName: function (e) {
-    //console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log(this.data.backName[e.detail.value]);
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var that = this;
     this.setData({
       backNameindex: e.detail.value,
-      BackNameStu:true
+      BackNameStu: true,
+      //支行名称
+      subBackNameStu: false,
+      subBackName: null,
+
+      //申请考试时间
+      examDateStu: false,
+      examAllownums: '',
+      examDateindex: '',
+      subBackNameindex: '',
+      submitflag:false
+    })
+    wx.request({
+      url: app.globalData.globalUrl + "/apply",
+      data: {
+        method: "queryBankName",
+        zonename: pazonename,
+        bankType: this.data.backName[e.detail.value]
+      },
+      success: function (res) {
+        console.log(res.data);
+        console.log(res.data.subbankName);
+        that.setData({
+          subBackName: res.data.subbankName
+        })
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
     })
   },
   // 支行
@@ -120,18 +229,83 @@ Page({
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       subBackNameindex: e.detail.value,
-      subBackNameStu:true
+      subBackNameStu:true,
+      //申请考试时间
+      examDateStu: false,
+      examAllownums: '',
+      examDateindex: '',
+      submitflag:false
     })
+    pabankName = this.data.subBackName[e.detail.value]
   },
   // 申请考试地区时间
   bindPickerExamDate: function (e) {
+    var that = this
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       examDateindex: e.detail.value,
-      examDateStu:true
+      examDateStu:true,
+      submitflag:true
+    })
+    paexamDate = this.data.examDate[e.detail.value]
+    wx.request({
+      url: app.globalData.globalUrl + "/apply",
+      data: {
+        method: "queryExamAllownums",
+        examdatetime: this.data.examDate[e.detail.value]
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          examAllownums : res.data.allownums,
+          checkEnd: res.data.checkEnd
+        })
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
     })
   },
-  
-
-
+  submitbind:function(){
+    var that = this;
+    wx.request({
+      url: app.globalData.globalUrl + "/apply",
+      data: {
+        method: "insertApply",
+        idcard : this.data.user.idcard,
+        userName: this.data.user.username,
+        telnum: this.data.user.telnum,
+        diquname: padiquname,
+        nation: panation,
+        bankName: pabankName,
+        examDate : paexamDate
+      },
+      success: function (res) {
+        if (res.data.req == 'success'){
+          wx.showToast({ title: '提交成功' })
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '/pages/apply/applyaudit/applyaudit'
+            })
+          }, 500);
+        }else{
+          wx.showModal({
+            title: '提示',
+            content: '提交失败，请联系管理员',
+            success: function (res) {
+            }
+          })
+        }
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
+  }
 })

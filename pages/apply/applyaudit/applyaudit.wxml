@@ -1,59 +1,63 @@
 <!--pages/applyaudit/applyaudit.wxml--> 
 <view class='container'>
   <view class='examinee_stu'>
-    <text class='examinee_stu_item'>考生状态：<text class='examinee_stu_text '>审核通过待缴费</text></text>
+  <text wx:if="{{status == '1'}}" class='examinee_stu_item'>考生状态：<text class='examinee_stu_text '>审核中</text></text>
+  <text wx:if="{{status == '2'}}" class='examinee_stu_item'>考生状态：<text class='examinee_stu_text '>审核通过待缴费</text></text>
+  <text wx:if="{{status == '3'}}" class='examinee_stu_item'>考生状态：<text class='examinee_stu_text '>审核通过已缴费</text></text>
+  <text wx:if="{{status == '4'}}" class='examinee_stu_item'>考生状态：<text class='examinee_stu_text '>报名成功</text></text>
+  <text wx:if="{{status == '5'}}" class='examinee_stu_item'>考生状态：<text class='examinee_stu_text '>打印准考证</text></text>
   </view>
   <view class='tit'>
     <text>基本信息</text>
   </view>
   <view class='item'>
     <text class='item_name'>身份证号</text>
-    <text class='item_cont'>640323198502081611</text>
+    <text class='item_cont'>{{user.idcard}}</text>
   </view>
   <view class='item'>
     <text class='item_name'>考生姓名</text>
-    <text class='item_cont'>张三</text>
+    <text class='item_cont'>{{user.username}}</text>
   </view>
   <view class='item'>
     <text class='item_name'>手机号码</text>
-    <text class='item_cont'>152226213301</text>
+    <text class='item_cont'>{{user.telnum}}</text>
   </view>
   <view class='tit'>
-    <text>完善以下信息</text>
+    <text>报考信息</text>
   </view>
   
   <view class='item'>
     <text class='item_name'>性别</text>
     <view class='item_cont'>
-     <text>女</text> 
+     <text>{{applyInfo.sex}}</text> 
     </view>
   </view>
  
   <view class='item'>
     <text class='item_name'>民族</text>
     <view class='item_cont'>
-     <text>汉族</text> 
+     <text>{{nation}}</text> 
     </view>
   </view>
 
   <view class='item item_long'>
     <text class='item_name'>银行所在地</text>
     <view class='item_cont'>
-     <text> 银川 金分区</text>  
+     <text>{{region.sex}} {{region.sex}}</text>  
     </view>
   </view>
 
    <view class='item'>
     <text class='item_name'>银行名称</text>
     <view class='item_cont'>
-      <text>中国银行</text>  
+      <text>{{region.sex}}</text>  
     </view>
   </view>
 
    <view class='item'>
     <text class='item_name'>支行名称</text>
     <view class='item_cont'>
-      <text>景墨家园支行</text>
+      <text>{{applyInfo.branch}}</text>
     </view>
   </view>
 
@@ -61,29 +65,21 @@
    <view class='item item_long'>
     <text class='item_name'>申请考试地区时间</text>
     <view class='item_cont'>
-       <text>银川 2018-05-17</text>
+       <text>{{applyInfo.kstime}}</text>
     </view>
   </view>
 
-  <view class='item item_special_long'>
-    <text class='item_name'>您申请的考试报名剩余人数为:</text>
-    <text class='item_cont'>20</text>
-  </view>
-
   <view class='apply_info apply_info_mb}}'>
-   <image class='tips_icon' src='../../images/tips_icon2.png'></image>
-   <text>1、请正确填写以上所有信息，提交之后将不能修改。</text>
-   <text>2、根据你所选择的考试时间，请于<text class='font_blue' >05月26日</text>前上传本人近期白底证件照。</text>
+   <image class='tips_icon' src='/images/tips_icon2.png'></image>
+   <text>1、根据你所选择的考试时间，请于<text class='font_blue' >05月26日</text>前上传本人近期白底证件照。</text>
    <text class='font_grey'>① 必须为照相馆正规拍摄，不得压缩修改；</text>
    <text class='font_grey'>② 传至邮箱<text class='font_blue' >nxyqedu@163.com</text>，照片命名为（考生姓名身份证号.jpg）例如：张三640102199501010002.jpg；</text>
-   <view>3、审核完成后会通过<text class='font_bold'>宁夏银桥教育培训中心微信公众号</text><text class='font_red' >（点击关注）</text>，向你发送审核通过信息。你也可以随时浏览<text class='font_blue' >宁夏反假货币小程序</text> > <text class='font_blue' >考试报名页面</text>，查看本人当前状态，及时完成报名缴费。</view>  
+   <view>2、审核完成后会通过<text class='font_bold'>宁夏银桥教育培训中心微信公众号</text><text class='font_red' >（点击关注）</text>，向你发送审核通过信息。你也可以随时浏览<text class='font_blue' >宁夏反假货币小程序</text> > <text class='font_blue' >考试报名页面</text>，查看本人当前状态，及时完成报名缴费。</view>  
   </view>
   
-  <view class='btn_submit {{applystu==0?"show":""}}' bindtap=""> 
-     提交审核 
-  </view>
+  <view wx:if="{{status != '2'}}" class='btn_submit' bindtap="goHome">返回首页</view>
   
-  <view class='bottom' catchtap='modal_suc'>审核通过，立即缴费</view>
+  <view wx:if="{{status == '2'}}" class='bottom' catchtap='modal_suc'>审核通过，立即缴费</view>
 
 </view>
 <!--container  -->
@@ -97,19 +93,19 @@
       <text class='font_s'>一个人会员</text>
     </view>
     <view class='goods_price'>
-      <text class='font_s'>￥</text><text>310</text> 
+      <text class='font_s'>￥</text><text>{{payamount}}</text> 
     </view>
   </view>
   <view class='whiteline'></view>
   <text class='buy_tit mt'>在线支付方式</text>
   <view class='pay_mode'>
     <view class='pay_text'>
-      <image class='pay_weixin' src='../../images/pay_weixin.png'></image>
+      <image class='pay_weixin' src='/images/pay_weixin.png'></image>
       <text class='pay_text'>微信支付</text>
     </view> 
     <view class='pay_select_cont'>
-      <image class='pay_select' src='../../images/pay_select.png' ></image>
+      <image class='pay_select' src='/images/pay_select.png' ></image>
     </view> 
   </view>
-  <view class='pay_btn'> 确认支付</view>
+  <view class='pay_btn' bindtap='paytapbind'>确认支付</view>
 </view>

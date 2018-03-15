@@ -63,9 +63,44 @@ Page({
   //在线报名
   onlineRegbind: function () {
     if (loginCheck.check('/pages/user/grade/grade')) {
-      wx.navigateTo({
-        url: '/pages/apply/applyonline/applyonline'
+      wx.request({
+        url: app.globalData.globalUrl + "/apply",
+        data: {
+          method: "queryApplyStatus",
+          idcard:this.data.user.idcard
+        },
+        success: function (res) {
+          console.log(res);
+          if (res.data.status == '0'){
+            wx.navigateTo({
+              url: '/pages/apply/applyonline/applyonline'
+            })
+          } else if (res.data.status == '6'){
+            wx.showModal({
+              title: '提示',
+              content: '恭喜您，已通过考试，请点击确认跳转成绩查询页面！',
+              success: function (res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: '/pages/user/grade/grade'
+                  })
+                } 
+              }
+            })
+          }else{
+            wx.navigateTo({
+              url: '/pages/apply/applyaudit/applyaudit'
+            })
+          }
+        },
+        fail: function (error) {
+          console.log(error);
+          that.setData({
+            arr_res: '返回异常'
+          })
+        }
       })
+
     }
   },
   //联系我们
