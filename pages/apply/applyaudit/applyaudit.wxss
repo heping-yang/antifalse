@@ -66,5 +66,4 @@ transition: All 0.4s ease;
 .buy_cont .pay_weixin{height: 36rpx;width: 36rpx;margin-right: 20rpx}
 .buy_cont .pay_select_cont{width: 150rpx;text-align: right;}
 .buy_cont .pay_select{height: 34rpx;width: 34rpx}
-
 .pay_btn{background: #fc5e5d;border-top: 1px solid #ec463d;color: #ededed;padding: 26rpx 0;text-align: center;font-size: 40rpx;margin-top: 20rpx}

@@ -287,7 +287,7 @@ Page({
         if (res.data.req == 'success'){
           wx.showToast({ title: '提交成功' })
           setTimeout(function () {
-            wx.navigateTo({
+            wx.reLaunch({
               url: '/pages/apply/applyaudit/applyaudit'
             })
           }, 500);

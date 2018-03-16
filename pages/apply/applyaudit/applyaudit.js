@@ -10,11 +10,12 @@ Page({
     userInfo: {},
     user:{},
     applyInfo:null,
-    status: '1',
+    status: '',
     nation:'汉族',
     region:null,
     payamount:310,
-    productName:'第一次报考理论和实操'
+    productName:'第一次报考理论和实操',
+    checkEnd:''
   },
   modal_suc: function () {
     if (this.data.applyInfo.ksstatus == '0'){
@@ -72,7 +73,8 @@ Page({
             applyInfo: res.data.applyInfo,
             status: res.data.status,
             nation: res.data.nation[parseInt(res.data.applyInfo.nation)],
-            region: res.data.region
+            region: res.data.region,
+            checkEnd: res.data.checkEnd
           });
         },
         fail: function (error) {
@@ -147,7 +149,7 @@ Page({
         productId: this.data.payamount,
         productName: this.data.productName,
         orderId: this.guid(),
-        phone: that.data.user.telnum,
+        phone: this.data.user.telnum,
         proddesc: this.data.productName,
         prodFee: '1'
       },

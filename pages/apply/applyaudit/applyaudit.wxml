@@ -43,14 +43,14 @@
   <view class='item item_long'>
     <text class='item_name'>银行所在地</text>
     <view class='item_cont'>
-     <text>{{region.sex}} {{region.sex}}</text>  
+     <text>{{region.diquname}} {{region.zonename}}</text>  
     </view>
   </view>
 
    <view class='item'>
     <text class='item_name'>银行名称</text>
     <view class='item_cont'>
-      <text>{{region.sex}}</text>  
+      <text>{{region.banktypename}}</text>  
     </view>
   </view>
 
@@ -69,15 +69,17 @@
     </view>
   </view>
 
-  <view class='apply_info apply_info_mb}}'>
+  <view class='apply_info apply_info_mb}}' wx:if="{{status == '1'}}">
    <image class='tips_icon' src='/images/tips_icon2.png'></image>
-   <text>1、根据你所选择的考试时间，请于<text class='font_blue' >05月26日</text>前上传本人近期白底证件照。</text>
+   <text>1、根据你所选择的考试时间，请于<text class='font_blue' >{{checkEnd}}</text>前上传本人近期白底证件照。</text>
    <text class='font_grey'>① 必须为照相馆正规拍摄，不得压缩修改；</text>
    <text class='font_grey'>② 传至邮箱<text class='font_blue' >nxyqedu@163.com</text>，照片命名为（考生姓名身份证号.jpg）例如：张三640102199501010002.jpg；</text>
    <view>2、审核完成后会通过<text class='font_bold'>宁夏银桥教育培训中心微信公众号</text><text class='font_red' >（点击关注）</text>，向你发送审核通过信息。你也可以随时浏览<text class='font_blue' >宁夏反假货币小程序</text> > <text class='font_blue' >考试报名页面</text>，查看本人当前状态，及时完成报名缴费。</view>  
   </view>
+  <view class='apply_info apply_info_mb}}'>
+  </view>
   
-  <view wx:if="{{status != '2'}}" class='btn_submit' bindtap="goHome">返回首页</view>
+  <view wx:if="{{status != '2'}}" class='bottom' style='background: #4c87e5;' bindtap="goHome">返回首页</view>
   
   <view wx:if="{{status == '2'}}" class='bottom' catchtap='modal_suc'>审核通过，立即缴费</view>
 
