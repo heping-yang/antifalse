@@ -103,6 +103,20 @@ Page({
 
     }
   },
+  //在线学习
+  studyOnlinebind: function() {
+    if (loginCheck.check('/pages/user/grade/grade')) {
+      wx.navigateTo({
+        url: '/pages/onlinestudy/onlinestudy'
+      })
+    }
+  },
+  //问卷调查
+  questionnairebind: function () {
+    wx.navigateTo({
+      url: '/pages/questionnaire/questionnaire'
+    })
+  },
   //联系我们
   goCantact: function() {
     wx.navigateTo({

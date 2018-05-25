@@ -17,7 +17,9 @@
     "pages/login/respwd/respwd",
     "pages/exam/history/history",
     "pages/apply/applyaudit/applyaudit",
-    "pages/apply/applyonline/applyonline"
+    "pages/apply/applyonline/applyonline",
+    "pages/questionnaire/questionnaire",
+    "pages/onlinestudy/onlinestudy"
   ],
   "window":{
     "backgroundTextStyle":"light",
