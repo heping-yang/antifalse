@@ -32,7 +32,7 @@ App({
 
   getUserInfo: function(cb) {
     var that = this
-    if (this.globalData.userInfo) {
+    if (this.globalData.user) {
       typeof cb == "function" && cb(this.globalData.userInfo)
     } else {
       //调用登录接口
@@ -47,9 +47,8 @@ App({
   },
 
   globalData: {
-    globalUrl: "https://www.nxyqedu.com/antifalse/api",
-//    globalUrl: "http://localhost:8080/antifalse/api",
-    userInfo: null,
+//    globalUrl: "https://www.nxyqedu.com/antifalse/api",
+    globalUrl: "http://localhost:8080/antifalse/api",
     openid:"",
     h_id:"",
     user:{},
