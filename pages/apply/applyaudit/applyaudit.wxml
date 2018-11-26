@@ -69,6 +69,21 @@
     </view>
   </view>
 
+  <view class='item'>
+    <text class='item_name'>考生地区</text>
+    <view class='item_cont'>
+      <text>{{applyInfo.kssource}}</text>
+    </view>
+  </view>
+
+  <view class='item'>
+    <text class='item_name'>考试费用</text>
+    <view class='item_cont' wx:if="{{applyInfo.ksstatus=='0'}}"><text>300元</text></view>
+    <view class='item_cont' wx:if="{{applyInfo.ksstatus=='1'}}"><text>310元</text></view>
+    <view class='item_cont' wx:if="{{applyInfo.ksstatus=='2'}}"><text>150元</text></view>
+    <view class='item_cont' wx:if="{{applyInfo.ksstatus=='3'}}"><text>150元</text></view>
+  </view>
+
   <view class='apply_info apply_info_mb}}' wx:if="{{status == '1'}}">
    <image class='tips_icon' src='/images/tips_icon2.png'></image>
    <text>1、根据你所选择的考试时间，请于<text class='font_blue' >{{checkEnd}}</text>前上传本人近期白底证件照。</text>
@@ -79,9 +94,9 @@
   <view class='apply_info apply_info_mb}}'>
   </view>
   
-  <view wx:if="{{status != '2'}}" class='bottom' style='background: #4c87e5;' bindtap="goHome">返回首页</view>
+  <view class='bottom' style='background: #4c87e5;' bindtap="goHome">返回首页</view>
   
-  <view wx:if="{{status == '2'}}" class='bottom' catchtap='modal_suc'>审核通过，立即缴费</view>
+  <!--<view wx:if="{{status == '2'}}" class='bottom' catchtap='modal_suc'>审核通过，立即缴费</view>-->
 
 </view>
 <!--container  -->

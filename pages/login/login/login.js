@@ -45,8 +45,15 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.data.login == 'success'){
-          app.globalData.user = res.data.user
-          app.globalData.loginstatus = 1
+          app.globalData.user = res.data.user;
+          app.globalData.loginstatus = 1;
+          wx.setStorage({
+            key: 'user',
+            data: res.data.user,
+            success:function(res){
+              console.log(res);
+            }
+          })
           wx.showToast({
             title: '登录成功',
             icon: 'success',

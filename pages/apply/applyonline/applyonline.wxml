@@ -28,9 +28,9 @@
     <view class='item_cont'>
       <image class='select_arrow_r' src='/images/arrow_r.png'></image>
       <view class="section">
-        <picker bindchange="bindPickerNation" value="{{nationindex}}" range="{{nation}}">
+        <picker bindchange="bindPickerNation" value="{{nationindex}}" range="{{nation}}" range-key='nationname'>
           <view class="picker">
-            {{nation[nationindex]}}
+            {{nation[nationindex]['nationname']}}
           </view>
         </picker>
       </view>
@@ -97,9 +97,32 @@
     </view>
   </view>
 
+  <view class='item'>
+    <text class='item_name'>考生地区</text>
+    <view class='item_cont'>
+      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
+      <text class='select_tips {{kssourceStu==true?"hide":""}}' >请选择</text>
+      <view class="section">
+        <picker bindchange="bindPickerKssource" value="{{kssourceIndex}}" range="{{kssource}}" range-key="originname">
+          <view class="picker">
+            {{kssource[kssourceIndex]['originname']}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
   <view class='item item_special_long'>
     <text class='item_name'>您申请的考试报名剩余人数为:</text>
-    <text class='item_cont'>{{examAllownums}}</text>
+    <text class='item_cont pull-right'>{{examAllownums}}</text>
+  </view>
+
+  <view class='item'>
+    <text class='item_name'>考试费用</text>
+    <text class='item_cont pull-right' wx:if="{{applyInfo.ksstatus=='0'}}">300元</text>
+    <text class='item_cont pull-right' wx:if="{{applyInfo.ksstatus=='1'}}">310元</text>
+    <text class='item_cont pull-right' wx:if="{{applyInfo.ksstatus=='2'}}">150元</text>
+    <text class='item_cont pull-right' wx:if="{{applyInfo.ksstatus=='3'}}">150元</text>
   </view>
 
   <view class='apply_info {{applystu==1?"apply_info_mb":""}}'>

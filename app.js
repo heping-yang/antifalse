@@ -6,6 +6,10 @@ App({
     var that = this;
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    this.globalData.user = wx.getStorageSync('user');
+    if(!!this.globalData.user){
+      this.globalData.loginstatus = 1;
+    }
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -31,8 +35,8 @@ App({
   },
 
   getUserInfo: function(cb) {
-    var that = this
-    if (this.globalData.user) {
+    var that = this;
+    if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
     } else {
       //调用登录接口
@@ -48,9 +52,11 @@ App({
 
   globalData: {
 //    globalUrl: "https://www.nxyqedu.com/antifalse/api",
-    globalUrl: "http://localhost:8080/antifalse/api",
+    globalUrl: "http://192.168.2.101:8080/antifalse/api",
+    baseUrl: "http://192.168.2.101:8080/antifalse/",
     openid:"",
     h_id:"",
+    userInfo:null,
     user:{},
     loginstatus:0,
     examtype:1,

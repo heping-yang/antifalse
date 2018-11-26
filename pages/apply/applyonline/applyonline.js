@@ -1,10 +1,12 @@
 // pages/applyonline/applyonline.js
 var app = getApp()
-var pazonename = ''
-var padiquname = ''
-var panation = '汉族'
-var pabankName = ''
-var paexamDate = ''
+var pazonename = '';
+var padiquname = '';
+var panation = '01';
+var pabankName = '';
+var paexamDate = '';
+var pasource=0;
+ 
 Page({
 
   /**
@@ -37,7 +39,13 @@ Page({
     multiIndex: [0, 0],
     userInfo: {},
     user: {},
-    ksstatus:'0'
+    ksstatus:'0',
+
+    //考生地区
+    kssource:[],
+    kssourceStu:false,
+    kssourceIndex:0,
+    applyInfo:{}
   },
 
   /**
@@ -62,9 +70,15 @@ Page({
         idcard: this.data.user.idcard
       },
       success: function (res) {
+        if (!!res.data.kssource&&res.data.kssource.length>0){
+          pasource = res.data.kssource[0]['originid'];
+        }
         that.setData({
           nation: res.data.nation,
-          ksstatus : res.data.ksstatus
+          ksstatus : res.data.ksstatus,
+          kssource : res.data.kssource,
+          kssourceStu: ((!!res.data.kssource&&res.data.kssource.length>0)?true:false),
+          applyInfo: res.data.applyInfo
         });
       },
       fail: function (error) {
@@ -131,7 +145,7 @@ Page({
     this.setData({
       nationindex: e.detail.value
     })
-    panation = this.data.nation[e.detail.value]
+    panation = this.data.nation[e.detail.value]['nationid'];
   },
   //
   bindRegionChange: function (e) {
@@ -238,6 +252,15 @@ Page({
     })
     pabankName = this.data.subBackName[e.detail.value]
   },
+  // 考生地区
+  bindPickerKssource:function(e){
+    var that = this;
+    this.setData({
+      kssourceIndex:e.detail.value,
+      kssourceStu:true,
+    });
+    pasource = this.data.kssource[e.detail.value]['originid'];
+  },
   // 申请考试地区时间
   bindPickerExamDate: function (e) {
     var that = this
@@ -281,7 +304,8 @@ Page({
         diquname: padiquname,
         nation: panation,
         bankName: pabankName,
-        examDate : paexamDate
+        examDate : paexamDate,
+        kssource: pasource
       },
       success: function (res) {
         if (res.data.req == 'success'){

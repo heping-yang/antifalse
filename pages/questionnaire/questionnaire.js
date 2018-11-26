@@ -6,7 +6,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      url: "https://www.nxyqedu.com/antifalse/questionnaire/list"
+      url: app.globalData.baseUrl+"questionnaire/list"
 //      url: "http://localhost:8080/antifalse/questionnaire/list"
     });
   }

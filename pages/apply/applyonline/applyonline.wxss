@@ -10,7 +10,7 @@
 .section{width:500rpx}
 .picker{width: 500rpx;height: 20px;text-align: right}
 .select_arrow_r{width: 30rpx;height: 30rpx;position: absolute;right: 0rpx;top:8rpx;}
-.select_tips{position: absolute;right: 25px;top:0rpx;color: #909090;z-index: -1}
+.select_tips{position: absolute;right: 45rpx;top:0rpx;color: #909090;z-index: -1}
 
 .item_long{border-bottom: 1px solid #e5e5e5;padding: 30rpx 20rpx;display: flex;flex-direction: row}
 .item_long .item_name{color: #525252;width: 300rpx}
@@ -35,4 +35,6 @@
  
 .show{display: block}
 .hide{display: none}
+
+.pull-right{text-align:right!important;padding-right: 10rpx!important;}
 

@@ -7,10 +7,10 @@
 
  
 .layer .footer{display: flex;flex-direction: row;position: fixed;bottom: 0px;left: 0px;width: 100%;border-top: 1px solid #e5e5e5; background: #fff;z-index: 102;padding: 20rpx 0;}
-.layer .footer .btn{background: #4c86e5;color: #fff;text-align: center;width: 300rpx;padding:14rpx 0;border-radius: 5px;margin-left: 48rpx  ;border: 1px solid #4c86e5}
+.layer .footer .btn{background: #4c86e5;color: #fff;text-align: center;width: 300rpx;padding:0;border-radius: 5px;margin-left: 48rpx  ;border: 1px solid #4c86e5;height:60rpx;line-height:60rpx;}
 .layer .footer .btn_outline{background: #fff;color: #4c86e5;border: 1px solid #4c86e5} 
 
-.layer_cont{padding:0 20rpx;display: flex;flex-direction: column;padding-right: 0; height: 90vh}
+.layer_cont{padding:0 20rpx;display: flex;flex-direction: column;padding-right: 0; padding-bottom: 120rpx}
 
 .modal_bg{position: fixed;background:rgba(0, 0, 0, 0.5);height: 100%;width: 100%;top: 0px;left: 0px;z-index: 200;display: none}
 .modal_show{display: block}
@@ -56,7 +56,7 @@
 .arrow{display: none;width: 100%} 
 .font_grey{ color: #6a6a6a} 
 
-.show{margin: 0px auto;display: flex;flex-direction:row;width: 100%;align-items: center}
+.show{margin: 0px auto;display: flex;flex-direction:row;width: 100%;}
 .font_blue{ color: #397fe9} 
 
 .arrow_l{justify-content: flex-start}
