@@ -64,7 +64,11 @@ Page({
             loginstatus: 0
           })
           app.globalData.loginstatus = 0;
-          app.globalData.user = null
+          app.globalData.user = null;
+          wx.removeStorage({
+            key: 'user',
+            success: function(res) {},
+          });
           wx.reLaunch({
             url: '/pages/index/index'
           })
