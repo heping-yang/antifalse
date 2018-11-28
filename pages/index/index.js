@@ -1,7 +1,8 @@
 //index.js
 //获取应用实例
 var app = getApp()
-var loginCheck = require("../../utils/loginCheck.js")
+var loginCheck = require("../../utils/loginCheck.js");
+var util = require('../../utils/util.js');
 Page({
   data: {
     motto: 'Hello World',
@@ -62,6 +63,7 @@ Page({
   },
   //在线报名
   onlineRegbind: function () {
+    util.showLoading();
     if (loginCheck.check('/pages/user/grade/grade')) {
       wx.request({
         url: app.globalData.globalUrl + "/apply",
@@ -92,12 +94,14 @@ Page({
               url: '/pages/apply/applyaudit/applyaudit'
             })
           }
+          util.hideLoading();
         },
         fail: function (error) {
           console.log(error);
           that.setData({
             arr_res: '返回异常'
-          })
+          });
+          util.hideLoading();
         }
       })
 

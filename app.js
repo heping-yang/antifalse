@@ -52,8 +52,8 @@ App({
 
   globalData: {
 //    globalUrl: "https://www.nxyqedu.com/antifalse/api",
-    globalUrl: "http://192.168.2.101:8080/antifalse/api",
-    baseUrl: "http://192.168.2.101:8080/antifalse/",
+    globalUrl: "http://192.168.2.100:8080/antifalse/api",
+    baseUrl: "http://192.168.2.100:8080/antifalse/",
     openid:"",
     h_id:"",
     userInfo:null,

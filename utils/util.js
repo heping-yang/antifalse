@@ -16,6 +16,27 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function showMsg(msg){
+  wx.showToast({
+    title: msg,
+    icon: 'success',
+    duration: 2000
+  })
+}
+
+function showLoading(msg){
+  wx.showLoading({
+    title: msg||'加载中',
+  })
+}
+
+function hideLoading(){
+  wx.hideLoading();
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  showMsg:showMsg,
+  showLoading:showLoading,
+  hideLoading:hideLoading,
 }

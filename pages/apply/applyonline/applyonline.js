@@ -1,11 +1,12 @@
-// pages/applyonline/applyonline.js
+var util = require('../../../utils/util.js')
+
 var app = getApp()
 var pazonename = '';
-var padiquname = '';
+var paksdqid = '';
 var panation = '01';
 var pabankName = '';
 var paexamDate = '';
-var pasource=0;
+var pakssource='';
  
 Page({
 
@@ -13,38 +14,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-     
-    //民族
-    nation: [],
-    nationindex: 0,
-    //银行名称
-    BackNameStu:false,
-    backName: [],
-    //支行名称
-    subBackNameStu:false,
-    subBackName: null,
-   
-    //申请考试时间
-    examDateStu:false,
-    examDate: [],
-    examAllownums: '',
-
     submitflag:false,
 
     checkEnd:"",
-    
-    region: ['宁夏回族自治区', '', ''],
 
-    multiArray: [['银川','石嘴山','中卫','固原', '吴忠'], ['兴庆区', '金凤区', '西夏', '贺兰县', '中宁县']], 
-    multiIndex: [0, 0],
     userInfo: {},
     user: {},
     ksstatus:'0',
 
+    //考试地区
+    ksdq:[],
+    ksdqStu:false,
+    ksdqIndex:-1,
+
     //考生地区
     kssource:[],
     kssourceStu:false,
-    kssourceIndex:0,
+    kssourceIndex:-1,
+
+    //民族
+    nation: [],
+    nationindex: 0,
+
+    //银行地区
+    banksource:[],
+    banksourceStu:false,
+    banksourceIndex:-1,
+
+    //银行名称
+    bankNameStu: false,
+    bankName: [],
+    bankNameIndex:-1,
+
+    //支行名称
+    subBankNameStu: false,
+    subBankName: [],
+    subBankNameIndex:-1,
+
+    //申请考试时间
+    examDateStu: false,
+    examDate: [],
+    examDateIndex:-1,
+    examAllownums: '',
+
     applyInfo:{}
   },
 
@@ -70,14 +82,11 @@ Page({
         idcard: this.data.user.idcard
       },
       success: function (res) {
-        if (!!res.data.kssource&&res.data.kssource.length>0){
-          pasource = res.data.kssource[0]['originid'];
-        }
+       
         that.setData({
           nation: res.data.nation,
           ksstatus : res.data.ksstatus,
-          kssource : res.data.kssource,
-          kssourceStu: ((!!res.data.kssource&&res.data.kssource.length>0)?true:false),
+          ksdq: res.data.ksdq||[],
           applyInfo: res.data.applyInfo
         });
       },
@@ -139,54 +148,107 @@ Page({
   onShareAppMessage: function () {
   
   },
+  //考试地区
+  bindPickerKsdq: function (e) {
+    var that =  this;
+    this.setData({
+      ksdqIndex: e.detail.value,
+      ksdqStu:true,
+
+      kssource:[],
+      kssourceStu:false,
+      kssourceIndex:-1,
+
+      banksource:[],
+      banksourceStu:false,
+      banksourceIndex:-1,
+
+      bankName:[],
+      bankNameStu:false,
+      bankNameIndex:-1,
+
+
+      subBankName:[],
+      subBankNameStu:false,
+      subBankNameIndex:-1,
+
+      examDate:[],
+      examDateStu:false,
+      examDateIndex:-1,
+    });
+    paksdqid = this.data.ksdq[e.detail.value] && this.data.ksdq[e.detail.value].areaid;
+    console.log("考试地区：" + paksdqid);
+    //查询考生所在地
+    wx.request({
+      url: app.globalData.globalUrl + "/apply",
+      data: {
+        method: "queryOrigin",
+        ksdqid: paksdqid
+      },
+      success: function (res) {
+        that.setData({
+          kssource: res.data.origins,
+          kssourceIndex:-1,
+          kssourceStu:false,
+          banksource:res.data.origins,
+          banksourceIndex:-1,
+          banksourceStu:false,
+          examDate: res.data.examDate,
+        })
+      },
+      fail: function (error) {
+        console.log(error);
+        that.setData({
+          arr_res: '返回异常'
+        })
+      }
+    })
+  },
+  // 考生地区
+  bindPickerKssource: function (e) {
+    var that = this;
+    this.setData({
+      kssourceIndex: e.detail.value,
+      kssourceStu: true,
+    });
+    pakssource = this.data.kssource[e.detail.value]['originid'];
+  },
   // 民族
   bindPickerNation: function (e) {
-    //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       nationindex: e.detail.value
     })
     panation = this.data.nation[e.detail.value]['nationid'];
   },
-  //
-  bindRegionChange: function (e) {
+  //银行所在地
+  bindPickerBanksource: function (e) {
     var that = this;
-    console.log(e.detail.value)
-    console.log(e.detail.value[1])
-    console.log(e.detail.value[2])
-    pazonename = e.detail.value[2]
-    padiquname = e.detail.value[1]
     this.setData({
-      region: e.detail.value,
-      BackNameStu: false,
-      BackNameStu: false,
-      backName: [],
-      //支行名称
-      subBackNameStu: false,
-      subBackName: null,
+      banksourceIndex:e.detail.value,
+      banksourceStu:true,
 
-      //申请考试时间
-      examDateStu: false,
-      examDate: [],
-      examAllownums: '',
-      examDateindex: '',
-      subBackNameindex:'',
-      backNameindex:'',
-      submitflag:false
-    })
+      //银行
+      bankNameStu: false,
+      bankNameIndex:-1,
+      backName: [],
+
+      //支行名称
+      subBankNameStu: false,
+      subBankName: [],
+      subBankNameIndex: -1,
+    });
+
+    pazonename = this.data.banksource[e.detail.value]['originname'];
 
     wx.request({
       url: app.globalData.globalUrl + "/apply",
       data: {
         method: "queryBankType",
-        zonename: pazonename,
-        diquname: e.detail.value[1]
+        zonename: pazonename
       },
       success: function (res) {
-        console.log(res.data);
-        console.log(res.data.bankType);
         that.setData({
-          backName : res.data.bankType,
-          examDate : res.data.examDate
+          bankName : res.data.bankType,
         });
       },
       fail: function (error) {
@@ -197,37 +259,29 @@ Page({
       }
     })
   },
+  
   // 银行名称
-  bindPickerBackName: function (e) {
-    console.log(this.data.backName[e.detail.value]);
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  bindPickerBankName: function (e) {
     var that = this;
     this.setData({
-      backNameindex: e.detail.value,
-      BackNameStu: true,
-      //支行名称
-      subBackNameStu: false,
-      subBackName: null,
+      bankNameIndex: e.detail.value,
+      bankNameStu: true,
 
-      //申请考试时间
-      examDateStu: false,
-      examAllownums: '',
-      examDateindex: '',
-      subBackNameindex: '',
-      submitflag:false
+      //支行名称
+      subBankNameStu: false,
+      subBankName: [],
+      subBankNameIndex:-1,
     })
     wx.request({
       url: app.globalData.globalUrl + "/apply",
       data: {
         method: "queryBankName",
         zonename: pazonename,
-        bankType: this.data.backName[e.detail.value]
+        bankType: this.data.bankName[e.detail.value]
       },
       success: function (res) {
-        console.log(res.data);
-        console.log(res.data.subbankName);
         that.setData({
-          subBackName: res.data.subbankName
+          subBankName: res.data.subbankName
         })
       },
       fail: function (error) {
@@ -239,34 +293,21 @@ Page({
     })
   },
   // 支行
-  bindPickerSubBackName: function (e) {
+  bindPickerSubBankName: function (e) {
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      subBackNameindex: e.detail.value,
-      subBackNameStu:true,
-      //申请考试时间
-      examDateStu: false,
-      examAllownums: '',
-      examDateindex: '',
-      submitflag:false
+      subBankNameIndex: e.detail.value,
+      subBankNameStu:true,
     })
-    pabankName = this.data.subBackName[e.detail.value]
+    pabankName = this.data.subBankName[e.detail.value]
   },
-  // 考生地区
-  bindPickerKssource:function(e){
-    var that = this;
-    this.setData({
-      kssourceIndex:e.detail.value,
-      kssourceStu:true,
-    });
-    pasource = this.data.kssource[e.detail.value]['originid'];
-  },
+  
   // 申请考试地区时间
   bindPickerExamDate: function (e) {
     var that = this
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      examDateindex: e.detail.value,
+      examDateIndex: e.detail.value,
       examDateStu:true,
       submitflag:true
     })
@@ -292,8 +333,27 @@ Page({
       }
     })
   },
+  
   submitbind:function(){
     var that = this;
+    //数据检查
+    if (!paksdqid || paksdqid==''){
+      util.showMsg('请选择考试地区');
+      return;
+    }
+    if (!pakssource || pakssource==''){
+      util.showMsg('请求选择考生所在地');
+      return;
+    }
+    if (!pabankName || pabankName == '') {
+      util.showMsg('请选择银行');
+      return;
+    }
+    if (!paexamDate || paexamDate==''){
+      util.showMsg('请选择考试时间');
+      return;
+    }
+    util.showLoading('数据上传中');
     wx.request({
       url: app.globalData.globalUrl + "/apply",
       data: {
@@ -301,11 +361,11 @@ Page({
         idcard : this.data.user.idcard,
         userName: this.data.user.username,
         telnum: this.data.user.telnum,
-        diquname: padiquname,
+        ksdqid: paksdqid,
         nation: panation,
         bankName: pabankName,
         examDate : paexamDate,
-        kssource: pasource
+        kssource: pakssource
       },
       success: function (res) {
         if (res.data.req == 'success'){
@@ -323,12 +383,14 @@ Page({
             }
           })
         }
+        util.hideLoading();
       },
       fail: function (error) {
         console.log(error);
         that.setData({
           arr_res: '返回异常'
         })
+        util.hideLoading();
       }
     })
   }

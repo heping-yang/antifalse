@@ -22,7 +22,34 @@
   <view class='tit'>
     <text>完善以下信息</text>
   </view>
-
+  <view class='item'>
+    <text class='item_name'>考试地区</text>
+    <view class='item_cont'>
+      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
+      <text class='select_tips {{ksdqStu==true?"hide":""}}' >请选择</text>
+      <view class="section">
+        <picker bindchange="bindPickerKsdq" value="{{ksdqIndex}}" range="{{ksdq}}" range-key="areaname">
+          <view class="picker">
+            {{ksdq[ksdqIndex]['areaname']}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class='item'>
+    <text class='item_name'>考生所在地</text>
+    <view class='item_cont'>
+      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
+      <text class='select_tips {{kssourceStu==true?"hide":""}}' >请选择</text>
+      <view class="section">
+        <picker bindchange="bindPickerKssource" value="{{kssourceIndex}}" range="{{kssource}}" range-key="originname">
+          <view class="picker">
+            {{kssource[kssourceIndex]['originname']}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
   <view class='item'>
     <text class='item_name'>民族</text>
     <view class='item_cont'>
@@ -36,30 +63,29 @@
       </view>
     </view>
   </view>
-
   <view class='item'>
     <text class='item_name'>银行所在地</text>
     <view class='item_cont'>
       <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
-      <view class="section"> 
-        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <text class='select_tips {{banksourceStu==true?"hide":""}}' >请选择</text>
+      <view class="section">
+        <picker bindchange="bindPickerBanksource" value="{{banksourceIndex}}" range="{{banksource}}" range-key="originname">
           <view class="picker">
-              {{region[1]}} {{region[2]}}
+            {{banksource[banksourceIndex]['originname']}}
           </view>
         </picker>
       </view>
     </view>
   </view>
-
    <view class='item'>
     <text class='item_name'>银行名称</text>
   <view class='item_cont'>
       <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
-      <text class='select_tips {{BackNameStu==true?"hide":""}}' >请选择</text>
+      <text class='select_tips {{bankNameStu==true?"hide":""}}' >请选择</text>
       <view class="section">
-        <picker bindchange="bindPickerBackName" value='{{backNameindex}}' range="{{backName}}">
+        <picker bindchange="bindPickerBankName" value='{{bankNameIndex}}' range="{{bankName}}">
           <view class="picker">
-            {{backName[backNameindex]}}
+            {{bankName[bankNameIndex]}}
           </view>
         </picker>
       </view>
@@ -70,11 +96,11 @@
     <text class='item_name'>支行名称</text>
     <view class='item_cont'>
       <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
-      <text class='select_tips {{subBackNameStu==true?"hide":""}}' >请选择</text>
+      <text class='select_tips {{subBankNameStu==true?"hide":""}}' >请选择</text>
       <view class="section">
-        <picker bindchange="bindPickerSubBackName" value="{{subBackNameindex}}" range="{{subBackName}}">
+        <picker bindchange="bindPickerSubBankName" value="{{subBankNameIndex}}" range="{{subBankName}}">
           <view class="picker">
-            {{subBackName[subBackNameindex]}}
+            {{subBankName[subBankNameIndex]}}
           </view>
         </picker>
       </view>
@@ -83,29 +109,14 @@
 
 
    <view class='item item_long'>
-    <text class='item_name'>申请考试地区时间</text>
+    <text class='item_name'>考试时间</text>
       <view class='item_cont'>
       <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image> 
       <text class='select_tips {{examDateStu==true?"hide":""}}'  >请选择</text>
       <view class="section">
-        <picker bindchange="bindPickerExamDate" value="{{examDateindex}}" range="{{examDate}}">
+        <picker bindchange="bindPickerExamDate" value="{{examDateIndex}}" range="{{examDate}}">
           <view class="picker">
-            {{examDate[examDateindex]}}
-          </view>
-        </picker>
-      </view>
-    </view>
-  </view>
-
-  <view class='item'>
-    <text class='item_name'>考生地区</text>
-    <view class='item_cont'>
-      <image class='select_arrow_r  {{applystu==0?"show":""}}' src='/images/arrow_r.png'></image>
-      <text class='select_tips {{kssourceStu==true?"hide":""}}' >请选择</text>
-      <view class="section">
-        <picker bindchange="bindPickerKssource" value="{{kssourceIndex}}" range="{{kssource}}" range-key="originname">
-          <view class="picker">
-            {{kssource[kssourceIndex]['originname']}}
+            {{examDate[examDateIndex]}}
           </view>
         </picker>
       </view>

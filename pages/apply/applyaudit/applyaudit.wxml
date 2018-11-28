@@ -22,21 +22,32 @@
     <text class='item_name'>手机号码</text>
     <text class='item_cont'>{{user.telnum}}</text>
   </view>
+  <view class='item'>
+    <text class='item_name'>性别</text>
+    <text class='item_cont'>{{applyInfo.sex}}</text> 
+  </view>
   <view class='tit'>
     <text>报考信息</text>
   </view>
-  
-  <view class='item'>
-    <text class='item_name'>性别</text>
+ 
+ <view class='item'>
+    <text class='item_name'>考试地区</text>
     <view class='item_cont'>
-     <text>{{applyInfo.sex}}</text> 
+      <text>{{applyInfo.ksdqname}}</text>
     </view>
   </view>
- 
+
+  <view class='item'>
+    <text class='item_name'>考生所在地</text>
+    <view class='item_cont'>
+      <text>{{applyInfo.kssourcename}}</text>
+    </view>
+  </view>
+
   <view class='item'>
     <text class='item_name'>民族</text>
     <view class='item_cont'>
-     <text>{{nation}}</text> 
+     <text>{{applyInfo.nationname}}</text> 
     </view>
   </view>
 
@@ -63,16 +74,9 @@
 
 
    <view class='item item_long'>
-    <text class='item_name'>申请考试地区时间</text>
+    <text class='item_name'>考试时间</text>
     <view class='item_cont'>
        <text>{{applyInfo.kstime}}</text>
-    </view>
-  </view>
-
-  <view class='item'>
-    <text class='item_name'>考生地区</text>
-    <view class='item_cont'>
-      <text>{{applyInfo.kssource}}</text>
     </view>
   </view>
 
