@@ -8,6 +8,7 @@ var idcard = ""
 var username = ""
 var timer = null
 var timecnt = 30
+var util = require('../../../utils/util.js');
 var app = getApp()
 Page({
   /**
@@ -95,6 +96,7 @@ Page({
       })
       return
     }
+    util.showLoading();
     wx.request({
       url: app.globalData.globalUrl + "/user",
       data: {
@@ -112,12 +114,14 @@ Page({
             tipsText: "账号已存在"
           })
         }
+        util.hideLoading();
       },
       fail: function (error) {
         console.log(error);
         that.setData({
           arr_res: '返回异常'
-        })
+        });
+        util.hideLoading();
       }
     })
   },
@@ -143,6 +147,7 @@ Page({
             })
           }
         }, 1000);
+        util.showMsg('消息已发送');
         wx.request({
           url: app.globalData.globalUrl + "/smsVerify",
           data: {
@@ -181,6 +186,7 @@ Page({
       })
       return
     }
+    util.showLoading();
     wx.request({
       url: app.globalData.globalUrl + "/user",
       data: {
@@ -212,12 +218,14 @@ Page({
             duration: 1000
           })
         }
+        util.hideLoading();
       },
       fail: function (error) {
         console.log(error);
         that.setData({
           arr_res: '返回异常'
-        })
+        });
+        util.hideLoading();
       }
     })
   },

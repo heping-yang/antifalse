@@ -1,6 +1,7 @@
 // pages/login/login.js
 var telnum = ""
-var password = ""
+var password = "";
+var util = require('../../../utils/util.js');
 var app = getApp()
 Page({
 
@@ -34,6 +35,7 @@ Page({
   },
   logintap:function(){
     var that = this;
+    util.showLoading('登录中');
     wx.request({
       url: app.globalData.globalUrl + "/user",
       data: {
@@ -74,12 +76,14 @@ Page({
           telnum = ""
           password = ""
         }
+        util.hideLoading();
       },
       fail: function (error) {
         console.log(error);
         that.setData({
           arr_res: '返回异常'
-        })
+        });
+        util.hideLoading();
       }
     })
   },
