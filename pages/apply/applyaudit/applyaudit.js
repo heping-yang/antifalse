@@ -72,7 +72,7 @@ Page({
           that.setData({
             applyInfo: res.data.applyInfo,
             status: res.data.status,
-            nation: res.data.applyInfo.nation,
+            nation: (res.data.applyInfo && res.data.applyInfo.nation),
             region: res.data.region,
             checkEnd: res.data.checkEnd
           });
