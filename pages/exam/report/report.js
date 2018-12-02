@@ -22,13 +22,14 @@ Page({
       url: app.globalData.globalUrl + "/exam",
       data: {
         method: "queryExamReport",
-        hId: app.globalData.hId,
-        usedtime: app.globalData.total_micro_second
+        hId: app.globalData.hId
       },
       success: function (res) {
-        if(!!res.data.report){
+        if(!!res.data){
+          var data = res.data;
+          data.answerRecord = JSON.parse(data.answerRecord);
           that.setData({
-            report: res.data.report[0]
+            report: res.data
           });
         }
       },

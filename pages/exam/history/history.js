@@ -60,13 +60,11 @@ Page({
         telnum: app.globalData.user.telnum
       },
       success: function (res) {
-        console.log(res);
         that.setData({
           historylist: res.data.list
         });
       },
       fail: function (error) {
-        console.log(error);
         that.setData({
           arr_res: '返回异常'
         })

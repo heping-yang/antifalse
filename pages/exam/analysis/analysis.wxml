@@ -76,7 +76,7 @@
             <text class='exam_top_left'>案例分析</text>
           </block>
           <view class='exam_top_right'>
-            <text class='cu'>{{item.index}}</text>
+            <text class='cu'>{{index+1}}</text>
             <text>/</text>
             <text class='total'>{{report.answerRecord.data.length}}</text>
           </view>

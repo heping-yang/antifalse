@@ -119,8 +119,7 @@ Page({
         hId: app.globalData.hId
       },
       success: function (res) {
-        wx.hideToast()
-        console.log(res.data);
+        wx.hideToast();
         that.setData({
           report: res.data.report[0],
           wrongs: res.data.wrongs
