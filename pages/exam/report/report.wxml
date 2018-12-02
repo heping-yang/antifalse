@@ -38,8 +38,8 @@
     <text class='qu_type'>单项选择</text>
     <view class='qu_box clearfix'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '1' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '1' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+          <text wx:if="{{item.type == '1' && item.result == 1}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '1' && item.result != 1}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
     </view>
     </block>
@@ -47,8 +47,8 @@
     <text class='qu_type'>多项选择</text>
     <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '2' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '2' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+          <text wx:if="{{item.type == '2' && item.result == 1}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '2' && item.result != 1}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
     </view>
     </block>
@@ -56,8 +56,8 @@
     <text class='qu_type'>判断题</text>
     <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '3' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '3' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+          <text wx:if="{{item.type == '3' && item.result == 1}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '3' && item.result != 1}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
     </view>
     </block>
@@ -65,8 +65,8 @@
     <text class='qu_type'>案例分析</text>
     <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '4' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '4' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
+          <text wx:if="{{item.type == '4' && item.result == 1}}" class='qu_num qu_num_correct'>{{item.index}}</text>
+          <text wx:if="{{item.type == '4' && item.result != 1}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
         </text>
     </view>
     </block>

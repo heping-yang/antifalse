@@ -124,20 +124,17 @@ Page({
   },
   //进入考试
   enterExam: function (e) {
-    console.log(e),
       //带id跳转到指定的页面，这里的event.currentTarget.dataset.id是获取wxml页面上的data-id参数，详见事件说明
-    app.globalData.hId = e.currentTarget.dataset.item.hId
-    app.globalData.total_micro_second = parseInt(e.currentTarget.dataset.item.surplustime)
-    if (e.currentTarget.dataset.item.examType != '0'){
-      app.globalData.examType = e.currentTarget.dataset.item.examType
+    app.globalData.total_micro_second = parseInt(e.currentTarget.dataset.item.surplustime);
+    var item = e.currentTarget.dataset.item; 
+    if (item.examType != '0'){
+      app.globalData.examType = item.examType
     }
     wx.navigateTo({
-      url: "/pages/exam/exam/exam?examId=" + e.currentTarget.dataset.item.examId + "&index=" + (parseInt(e.currentTarget.dataset.item.indexnum) -  1) + "&type=select&examtype=" + parseInt(e.currentTarget.dataset.item.examType),//url跳转地址
+      url: "/pages/exam/exam/exam?examId=" + item.examId + "&examName="+item.examName+"&index=" + (parseInt(item.indexnum) -  1) + "&examtype=" + parseInt(item.examType),//url跳转地址
       success: function (res) {
-        console.log(res)
       },
       fail: function (res) {
-        console.log(res)
       }
     })
   },

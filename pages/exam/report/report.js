@@ -26,10 +26,11 @@ Page({
         usedtime: app.globalData.total_micro_second
       },
       success: function (res) {
-        console.log(res.data);
-        that.setData({
-          report: res.data.report[0]
-        });
+        if(!!res.data.report){
+          that.setData({
+            report: res.data.report[0]
+          });
+        }
       },
       fail: function (error) {
         console.log(error);
