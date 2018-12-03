@@ -158,7 +158,8 @@
             <block wx:if='{{questions[questionIndex].answers[0].option != null}}'>
                 <view class='answer_item {{optionA?"answer_item_active":""}}' bindtap='chooseAnswer' data-option='{{questions[questionIndex].answers[0].option}}'>
                   <text class='answer_flag'>{{questions[questionIndex].answers[0].option}}</text>
-                  <text>{{questions[questionIndex].answers[0].answer}}</text>
+                  <text>{{questions[questionIndex]
+                  .answers[0].answer}}</text>
                 </view>
             </block>
             <block wx:if='{{questions[questionIndex].answers[1].option != null}}'>

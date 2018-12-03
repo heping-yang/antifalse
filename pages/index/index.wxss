@@ -20,7 +20,7 @@ image{display: block}
 
 .banner{width: 711rpx;height: 302rpx;margin: 0px auto}
 
-.nav_wrap{display: flex;flex-direction: column;text-align: center;width:693rpx ;margin: 25rpx auto 0 auto}
+.nav_wrap{display: flex;flex-direction: column;text-align: center;width:693rpx ;margin: 25rpx auto 0 auto;padding-bottom:130rpx;}
 .nav{display: flex;flex-direction: row;text-align: center;width:693rpx ;margin-bottom: 80rpx}
 .nav_item{width: 33.33%;color: #333333;position: relative}
 .nav_icon{width: 75rpx;height: 75rpx;margin: 0px auto;margin-bottom: 10rpx }

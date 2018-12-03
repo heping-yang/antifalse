@@ -92,7 +92,7 @@ Page({
   chooseAnswer: function (e) {
     var that = this;
     var type = that.data.questions[this.data.questionIndex].type;
-    this.changeOption(type,e.currentTarget.dataset.option)
+    this.changeOption(type,e.currentTarget.dataset.option);
     //单选题和判断题
     if (type == 1 || type == 3){
       //进入下一题
@@ -125,6 +125,11 @@ Page({
   },
   //交卷
   handIn: function () {
+    //保存当前问题的答案
+    var option = this.getOption();
+    if (!!option) {
+      this.data.userAnswer[this.data.questions[this.data.questionIndex]['questionId']] = option;
+    }
     //提交答案
     var that = this;
     var results = [];
@@ -139,6 +144,9 @@ Page({
       
       if (!!answer){
         var standard = item.standard;
+        if(item.type=='3'){
+          standard = "T" == standard?"A":"B";
+        }
         if (answer==standard){
           result=1;
           totalscore+=1;
@@ -427,11 +435,13 @@ function count_down(that) {
     // timeout则跳出递归
     return;
   }
+
   timer = setTimeout(function () {
     // 放在最后--
-    app.globalData.total_micro_second -= 10;
+    app.globalData.total_micro_second -= 1000;
     count_down(that);
-  }, 10)
+  }, 1000)
+  
 }
 
 function stoptime() {
