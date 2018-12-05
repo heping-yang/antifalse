@@ -9,6 +9,7 @@ App({
     this.globalData.user = wx.getStorageSync('user');
     if(!!this.globalData.user){
       this.globalData.loginstatus = 1;
+      this.globalData.user.userstatus = 1;
     }
     wx.login({
       success: function (res) {
@@ -51,9 +52,10 @@ App({
   },
 
   globalData: {
-//    globalUrl: "https://www.nxyqedu.com/antifalse/api",
-    globalUrl: "http://192.168.2.101:8080/antifalse/api",
-    baseUrl: "http://192.168.2.101:8080/antifalse/",
+    globalUrl: "https://www.nxyqedu.com/antifalse/api",
+    //globalUrl: "http://192.168.2.101:8080/antifalse/api",
+    baseUrl: "https://www.nxyqedu.com/antifalse/",
+    //baseUrl: "http://192.168.2.101:8080/antifalse/",
     openid:"",
     userInfo:null,
     user:{},

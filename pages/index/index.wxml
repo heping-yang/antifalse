@@ -22,9 +22,9 @@
         <image class='nav_icon' src='/images/score_inquiry.png'></image>
         <text>成绩查询</text>
       </view>
-      <view class='nav_item' bindtap="paybind">
-        <image class='nav_icon' src='/images/member.png'></image>
-        <text>成为会员</text>
+      <view class='nav_item' bindtap='studyOnlinebind'>
+        <image class='nav_icon' src='/images/zaixian.png'></image>
+        <text>在线学习</text> 
       </view>
     </view>
     <view class='nav'>
@@ -42,14 +42,14 @@
       </view>
     </view>
     <view class='nav'>
-      <view class='nav_item' bindtap='studyOnlinebind'>
-        <image class='nav_icon' src='/images/zaixian.png'></image>
-        <text>在线学习</text> 
-      </view>
       <view class='nav_item' bindtap='questionnairebind'>
         <image class='nav_icon' src='/images/wenjuan.png'></image>
         <text>调查问卷</text> 
       </view>
+      <!--<view class='nav_item' bindtap="paybind">
+        <image class='nav_icon' src='/images/member.png'></image>
+        <text>成为会员</text>
+      </view>-->
     </view>
   </scroll-view>
   

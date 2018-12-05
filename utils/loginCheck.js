@@ -1,5 +1,5 @@
 var app = getApp()
-
+var util = require('./util.js');
 function check(url) {
   if (app.globalData.loginstatus == 0){
     wx.navigateTo({
@@ -23,9 +23,10 @@ function check(url) {
     })
   }
   if (url == "/pages/exam/list/list" && app.globalData.user.userstatus == 1){
-      wx.navigateTo({
+      /*wx.navigateTo({
         url: '/pages/user/pay/pay'
-      })
+      })*/
+      util.showMsg('您还不是会员');
       return false
   }
   if ((url == "/pages/user/pay/pay" && app.globalData.user.userstatus != 1) ) {
