@@ -142,22 +142,23 @@ Page({
       var answer = this.data.userAnswer[item.questionId];
       var result = 0;
       
-      if (!!answer){
-        var standard = item.standard;
-        if(item.type=='3'){
-          standard = "T" == standard?"A":"B";
-        }
-        if (answer==standard){
-          result=1;
-          totalscore+=1;
-          rightCnt++;
-        }else{
-          wrongCnt++;
-        }
-        var json = { type: item.type, questionId: item.questionId, answer: answer, result: result, index: parseInt(item.questionId.substring(3))};
-        results.push(json);
-        indexnum = item.index;
+      if (typeof(answer)=='undefined' || answer==null){
+        answer = '';
       }
+      var standard = item.standard;
+      if (item.type == '3') {
+        standard = "T" == standard ? "A" : "B";
+      }
+      if (answer == standard) {
+        result = 1;
+        totalscore += 1;
+        rightCnt++;
+      } else {
+        wrongCnt++;
+      }
+      var json = { type: item.type, questionId: item.questionId, answer: answer, result: result, index: parseInt(item.questionId.substring(3)) };
+      results.push(json);
+      indexnum = item.index;
     }
     var answerRecord = {};
     answerRecord.data = results;
