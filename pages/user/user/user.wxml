@@ -31,8 +31,13 @@
     </view>
   </view> 
 
-  <view class='btn_exit {{loginstatus == 0?"btn_exit_hide":""}}' bindtap='loginout'>
-    退出登录
+  <view class="btn_area">
+    <button open-type="getUserInfo" class='btn_weixin {{weixinAuth == 1?"btn_hide":""}}' bindtap='getuser'>
+      微信授权
+    </button>
+    <button class='btn_exit {{loginstatus == 0?"btn_hide":""}}' bindtap='loginout'>
+      退出登录
+    </button>
   </view>
 
   <view class='footer_menu'>

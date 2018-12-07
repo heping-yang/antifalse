@@ -14,9 +14,9 @@ page{background: #ededed}
 .user_list_item text{ padding-left: 50rpx; }
 .user_icon{width: 35rpx;height: 35rpx;margin-right:20rpx;position: absolute;top: 38rpx;left: 0rpx; }
 .user_arrow_r{width: 30rpx;height: 30rpx;position: absolute;right: 20rpx;top:42rpx}
-
-.btn_exit{width: 750rpx;height: 90rpx;text-align: center;background: #fff;color: #333;line-height: 90rpx;margin-top: 100rpx}
-
-.btn_exit_hide{display: none}
+.btn_area{margin-top: 100rpx}
+.btn_exit{width: 750rpx;height: 90rpx;text-align: center;background: #fff;color: #333;line-height: 90rpx;margin-top: 2rpx}
+.btn_weixin{width: 750rpx;height: 90rpx;text-align: center;background: #fff;color: #333;line-height: 90rpx;}
+.btn_hide{display: none}
 .hide{display: none}
 .font_m{font-size: 30rpx;margin-right: 5rpx}

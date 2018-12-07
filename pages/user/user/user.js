@@ -1,6 +1,7 @@
 // pages/user/user.js
 var app = getApp();
-var loginCheck = require("../../../utils/loginCheck.js")
+var loginCheck = require("../../../utils/loginCheck.js");
+var util = require("../../../utils/util.js");
 Page({
   /**
    * 页面的初始数据
@@ -8,7 +9,8 @@ Page({
   data: {
     loginstatus:0,//1登录状态 0未登录
     userInfo:{},
-    user:{}
+    user:{},
+    weixinAuth:0,
   },
   loginbind:function(){
     wx.navigateTo({
@@ -76,6 +78,19 @@ Page({
       }
     })  
   },
+  getuser:function(){
+    var that = this;
+    wx.getUserInfo({
+      withCredentials: false,
+      success: function (res) {
+        app.globalData.userInfo = res.userInfo;
+        util.showMsg("授权成功");
+      },
+      fail:function(){
+        util.showMsg("您放弃了授权");
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -85,11 +100,13 @@ Page({
     app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
-        userInfo: userInfo,
+        userInfo: userInfo||{},
         loginstatus: app.globalData.loginstatus,
-        user: app.globalData.user
+        user: app.globalData.user,
+        weixinAuth: userInfo==null?0:1,
       })
-    })
+    });
+
   },
 
   /**
