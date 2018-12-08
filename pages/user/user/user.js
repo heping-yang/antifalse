@@ -11,6 +11,7 @@ Page({
     userInfo:{},
     user:{},
     weixinAuth:0,
+    SDKVersion:'0',
   },
   loginbind:function(){
     wx.navigateTo({
@@ -104,6 +105,7 @@ Page({
         loginstatus: app.globalData.loginstatus,
         user: app.globalData.user,
         weixinAuth: userInfo==null?0:1,
+        SDKVersion: app.globalData.SDKVersion,
       })
     });
 

@@ -20,3 +20,4 @@ page{background: #ededed}
 .btn_hide{display: none}
 .hide{display: none}
 .font_m{font-size: 30rpx;margin-right: 5rpx}
+.text_item{width: auto;}

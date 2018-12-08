@@ -37,6 +37,13 @@ App({
   },
 
   versionCheck:function(){
+    //基础库版本判断
+    var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        that.globalData.SDKVersion = res.SDKVersion;
+      },
+    });
     if (!wx.getUpdateManager){
       return;
     }
@@ -98,6 +105,7 @@ App({
     user:{},
     loginstatus:0,
     examtype:1,
-    total_micro_second: 50 * 60 * 1000
+    total_micro_second: 50 * 60 * 1000,
+    SDKVersion:'',
   }
 })
