@@ -25,14 +25,24 @@
       <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
     </view>
     <view class='user_list_item' bindtap='abouttap'>
-      <image class='user_icon' src='/images/user_icon1.png'></image>
+      <image class='user_icon' src='/images/user_icon4.png'></image>
       <text>联系我们</text> 
       <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
     </view>
+    <view class='user_list_item' bindtap='abouttap'>
+      <image class='user_icon' src='/images/user_icon1.png'></image>
+      <text>微信版本</text> 
+      <text class='user_arrow_r text_item'  src='/images/arrow_r.png'>{{SDKVersion}}</text>
+    </view>
   </view> 
 
-  <view class='btn_exit {{loginstatus == 0?"btn_exit_hide":""}}' bindtap='loginout'>
-    退出登录
+  <view class="btn_area">
+    <button open-type="getUserInfo" class='btn_weixin {{weixinAuth == 1?"btn_hide":""}}' bindtap='getuser'>
+      微信授权
+    </button>
+    <button class='btn_exit {{loginstatus == 0?"btn_hide":""}}' bindtap='loginout'>
+      退出登录
+    </button>
   </view>
 
   <view class='footer_menu'>
