@@ -21,7 +21,7 @@
     </view>
     <view class='user_list_item' bindtap='memberStatus'>
       <image class='user_icon' src='/images/user_icon2.png'></image>
-      <text>会员状态</text> 
+      <text>用户状态</text> 
       <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
     </view>
     <view class='user_list_item' bindtap='abouttap'>

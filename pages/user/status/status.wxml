@@ -4,13 +4,13 @@
     <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
     <view class='user_info '>
       <text class='phone_num'>{{user.telnum}}</text>
-      <text class='font1 {{memberStu==0?"show":""}}'>您还不是会员，立即购买吧！</text>
+      <text class='font1 {{memberStu==0?"show":""}}'>您还不是平台培训人员！</text>
       <text class='font1 font_blue {{memberStu==1?"show":""}}'>会员有效期:{{stime}}至{{etime}}</text>
     </view> 
   </view>
   <!--user_top  -->
   <view class='buy_cont'>
-    <block wx:if='{{memberStu==0}}'>
+    <!--<block wx:if='{{memberStu==0}}'>
     <text class='buy_tit'>会员购买</text>
     <view class='goods'>
       <view class='goods_detail'>
@@ -33,7 +33,6 @@
       </view> 
     </view>
     </block>
-    <!--pay_mode  -->
     <text class='buy_tit mt'>会员特权</text>
     
     <view class='privilege_wrap'>
@@ -51,10 +50,13 @@
           <text>考前真题</text>
         </view>
       </view>
-    </view> 
+    </view> -->
+
+    <text wx:if='{{memberStu==0}}' class='buy_tit mt'>你不是平台培训人员，如有疑问请致电0951-5034710   白老师</text>
+    <text wx:if='{{memberStu==1}}' class='buy_tit mt'>你是平台培训人员，可以正常使用会员特权，如有疑问请致电0951-5034710   白老师</text>
   </view>
   <!--buy_cont  -->
-  <block wx:if="{{memberStu==1}}">
+  <!--<block wx:if="{{memberStu==1}}">
     <view class='btn_begain' bindtap='enterExam'>
       <image class='btn_icon' src='/images/enter_exam2.png'></image>
       <text>在线模拟</text>
@@ -68,5 +70,5 @@
     </view>
     <view  class='footer_item footer_item_r' bindtap='payment'>确认支付</view>
   </view>
-  </block>
+  </block>-->
 </view>
