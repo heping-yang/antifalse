@@ -2,7 +2,7 @@
 <view class='container'>
   <view class='code_box'> 
     <image class='code' src='https://www.nxyqedu.com/antifalse/resources/images/code.jpg'></image>
-    <text class='vesion'>版本：V1.2</text>
+    <text class='vesion'>版本：V1.6</text>
   </view>
   <view class='box'>
     <text class='box_tit'>报名\缴费：白老师</text>
