@@ -10,7 +10,13 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
 	"appid": "wxfbcd9d55b2599597",
+<<<<<<< Updated upstream
 	"projectname": "%E5%8F%8D%E5%81%87%E6%A8%A1%E6%8B%9F",
+=======
+	"projectname": "antifalse",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+>>>>>>> Stashed changes
 	"condition": {
 		"search": {
 			"current": -1,
