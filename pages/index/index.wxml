@@ -13,11 +13,10 @@
   
   <scroll-view class='nav_wrap'>
     <view class='nav'>
-      <view class='nav_item' bindtap="announcementbind">
+      <!--<view class='nav_item' bindtap="announcementbind">
         <image class='nav_icon' src='/images/notice.png'></image>
         <text>平台公告</text>
-        <!--<text class='notice_num'>3</text>-->
-      </view>
+      </view>-->
       <view class='nav_item' bindtap="gradebind">
         <image class='nav_icon' src='/images/score_inquiry.png'></image>
         <text>成绩查询</text>
@@ -26,26 +25,40 @@
         <image class='nav_icon' src='/images/zaixian.png'></image>
         <text>在线学习</text> 
       </view>
+      <view class='nav_item' bindtap='practiseOnlinebind'>
+        <image class='nav_icon' src='/images/apply.png'></image>
+        <text>在线练习</text> 
+      </view>
     </view>
     <view class='nav'>
+      <!--<view class='nav_item' bindtap='inspectionbind'>
+        <image class='nav_icon' src='/images/notice.png'></image>
+        <text>监督检查</text> 
+      </view>-->
+      <view class='nav_item' bindtap='applybind'>
+        <image class='nav_icon' src='/images/notice.png'></image>
+        <text>在线报名</text> 
+      </view>
       <view class='nav_item' bindtap='historybind'>
         <image class='nav_icon' src='/images/history.png'></image>
         <text>模拟历史</text> 
       </view>
+      <!--
       <view class='nav_item' bindtap='onlineRegbind'>
         <image class='nav_icon' src='/images/apply.png'></image>
         <text>在线报名</text> 
-      </view>
+      </view>-->
       <view class='nav_item' bindtap='goCantact'>
         <image class='nav_icon' src='/images/contact.png'></image>
         <text>联系我们</text> 
       </view>
     </view>
     <view class='nav'>
+    <!--
       <view class='nav_item' bindtap='questionnairebind'>
         <image class='nav_icon' src='/images/wenjuan.png'></image>
         <text>调查问卷</text> 
-      </view>
+      </view>-->
       <!--<view class='nav_item' bindtap="paybind">
         <image class='nav_icon' src='/images/member.png'></image>
         <text>成为会员</text>

@@ -47,6 +47,16 @@ Page({
       })
     }
   },
+  //监督检查
+  inspectionbind: function(){
+    
+  },
+  //在线报名
+  applybind:function(){
+    wx.navigateTo({
+      url: '/pages/apply/applyonline/applyonline',
+    })
+  },
   //平台公告
   announcementbind:function(){
     wx.navigateTo({
@@ -58,6 +68,14 @@ Page({
     if (loginCheck.check('/pages/user/grade/grade')) {
       wx.navigateTo({
         url: '/pages/exam/history/history'
+      })
+    }
+  },
+  //在线练习
+  practiseOnlinebind: function(){
+    if (loginCheck.check('/pages/practice/index/index')) {
+      wx.navigateTo({
+        url: '/pages/practice/index/index',
       })
     }
   },

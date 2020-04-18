@@ -1,0 +1,25 @@
+<!--pages/history/history.wxml-->
+<view class='container'>
+
+  <block wx:for="{{historylist}}" wx:key="unique">
+    <block>
+      <view class='test_sheet_list' data-item='{{item}}' bindtap="enterReport">
+        <view class='test_tit_box'>
+          <text class='test_tit'>[{{item.examTypeName}}] {{item.examName}}</text>
+        </view>
+        <view class='test_wrap'>
+          <view class='test_info'>
+              <text>共<text class='num'>{{item.timuCount}}</text>题</text>
+              <block>
+                <text>得分<text class='num num_blue'>{{item.score}}</text>分</text>
+              </block>
+              <block>
+                <text>错题<text class='num num_blue'>{{item.answerRecord.wrongCnt}}</text>个</text>
+              </block>
+          </view>
+          <text class='history_date'>{{item.createTime}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>

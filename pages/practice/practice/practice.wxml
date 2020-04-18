@@ -1,0 +1,201 @@
+<!--pages/exam/exam.wxml-->
+<import src="/template/template.wxml" />
+
+<view class='container'>
+  <!--休息弹框  -->
+  <view class='modal_bg {{modalShow==true?"modal_show":""}}'>
+    <view class='modal_suc'>
+        <view class='rest_cont'>
+          <image class='icon' src='/images/icon_exam.png'></image>
+          <text class='font_grey'>休息一下</text>
+          <text>共{{total}}道题，还有{{noAnswerCnt}}道未作答</text>
+        </view>
+        <view class='modal_btn_box'>
+          <text class='modal_btn' bindtap="handIn" wx:if="{{noAnswerCnt==0}}">交卷</text>
+          <text class='modal_btn' bindtap="goHome" wx:if="{{noAnswerCnt>0}}">放弃答题</text>
+          <text class='modal_btn_outline' bindtap="rested">继续答题</text> 
+        </view>
+    </view>
+  </view>
+
+  <!--最后一题  -->
+  <view class='modal_bg {{lastmodalShow==true?"modal_show":""}}'>
+    <view class='modal_suc'>
+        <view class='rest_cont'>
+          <image class='icon' src='/images/icon_exam.png'></image>
+          <text class='font_grey'>是要交卷吗？</text>
+          <text>当前最后一题已答完</text>
+        </view>
+        <view class='modal_btn_box'>
+          <text class='modal_btn' bindtap="handIn">交卷</text>
+          <text class='modal_btn_outline' bindtap="testContuine">返回</text>
+        </view>
+    </view>
+  </view>
+
+  <!--交卷弹框  -->
+  <view class='modal_bg {{handInModalShow==true?"modal_show":""}}'>
+    <view class='modal_suc'>
+        <view class='rest_cont'>
+          <image class='icon' src='/images/icon_exam.png'></image>
+          <!-- <text class='font_grey'>休息一下</text> -->
+          <text>共{{total}}道题，还有{{noAnswerCnt}}道未作答</text>
+        </view>
+        <view class='modal_btn_box'>
+          <text class='modal_btn' bindtap="goHome">返回首页</text> 
+          <text class='modal_btn_outline' bindtap="testContuine">继续答题</text> 
+        </view>
+    </view> 
+  </view>
+
+  <!--查看全部试题序号  -->
+  <view class="layer {{layerStatus==true ? 'show' : ''}}">
+    <scroll-view class='layer_cont' scroll-y="{{true}}">
+      <block wx:if='{{examtype==0||examtype==1}}'>
+      <text class='qu_type'>单项选择</text>
+      <view class='qu_box'>
+        <text wx:for="{{questions}}" wx:key="questionId" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '1' && !!userAnswer[item.questionId]}}" class='qu_num qu_num_answered'>{{item.index+1}}</text>
+          <text wx:if="{{item.type == '1' && !userAnswer[item.questionId]}}" class='qu_num'>{{item.index+1}}</text>
+        </text>
+      </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==2}}'>
+      <text class='qu_type'>多项选择</text>
+      <view class='qu_box'>
+        <text wx:for="{{questions}}" wx:key="questionId" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '2' && !!userAnswer[item.questionId]}}" class='qu_num qu_num_answered'>{{item.index+1}}</text>
+          <text wx:if="{{item.type == '2' && !userAnswer[item.questionId]}}" class='qu_num'>{{item.index+1}}</text>
+        </text>
+      </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==3}}'>
+      <text class='qu_type'>判断题</text>
+      <view class='qu_box'>
+        <text wx:for="{{questions}}" wx:key="questionId" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '3' && !!userAnswer[item.questionId]}}" class='qu_num qu_num_answered'>{{item.index+1}}</text>
+          <text wx:if="{{item.type == '3' && !userAnswer[item.questionId]}}" class='qu_num'>{{item.index+1}}</text>
+        </text>
+      </view>
+      </block>
+      <block wx:if='{{examtype==0||examtype==4}}'>
+      <text class='qu_type'>案例分析</text>
+      <view class='qu_box'>
+        <text wx:for="{{questions}}" wx:key="questionId" bindtap='selectQuestion' data-index='{{item.index}}'>
+          <text wx:if="{{item.type == '4' && !!userAnswer[item.questionId]}}" class='qu_num qu_num_answered'>{{item.index+1}}</text>
+          <text wx:if="{{item.type == '4' && !userAnswer[item.questionId]}}" class='qu_num'>{{item.index+1}}</text>
+        </text>
+      </view>
+      </block>
+    </scroll-view>
+    <!--layercont  -->
+    <view class='footer'>
+      <view class='btn btn_outline' bindtap='testContinue'>
+        继续模拟
+      </view>
+      <view class='btn' bindtap='handIn'>
+        交卷
+      </view>
+    </view>
+  </view>
+  <!--交卷结束  -->
+  
+  <!--底部  -->
+  <view class='bottom'>
+    <view class='bottom_item_arrow' bindtap='preQuestion'>
+      <image class='arrow show' src='/images/icon_arrow_left.png'></image>
+      <text class='font_blue'>上一题</text>
+    </view>
+    <view class='bottom_item' bindtap='showAll'>
+      <image src='/images/icon_qu_all.png'></image>
+    </view>
+    <view class='bottom_item' bindtap='rest'>
+      <text class='time'>{{clock}}</text>
+      <image src='/images/icon_time.png'></image>
+    </view>
+    <view class='bottom_item' bindtap='home'> 
+      <image src='/images/icon_qu_home.png'></image>
+    </view>
+    <view class='bottom_item_arrow' bindtap='nextQuestion'>
+      <text class='font_blue'>下一题</text>
+      <image class='arrow show' src='/images/icon_arrow_right.png'></image>
+    </view>
+  </view>
+
+  <!--考试部分  -->
+  <view style='height:100vh' class='exam_item_wrap {{isloaded?"exam_item_wrap_show":""}}'>
+      <view>
+        <view class='exam_top'>
+          <block wx:if="{{questions[questionIndex].type == 1}}">
+            <text class='exam_top_left'>单项选择</text>
+          </block>
+          <block wx:if="{{questions[questionIndex].type == 2}}">
+            <text class='exam_top_left'>多项选择</text>
+          </block>
+          <block wx:if="{{questions[questionIndex].type == 3}}">
+            <text class='exam_top_left'>判断题</text>
+          </block>
+          <block wx:if="{{questions[questionIndex].type == 4}}">
+            <text class='exam_top_left'>案例分析</text>
+          </block>
+          <view class='exam_top_right'>
+            <text class='cu'>{{questionIndex+1}}</text>
+            <text class='total'>/{{total}}</text>
+          </view>
+        </view>
+        <scroll-view scroll-y="{{true}}" class='qu_cont'>
+          <!--题目类型及当前题目 -->
+          <!--答题  -->
+          <view class='answer_box'>
+            <!--问题  -->
+            <view class='question_box'>
+              <text class='question'>{{questions[questionIndex].content}}</text>
+              <block wx:if="{{questions[questionIndex].picflag != null && questions[questionIndex].picflag != 0}}">
+                <image class='qu_img' src='{{baseUrl}}resources/images/{{questions[questionIndex].picflag}}.jpg'></image>
+              </block>
+            </view>
+            <!--答案选项  -->
+            <view class='answer_list'>
+            <block wx:if='{{questions[questionIndex].answers[0].option != null}}'>
+                <view class='answer_item {{optionA?"answer_item_active":""}}' bindtap='chooseAnswer' data-option='{{questions[questionIndex].answers[0].option}}'>
+                  <text class='answer_flag'>{{questions[questionIndex].answers[0].option}}</text>
+                  <text>{{questions[questionIndex]
+                  .answers[0].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{questions[questionIndex].answers[1].option != null}}'>
+                <view class='answer_item {{optionB?"answer_item_active":""}}' bindtap='chooseAnswer' data-option='{{questions[questionIndex].answers[1].option}}'>
+                  <text class='answer_flag'>{{questions[questionIndex].answers[1].option}}</text>
+                  <text>{{questions[questionIndex].answers[1].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{questions[questionIndex].answers[2].option != null}}'>
+                <view class='answer_item {{optionC?"answer_item_active":""}}' bindtap='chooseAnswer' data-option='{{questions[questionIndex].answers[2].option}}'>
+                  <text class='answer_flag'>{{questions[questionIndex].answers[2].option}}</text>
+                  <text>{{questions[questionIndex].answers[2].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{questions[questionIndex].answers[3].option != null}}'>
+                <view class='answer_item {{optionD?"answer_item_active":""}}' bindtap='chooseAnswer' data-option='{{questions[questionIndex].answers[3].option}}'>
+                  <text class='answer_flag'>{{questions[questionIndex].answers[3].option}}</text>
+                  <text>{{questions[questionIndex].answers[3].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{questions[questionIndex].answers[4].option != null}}'>
+                <view class='answer_item {{optionE?"answer_item_active":""}}' bindtap='chooseAnswer' data-option='{{questions[questionIndex].answers[4].option}}'>
+                  <text class='answer_flag'>{{questions[questionIndex].answers[4].option}}</text>
+                  <text>{{questions[questionIndex].answers[4].answer}}</text>
+                </view>
+            </block>
+            <block wx:if='{{questions[questionIndex].answers[5].option != null}}'>
+                <view class='answer_item {{optionF?"answer_item_active":""}}' bindtap='chooseAnswer' data-option='{{questions[questionIndex].answers[5].option}}'>
+                  <text class='answer_flag'>{{questions[questionIndex].answers[5].option}}</text>
+                  <text>{{questions[questionIndex].answers[5].answer}}</text>
+                </view>
+            </block>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+  </view>
+</view>

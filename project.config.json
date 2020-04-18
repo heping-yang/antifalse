@@ -35,7 +35,7 @@
 				{
 					"id": 0,
 					"name": "update",
-					"pathName": "pages/index/index",
+          "pathName": "pages/index/index",
 					"query": ""
 				}
 			]

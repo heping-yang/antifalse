@@ -1,40 +1,35 @@
-var app = getApp();
+const app = getApp();
 var util = require('../../../utils/util.js');
 var clearFlag = false;
-var examId = "";
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    //弹框
-    modalShow:false,
-    handInModalShow: false,
-    lastmodalShow:false,
-    isloaded:false,
-    examtype:0,
-    //全部题目
-    layerStus: false,
-    layerAnimation:{},
-    answerCnt:0,
+    pageNo:0,
+    total:0,
     noAnswerCnt:0,
+    modalShow:false,
+    lastmodalShow:false,
+    handInModalShow:false,
+    layerStatus:false,
+    examtype:0,
+    questions:[],
+    isloaded:false,
+    questionIndex:0,
+    baseUrl:app.globalData.baseUrl,
     optionA: false,
     optionB: false,
     optionC: false,
     optionD: false,
     optionE: false,
     optionF: false,
-    clock:'',
-
-    pageNo:0,
-    questions:[],
-    questionIndex:0,
-    total:0,
-    userAnswer:{},
-    examId:'',
-    examName:'',
+    userAnswer: {},
+    examId: '',
+    examName: '',
   },
-  changeOption: function (type ,option){
+  changeOption: function (type, option) {
     var data = {};
     if (type == 1 || type == 3) {
       data.optionA = false;
@@ -66,9 +61,9 @@ Page({
     }
     this.setData(data);
   },
-  getOption: function (){
+  getOption: function () {
     var answsers = ""
-    if (this.data.optionA){
+    if (this.data.optionA) {
       answsers += 'A'
     }
     if (this.data.optionB) {
@@ -92,9 +87,9 @@ Page({
   chooseAnswer: function (e) {
     var that = this;
     var type = that.data.questions[this.data.questionIndex].type;
-    this.changeOption(type,e.currentTarget.dataset.option);
+    this.changeOption(type, e.currentTarget.dataset.option);
     //单选题和判断题
-    if (type == 1 || type == 3){
+    if (type == 1 || type == 3) {
       //进入下一题
       this.nextQuestion();
     }
@@ -104,15 +99,15 @@ Page({
     stoptime();
     var data = this.data.userAnswer;
     this.setData({
-      layerStus: true,
-      userAnswer:data,
+      layerStatus: true,
+      userAnswer: data,
     });
   },
   //选择某一个题
-  selectQuestion:function(e){
-    var data1 = { questionIndex: e.currentTarget.dataset.index, layerStus:false, };
-    var data2 = this.setUserAnswer(this.data.userAnswer[this.data.questions[e.currentTarget.dataset.index]['questionId']],true);
-    var data3 = Object.assign(data1,data2);
+  selectQuestion: function (e) {
+    var data1 = { questionIndex: e.currentTarget.dataset.index, layerStus: false, };
+    var data2 = this.setUserAnswer(this.data.userAnswer[this.data.questions[e.currentTarget.dataset.index]['questionId']], true);
+    var data3 = Object.assign(data1, data2);
     this.setData(data3);
     count_down(this);
   },
@@ -120,11 +115,17 @@ Page({
   testContinue: function () {
     count_down(this);
     this.setData({
-      layerStus: false
+      layerStatus: false
     })
   },
   //交卷
   handIn: function () {
+    var answerCnt = Object.getOwnPropertyNames(this.data.userAnswer).length;
+    var unAnswer = this.data.total - answerCnt;
+    if (unAnswer>0){
+      util.showMsg(unAnswer+"道题未作答");
+      return;
+    }
     //保存当前问题的答案
     var option = this.getOption();
     if (!!option) {
@@ -137,12 +138,12 @@ Page({
     var totalscore = 0;
     var rightCnt = 0;
     var wrongCnt = 0;
-    for(var i=0;i<this.data.questions.length;i++){
+    for (var i = 0; i < this.data.questions.length; i++) {
       var item = this.data.questions[i];
       var answer = this.data.userAnswer[item.questionId];
       var result = 0;
-      
-      if (typeof(answer)=='undefined' || answer==null){
+
+      if (typeof (answer) == 'undefined' || answer == null) {
         answer = '';
       }
       var standard = item.standard;
@@ -167,55 +168,35 @@ Page({
 
     util.showLoading();
     wx.request({
-      url: app.globalData.globalUrl + "/exam",
-      method:'POST',
+      url: app.globalData.globalUrl + "/practice",
+      method: 'POST',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
         method: "saveAnswer",
+        openid: app.globalData.openid,
         telnum: app.globalData.user.telnum,
+        userType: app.globalData.user.usertype,
         examId: this.data.examId,
-        examName:this.data.examName,
+        examName: this.data.examName,
         examType: this.data.examtype,
-        indexnum: indexnum,
-        totalscore: totalscore,
-        surplustime: app.globalData.total_micro_second,
-        usedtime: Math.ceil((50 * 60 * 1000 - app.globalData.total_micro_second) / (60 * 1000)),
+        score: totalscore,
+        times: Math.ceil((50 * 60 * 1000 - app.globalData.total_micro_second) / (60 * 1000)),
         answerRecord: JSON.stringify(answerRecord),
-      }, 
+      },
       success: function (res) {
         util.hideLoading();
-        if(res.data=="error"){
+        if (res.data == "error") {
           util.showMsg('上传数据失败');
-        }else{
+        } else {
           //清空记录
           wx.removeStorageSync(that.data.examId);
           clearFlag = true;
-          app.globalData.hId = res.data.id;
-
-          if(res.data.count>=3){
-            wx.showModal({
-              title: '恭喜',
-              content: '您已经有三次的模拟成绩大于等于80分，是否提交报名申请？',
-              success: function(sm){
-                if(sm.confirm){
-                  //报名申请
-                  wx.redirectTo({
-                    url: '/pages/apply/applyonline/applyonline',
-                  });
-                }else{
-                  wx.redirectTo({
-                    url: '/pages/exam/report/report',
-                  });
-                }
-              }
-            });
-          }else{
-            wx.redirectTo({
-              url: '/pages/exam/report/report',
-            });
-          }
+          app.globalData.hId = res.data;
+          wx.redirectTo({
+            url: '/pages/practice/report/report',
+          });
         }
       },
       fail: function (error) {
@@ -223,16 +204,16 @@ Page({
         util.showMsg('交卷失败');
       }
     });
-   
+
   },
   //休息
-  rest:function(){
+  rest: function () {
     stoptime();
     var answerCnt = Object.getOwnPropertyNames(this.data.userAnswer).length;
     this.setData({
       modalShow: true,
-      answerCnt:answerCnt,
-      noAnswerCnt:this.data.total-answerCnt,
+      answerCnt: answerCnt,
+      noAnswerCnt: this.data.total - answerCnt,
     });
   },
   //休息结束
@@ -255,7 +236,7 @@ Page({
     });
   },
   //继续考试
-  testContuine:function(){
+  testContuine: function () {
     count_down(this);
     this.setData({
       modalShow: false,
@@ -269,27 +250,28 @@ Page({
       url: '/pages/index/index'
     })
   },
-  nextQuestion:function(){
-      var index = this.data.questionIndex;
-      //保存当前问题的答案
-      var option = this.getOption();
-      if(!!option){
-        this.data.userAnswer[this.data.questions[index]['questionId']] = option;
-      }
-      if(index>=this.data.questions.length-1){
-        util.showMsg('已经是最后一题了');
-        return;
-      }
-      
-      index++; 
-      this.setData({"questionIndex":index});
+  nextQuestion: function () {
+    var index = this.data.questionIndex;
+    //保存当前问题的答案
+    var option = this.getOption();
+    if (!!option) {
+      this.data.userAnswer[this.data.questions[index]['questionId']] = option;
+    }
+    if (index >= this.data.questions.length - 1) {
+      //util.showMsg('已经是最后一题了');
+      this.setData({ lastmodalShow:true});
+      return;
+    }
+
+    index++;
+    this.setData({ "questionIndex": index });
     this.setUserAnswer(this.data.userAnswer[this.data.questions[index]['questionId']]);
   },
-  preQuestion:function(){
+  preQuestion: function () {
     var index = this.data.questionIndex;
     var option = this.getOption();
     if (!!option) {
-    //保存当前问题的答案
+      //保存当前问题的答案
       this.data.userAnswer[this.data.questions[index]['questionId']] = option;
     }
     if (index <= 0) {
@@ -308,35 +290,31 @@ Page({
     var that = this;
     util.showLoading();
     //加载缓存答案
-    var us = wx.getStorageSync(options.examId)||{};
-    if (options.examtype != null && options.examtype != '') {
-      app.globalData.examtype = parseInt(options.examtype);
-    }
-    this.data.examId = options.examId;
-    this.data.examName = options.examName;
-    this.data.examtype = app.globalData.examtype;
+    var us = wx.getStorageSync(options.id) || {};
+    this.data.examId = options.id;
+    this.data.examName = options.name;
+    this.data.examtype = parseInt(options.type);
     this.data.userAnswer = us;
-    this.data.questionIndex = options.index||0;
+    this.data.questionIndex = options.index || 0;
 
     //加载题目列表
     wx.request({
-      url: app.globalData.globalUrl + "/exam",
+      url: app.globalData.globalUrl + "/practice",
       data: {
-        method: "queryQuestions",
-        examId: options.examId,
+        method: "practiceQues",
+        practice: options.id,
         pageNo: 0,
-        examType: app.globalData.examtype,
       },
       success: function (res) {
         var data1 = {
-          questions: res.data.questions,
+          questions: res.data.dataList,
           pageNo: that.data.pageNo + 1,
           questionIndex: 0,
-          total: res.data.total,
+          total: res.data.dataCount,
           isloaded: true,
         };
-        var data2 = (!!res.data.questions && res.data.questions.length > 0) ? that.setUserAnswer(us[res.data.questions[that.data.questionIndex]['questionId']], true):{};
-        var data3 = Object.assign(data1,data2);
+        var data2 = (!!res.data.dataList && res.data.dataList.length > 0) ? that.setUserAnswer(us[res.data.dataList[that.data.questionIndex]['questionId']], true) : {};
+        var data3 = Object.assign(data1, data2);
         that.setData(data3);
         util.hideLoading();
       },
@@ -346,10 +324,11 @@ Page({
       }
     })
   },
+
   //设置用户答案
-  setUserAnswer: function (userAnswer,needRet=false) {
-    var data = { optionA: false, optionB: false, optionC: false, optionD: false, optionE: false, optionF:false};
-    if(!!userAnswer){
+  setUserAnswer: function (userAnswer, needRet = false) {
+    var data = { optionA: false, optionB: false, optionC: false, optionD: false, optionE: false, optionF: false };
+    if (!!userAnswer) {
       if (userAnswer.indexOf('A') >= 0) {
         data.optionA = true;
       }
@@ -369,12 +348,13 @@ Page({
         data.optionF = true;
       }
     }
-    if (needRet){
+    if (needRet) {
       return data;
-    }else{
+    } else {
       this.setData(data);
     }
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -393,22 +373,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    stoptime();
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    stoptime();
-    if (!clearFlag){
-      //保存当前答案信息
-      wx.setStorage({
-        key: this.data.examId,
-        data: this.data.userAnswer,
-      });
-      console.log("保存当前答题数据");
-    }
+
   },
 
   /**
@@ -432,7 +404,6 @@ Page({
 
   }
 })
-
 /** 
  * 需要一个目标日期，初始化时，先得出到当前时间还有剩余多少秒
  * 1.将秒数换成格式化输出为XX天XX小时XX分钟XX秒 XX
@@ -462,7 +433,7 @@ function count_down(that) {
     app.globalData.total_micro_second -= 1000;
     count_down(that);
   }, 1000)
-  
+
 }
 
 function stoptime() {

@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/exam/list/list",
@@ -19,12 +19,19 @@
     "pages/apply/applyaudit/applyaudit",
     "pages/apply/applyonline/applyonline",
     "pages/questionnaire/questionnaire",
-    "pages/onlinestudy/onlinestudy"
+    "pages/onlinestudy/onlinestudy",
+    "pages/practice/practice/practice",
+    "pages/practice/index/index",
+    "pages/practice/report/report",
+    "pages/practice/analysis/analysis",
+    "pages/user/studytime/studytime",
+    "pages/practice/history/history"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
 }

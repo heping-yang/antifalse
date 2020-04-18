@@ -50,6 +50,7 @@
       </view>
     </view>
   </view> -->
+  <!--
   <view class='item'>
     <text class='item_name'>民族</text>
     <view class='item_cont'>
@@ -105,7 +106,7 @@
         </picker>
       </view>
     </view>
-  </view>
+  </view>-->
 
 
    <view class='item item_long'>
@@ -142,7 +143,11 @@
    <text>2、根据你所选择的考试时间，请于<text class='font_blue' >{{checkEnd}}</text>前上传本人近期白底证件照。</text>
    <text class='font_grey'>① 必须为照相馆正规拍摄，不得压缩修改；</text>
    <text class='font_grey'>② 传至邮箱<text class='font_blue' >nxyqedu@163.com</text>，照片命名为（考生姓名身份证号.jpg）例如：张三640102199501010002.jpg；</text>
-   <view>3、审核完成后会通过<text class='font_bold'>宁夏银桥教育培训中心微信公众号</text><text class='font_red' >（点击关注）</text>，向你发送审核通过信息。你也可以随时浏览<text class='font_blue' >宁夏反假货币小程序</text> > <text class='font_blue' >考试报名页面</text>，查看本人当前状态，及时完成报名缴费。</view>  
+   <view>3、审核完成后会通过<text class='font_bold'>宁夏银桥教育培训中心微信公众号</text><text class='font_red' >（点击关注）</text>，向你发送审核通过信息。你也可以随时浏览<text class='font_blue' >宁夏反假货币小程序</text> > <text class='font_blue' >考试报名页面</text>，查看本人当前状态，及时完成报名缴费。
+   </view>
+   <view style="margin-top:20rpx;" wx:if="{{!canApply}}">
+    <text style="color:red">注意：需要三次模拟成绩大于等于80分才能够提交审核，您没有达到要求，继续加油吧！</text>
+   </view>
   </view>
   
   <view class='btn_submit_grey' wx:if="{{!submitflag}}"> 

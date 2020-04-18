@@ -1,13 +1,13 @@
 <!--pages/examlist/examlist.wxml-->
 <view class='container'>
-  <view class="swiper-tab">
+  <!--<view class="swiper-tab">
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
       <text>整套题</text>
     </view>
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
       <text>按类型</text>
     </view>
-  </view>
+  </view>-->
 
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height:82vh">
     <!-- 整套题 -->
@@ -43,7 +43,7 @@
       </scroll-view>
     </swiper-item>
     <!-- 按类型 -->
-    <swiper-item class="test_type">
+    <!--<swiper-item class="test_type">
       <view class='test_type_list'>
         <view class='test_type_wrap'>
           <view class="test {{currentTab2==1 ? 'active' : ''}}" data-current="1" catchtap='isSelection'>单选题（{{typelist[0].TYPECNT}}）</view>
@@ -59,7 +59,7 @@
         <image class='btn_icon' src='/images/enter_exam2.png'></image>
         <text>开始答题</text>
       </view>
-    </swiper-item>
+    </swiper-item>-->
   </swiper>
   <view class='footer_menu'>
     <view class='line'></view>

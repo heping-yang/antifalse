@@ -96,10 +96,12 @@ App({
   },
 
   globalData: {
-    globalUrl: "https://www.nxyqedu.com/antifalse/api",
-    //globalUrl: "http://192.168.2.101:8080/antifalse/api",
-    baseUrl: "https://www.nxyqedu.com/antifalse/",
-    //baseUrl: "http://192.168.2.101:8080/antifalse/",
+    //globalUrl: "https://www.nxyqedu.com/antifalse/api",
+    globalUrl: "https://148.70.33.6/antifalse/api",
+    //globalUrl: "http://192.168.2.105:8080/antifalse/api",
+    //baseUrl: "https://www.nxyqedu.com/antifalse/",
+    baseUrl: "https://148.70.33.6/antifalse/",
+    //baseUrl: "http://192.168.2.105:8080/antifalse/",
     openid:"",
     userInfo:null,
     user:{},

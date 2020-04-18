@@ -58,7 +58,8 @@ Page({
     examDateIndex:-1,
     examAllownums: '',
 
-    applyInfo:{}
+    applyInfo:{},
+    canApply: false,
   },
 
   /**
@@ -88,7 +89,8 @@ Page({
           nation: res.data.nation,
           ksstatus : res.data.ksstatus,
           ksdq: res.data.ksdq||[],
-          applyInfo: res.data.applyInfo
+          applyInfo: res.data.applyInfo,
+          canApply: res.data.canApply,
         });
       },
       fail: function (error) {
@@ -323,15 +325,14 @@ Page({
   
   // 申请考试地区时间
   bindPickerExamDate: function (e) {
-    var that = this
+    var that = this;
     var item = this.data.examDate[e.detail.value];
     if(!!item){
       this.setData({
         examDateIndex: e.detail.value,
         examDateStu: true,
-        submitflag: true
+        submitflag: this.data.canApply && true
       });
-
       paksdate = item['kstimeid'];
       pakstimesid = item['detailid'];
       wx.request({
@@ -366,10 +367,10 @@ Page({
       util.showMsg('请选择考试地区');
       return;
     }
-    if (!pabankName || pabankName == '') {
+    /*if (!pabankName || pabankName == '') {
       util.showMsg('请选择银行');
       return;
-    }
+    }*/
     if (!paksdate || paksdate==''){
       util.showMsg('请选择考试时间');
       return;
@@ -383,11 +384,11 @@ Page({
         userName: this.data.user.username,
         telnum: this.data.user.telnum,
         ksdqid: paksdqid,
-        nation: panation,
-        bankName: pabankName,
+        //nation: panation,
+        //bankName: pabankName,
         dateid: paksdate,
         kstimesid:pakstimesid,
-        kssource: pakssource
+        //kssource: pakssource,
       },
       success: function (res) {
         if (res.data.req == 'success'){

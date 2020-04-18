@@ -29,12 +29,12 @@
 .font_blue{color: #4e87e1}
 .font_red{color: #ff005a}
 .font_bold{font-weight: bold}
-.apply_info_mb{margin-bottom: 70px}
-
 .btn_submit{width:650rpx;margin: 40rpx auto;background: #4c87e5;color: #fff;border-radius: 5px;padding: 30rpx 0;text-align: center;display: flex;flex-direction: column;display: none} 
 
 .bottom{
-  position: fixed;width: 750rpx;color:#ededed ;background: #ff6363;text-align: center;padding: 30rpx 0;left: 0px;bottom: 0px;margin-top: 140px; 
+  position: fixed;width: 750rpx;color:#ededed ;background: #ff6363;text-align: center;left: 0px;bottom: 0px;height:8vh;
+  line-height:8vh;
+  margin-top: 8vh;
 }
 .show{display: block}
 

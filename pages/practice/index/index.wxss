@@ -1,0 +1,15 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+  box-sizing: border-box;
+} 
+.enter_exam{width: 40rpx ;height:40rpx}
+.test_sheet_list{display: flex;flex-direction:column;border-bottom: 1px solid #e5e5e5;padding: 10px}
+.test_tit_box{display: flex;flex-direction: row}
+.test_tit{width: 710rpx;display: block;font-size: 32rpx;color: #000;font-weight: bold}
+.enter_exam{width: 40rpx ;height:40rpx}
+.test_info{color: #999;display: flex;flex-direction: row;margin-top: 10rpx}
+.test_info text{margin-right: 30rpx}
+.test_info text .num{margin: 0px 3px}

@@ -36,7 +36,7 @@
       <text>{{applyInfo.ksdqname}}</text>
     </view>
   </view>
-
+  <!--
   <view class='item'>
     <text class='item_name'>民族</text>
     <view class='item_cont'>
@@ -64,7 +64,7 @@
       <text>{{applyInfo.branch}}</text>
     </view>
   </view>
-
+  -->
 
    <view class='item item_long'>
     <text class='item_name'>考试时间</text>

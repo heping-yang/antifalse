@@ -1,0 +1,11 @@
+<view class='container'>
+  <view wx:for="{{projects}}" wx:for-item="project" wx:key="unique" class="data_item">
+    <view class="project_name"><text>{{project.name}}</text></view>
+    <view class="project_item" wx:for="{{project.items}}" wx:key="unique">
+      <text class="exam_name">{{item.NAME}}</text>
+      <text class="exam_times">{{item.TIMES}}分钟</text>
+    </view>
+  </view>
+</view>
+<!--底部  -->
+<view class='bottom' bindtap="backHome">返回首页</view>

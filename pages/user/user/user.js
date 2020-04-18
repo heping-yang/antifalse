@@ -56,6 +56,18 @@ Page({
         url: '/pages/user/about/about'
       })
   },
+  //成长记录
+  studyTime: function(){
+      wx.navigateTo({
+        url: '/pages/user/studytime/studytime',
+      })
+  },
+  //练习历史
+  practiceHistory: function(){
+      wx.navigateTo({
+        url: '/pages/practice/history/history',
+      })
+  },
   loginout:function(){
     var that = this
     wx.showModal({

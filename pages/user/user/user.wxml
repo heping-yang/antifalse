@@ -1,15 +1,16 @@
 <!--pages/user/user.wxml-->
 <view class='container'>
   <view class='user_top'>
-    <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+    <image class='avatar {{loginstatus == 0?"hide":""}}' src='{{userInfo.avatarUrl}}'></image>
+    <image class='avatar {{loginstatus != 0?"hide":""}}' src='{{userInfo.avatarUrl}}' bindtap='loginbind'></image>
     <view class='user_info {{loginstatus == 0?"hide":""}}'>
       <text class='font_big'>HI,{{user.username}}</text>
       <text class='phone_num'>{{user.telnum}}</text>
     </view>
     <view class='user_login {{loginstatus == 1?"hide":""}}' bindtap='loginbind'>
       <text class='font_m'>登录</text>
-      <text>/</text> 
-      <text class='font_m'>注册</text> 
+      <!--<text>/</text> 
+      <text class='font_m'>注册</text> -->
     </view>
   </view>
   <!--user_top  -->
@@ -17,6 +18,16 @@
     <view class='user_list_item' bindtap="gradebind">
       <image class='user_icon' src='/images/user_icon3.png'></image>
       <text>考试成绩查询</text> 
+      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+    </view>
+    <view class='user_list_item' bindtap='studyTime'>
+      <image class='user_icon' src='/images/user_icon5.png'></image>
+      <text>成长记录</text> 
+      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+    </view>
+    <view class='user_list_item' bindtap='practiceHistory'>
+      <image class='user_icon' src='/images/user_icon6.png'></image>
+      <text>练习历史</text> 
       <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
     </view>
     <view class='user_list_item' bindtap='memberStatus'>

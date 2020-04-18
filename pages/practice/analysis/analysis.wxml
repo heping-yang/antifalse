@@ -1,65 +1,9 @@
-<!--pages/exam/exam.wxml-->
 <view class='container'>
   <!--底部  -->
-  <view class='bottom'>
-    <view class='bottom_item' bindtap='backHome'>
-      <image src='/images/icon_home.png'></image>
-    </view>
-    <view class='bottom_item' bindtap='showAll'>
-      <image src='/images/icon_qu_all.png'></image>
-    </view>
-  </view>
-  <!--交卷  -->
-
-  <view class="layer {{layerStus==true ? 'show' : ''}}">
-    <scroll-view class='layer_cont' scroll-y="{{true}}">
-      <block wx:if='{{examtype==0||examtype==1}}'>
-      <text class='qu_type'>单项选择</text>
-      <view class='qu_box clearfix'>
-        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '1' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '1' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
-        </text>
-      </view>
-      </block>
-      <block wx:if='{{examtype==0||examtype==2}}'>
-      <text class='qu_type'>多项选择</text>
-      <view class='qu_box'>
-        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '2' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '2' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
-        </text>
-      </view>
-      </block>
-      <block wx:if='{{examtype==0||examtype==3}}'>
-      <text class='qu_type'>判断题</text>
-      <view class='qu_box'>
-        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '3' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '3' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
-        </text>
-      </view>
-      </block>
-      <block wx:if='{{examtype==0||examtype==4}}'>
-      <text class='qu_type'>案例分析</text>
-      <view class='qu_box'>
-        <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
-          <text wx:if="{{item.type == '4' && item.result == '1'}}" class='qu_num qu_num_correct'>{{item.index}}</text>
-          <text wx:if="{{item.type == '4' && item.result != '1'}}" class='qu_num qu_num_wrong'>{{item.index}}</text>
-        </text>
-      </view>
-      </block>
-    </scroll-view>
-    <!--layercont  -->
-    <view class='footer'>
-      <view class='btn' bindtap='back'>
-        返回
-      </view>
-    </view>
-  </view>
+  <view class='bottom' style='background: #4c87e5;height:8vh;line-height:8vh;' bindtap="backHome">返回首页</view>
 
   <!--考试部分  -->
-  <swiper style='height:100vh'>
+  <swiper style='height:92vh'>
     <block wx:for="{{wrongs}}" wx:key="unique">
       <swiper-item>
         <view class='exam_top'>

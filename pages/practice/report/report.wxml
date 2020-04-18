@@ -11,8 +11,8 @@
 
   <!--分数  -->
   <view class='score_panel'>
-    <view class='score' wx:if='{{examtype == 0}}'>
-      <text class='my_score'>{{report.totalscore}}</text>
+    <view class='score'>
+      <text class='my_score'>{{report.score}}</text>
       <text class='total_score'>/100分</text>
     </view>
     <view class='score_analysis'>
@@ -26,7 +26,7 @@
       </view>
       <view class='score_analysis_item'>
         <text class='font_grey'>总用时</text>
-        <text>{{report.usedtime}}分钟</text>
+        <text>{{report.times}}分钟</text>
       </view>
     </view>
   </view>
@@ -34,7 +34,7 @@
   <view class='line'></view>
 
   <view class='qu_num_list'>
-    <block wx:if='{{examtype==0||examtype==1}}'>
+    <block>
     <text class='qu_type'>单项选择</text>
     <view class='qu_box clearfix'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
@@ -43,7 +43,7 @@
         </text>
     </view>
     </block>
-    <block wx:if='{{examtype==0||examtype==2}}'>
+    <block>
     <text class='qu_type'>多项选择</text>
     <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
@@ -52,7 +52,7 @@
         </text>
     </view>
     </block>
-    <block wx:if='{{examtype==0||examtype==3}}'>
+    <block>
     <text class='qu_type'>判断题</text>
     <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
@@ -61,7 +61,7 @@
         </text>
     </view>
     </block>
-    <block wx:if='{{examtype==0||examtype==4}}'>
+    <block>
     <text class='qu_type'>案例分析</text>
     <view class='qu_box'>
         <text wx:for="{{report.answerRecord.data}}" wx:key="unique">
