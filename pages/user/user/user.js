@@ -27,11 +27,11 @@ Page({
   },
   //在线模拟
   enterExam: function () {
-    if (loginCheck.check('/pages/exam/list/list')) {
+    //if (loginCheck.check('/pages/exam/list/list')) {
       wx.navigateTo({
         url: '/pages/exam/list/list'
       })
-    }
+    //}
   },
 
   //成绩查询

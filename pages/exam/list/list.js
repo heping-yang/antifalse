@@ -11,7 +11,9 @@ Page({
     currentTab: 0,
     currentTab2:1,
     userInfo: {},
-    user: {}
+    user: {},
+    //还需要在线学习时长
+    needTime: 1,
   },
 
   //我的
@@ -41,13 +43,18 @@ Page({
     wx.request({
       url: app.globalData.globalUrl + "/exam",
       data: {
-        method: "list"
+        method: "list",
+        telnum: app.globalData.user.telnum,
       },
       success: function (res) {
-        that.setData({
-          examlist: res.data.list,
-          typelist: res.data.typelist
-        });
+        console.log(res.data);
+        if (!!res.data && res.data!='error'){
+          that.setData({
+            examlist: res.data.list,
+            typelist: res.data.typelist,
+            needTime: res.data.needTime||1,
+          });
+        }
         util.hideLoading();
       },
       fail: function (error) {
@@ -92,6 +99,11 @@ Page({
   },
   //进入考试
   enterExam:function (event) {
+    if(this.data.needTime){
+      util.showMsg('请先在线学习');
+      console.log('还需在线学习['+this.data.needTime+']分钟');
+      return;
+    }
     this.startExam(event.currentTarget.dataset.id, event.currentTarget.dataset.name, 0);
   },
   //进入考试
