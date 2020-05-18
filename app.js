@@ -12,8 +12,11 @@ App({
       this.globalData.loginstatus = 1;
       this.globalData.user.userstatus = 1;
     }
+    console.info("开始微信登录");
     wx.login({
-      success: function (res) {
+      success: function (res) {    
+        console.info(res);
+        console.info("开始获取openId");
         if (res.code) {
           //获取openId
           wx.request({
@@ -96,11 +99,11 @@ App({
   },
 
   globalData: {
-    //globalUrl: "https://www.nxyqedu.com/antifalse/api",
-    globalUrl: "https://148.70.33.6/antifalse/api",
+    globalUrl: "https://www.ycyqinfo.com/antifalse/api",
+    //globalUrl: "https://148.70.33.6/antifalse/api",
     //globalUrl: "http://192.168.2.105:8080/antifalse/api",
-    //baseUrl: "https://www.nxyqedu.com/antifalse/",
-    baseUrl: "https://148.70.33.6/antifalse/",
+    baseUrl: "https://www.ycyqinfo.com/antifalse/",
+    //baseUrl: "https://148.70.33.6/antifalse/",
     //baseUrl: "http://192.168.2.105:8080/antifalse/",
     openid:"",
     userInfo:null,

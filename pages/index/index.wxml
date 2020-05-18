@@ -35,10 +35,10 @@
         <image class='nav_icon' src='/images/notice.png'></image>
         <text>监督检查</text> 
       </view>-->
-      <view class='nav_item' bindtap='applybind'>
+      <!--<view class='nav_item' bindtap='applybind'>
         <image class='nav_icon' src='/images/notice.png'></image>
         <text>在线报名</text> 
-      </view>
+      </view>-->
       <view class='nav_item' bindtap='historybind'>
         <image class='nav_icon' src='/images/history.png'></image>
         <text>模拟历史</text> 

@@ -1,61 +1,62 @@
 <!--pages/user/user.wxml-->
 <view class='container'>
-  <view class='user_top'>
-    <image class='avatar {{loginstatus == 0?"hide":""}}' src='{{userInfo.avatarUrl}}'></image>
-    <image class='avatar {{loginstatus != 0?"hide":""}}' src='{{userInfo.avatarUrl}}' bindtap='loginbind'></image>
-    <view class='user_info {{loginstatus == 0?"hide":""}}'>
-      <text class='font_big'>HI,{{user.username}}</text>
-      <text class='phone_num'>{{user.telnum}}</text>
+  <scroll-view>
+    <view class='user_top'>
+      <image class='avatar {{loginstatus == 0?"hide":""}}' src='{{userInfo.avatarUrl}}'></image>
+      <image class='avatar {{loginstatus != 0?"hide":""}}' src='{{userInfo.avatarUrl}}' bindtap='loginbind'></image>
+      <view class='user_info {{loginstatus == 0?"hide":""}}'>
+        <text class='font_big'>HI,{{user.username}}</text>
+        <text class='phone_num'>{{user.telnum}}</text>
+      </view>
+      <view class='user_login {{loginstatus == 1?"hide":""}}' bindtap='loginbind'>
+        <text class='font_m'>登录</text>
+        <!--<text>/</text> 
+        <text class='font_m'>注册</text> -->
+      </view>
     </view>
-    <view class='user_login {{loginstatus == 1?"hide":""}}' bindtap='loginbind'>
-      <text class='font_m'>登录</text>
-      <!--<text>/</text> 
-      <text class='font_m'>注册</text> -->
-    </view>
-  </view>
-  <!--user_top  -->
-  <view class='user_list'>
-    <view class='user_list_item' bindtap="gradebind">
-      <image class='user_icon' src='/images/user_icon3.png'></image>
-      <text>考试成绩查询</text> 
-      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
-    </view>
-    <view class='user_list_item' bindtap='studyTime'>
-      <image class='user_icon' src='/images/user_icon5.png'></image>
-      <text>成长记录</text> 
-      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
-    </view>
-    <view class='user_list_item' bindtap='practiceHistory'>
-      <image class='user_icon' src='/images/user_icon6.png'></image>
-      <text>练习历史</text> 
-      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
-    </view>
-    <view class='user_list_item' bindtap='memberStatus'>
-      <image class='user_icon' src='/images/user_icon2.png'></image>
-      <text>用户状态</text> 
-      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
-    </view>
-    <view class='user_list_item' bindtap='abouttap'>
-      <image class='user_icon' src='/images/user_icon4.png'></image>
-      <text>联系我们</text> 
-      <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
-    </view>
-    <view class='user_list_item' bindtap='abouttap'>
-      <image class='user_icon' src='/images/user_icon1.png'></image>
-      <text>微信版本</text> 
-      <text class='user_arrow_r text_item'  src='/images/arrow_r.png'>{{SDKVersion}}</text>
-    </view>
-  </view> 
+    <!--user_top  -->
+    <view class='user_list'>
+      <view class='user_list_item' bindtap="gradebind">
+        <image class='user_icon' src='/images/user_icon3.png'></image>
+        <text>考试成绩查询</text> 
+        <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+      </view>
+      <view class='user_list_item' bindtap='studyTime'>
+        <image class='user_icon' src='/images/user_icon5.png'></image>
+        <text>成长记录</text> 
+        <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+      </view>
+      <view class='user_list_item' bindtap='practiceHistory'>
+        <image class='user_icon' src='/images/user_icon6.png'></image>
+        <text>练习历史</text> 
+        <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+      </view>
+      <view class='user_list_item' bindtap='memberStatus'>
+        <image class='user_icon' src='/images/user_icon2.png'></image>
+        <text>用户状态</text> 
+        <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+      </view>
+      <view class='user_list_item' bindtap='abouttap'>
+        <image class='user_icon' src='/images/user_icon4.png'></image>
+        <text>联系我们</text> 
+        <image class='user_arrow_r'  src='/images/arrow_r.png'></image>
+      </view>
+      <view class='user_list_item' bindtap='abouttap'>
+        <image class='user_icon' src='/images/user_icon1.png'></image>
+        <text>微信版本</text> 
+        <text class='user_arrow_r text_item'  src='/images/arrow_r.png'>{{SDKVersion}}</text>
+      </view>
+    </view> 
 
-  <view class="btn_area">
-    <button open-type="getUserInfo" class='btn_weixin {{weixinAuth == 1?"btn_hide":""}}' bindtap='getuser'>
-      微信授权
-    </button>
-    <button class='btn_exit {{loginstatus == 0?"btn_hide":""}}' bindtap='loginout'>
-      退出登录
-    </button>
-  </view>
-
+    <view class="btn_area">
+      <button open-type="getUserInfo" class='btn_weixin {{weixinAuth == 1?"btn_hide":""}}' bindtap='getuser'>
+        微信授权
+      </button>
+      <button class='btn_exit {{loginstatus == 0?"btn_hide":""}}' bindtap='loginout'>
+        退出登录
+      </button>
+    </view>
+  </scroll-view>
   <view class='footer_menu'>
     <view class='line'></view>
     <view class='menu'>

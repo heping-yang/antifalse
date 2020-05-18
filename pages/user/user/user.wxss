@@ -10,11 +10,11 @@ page{background: #ededed}
 .user_login text{margin: 0px 5rpx}
 
 .user_list{display: flex;flex-direction: column;background: #fff;margin-top: 20rpx}
-.user_list_item{display: flex;flex-direction: row;position: relative;border-bottom: 1px solid #e5e5e5;width: 730rpx;margin-left: 20rpx;padding: 40rpx 0;line-height: 35rpx;color: #333}
+.user_list_item{display: flex;flex-direction: row;position: relative;border-bottom: 1rpx solid #e5e5e5;width: 730rpx;margin-left: 20rpx;padding: 40rpx 0;line-height: 35rpx;color: #333}
 .user_list_item text{ padding-left: 50rpx; }
 .user_icon{width: 35rpx;height: 35rpx;margin-right:20rpx;position: absolute;top: 38rpx;left: 0rpx; }
 .user_arrow_r{width: 30rpx;height: 30rpx;position: absolute;right: 20rpx;top:42rpx}
-.btn_area{margin-top: 100rpx}
+.btn_area{margin-top: 20rpx,;margin-bottom: 130rpx;}
 .btn_exit{width: 750rpx;height: 90rpx;text-align: center;background: #fff;color: #333;line-height: 90rpx;margin-top: 2rpx}
 .btn_weixin{width: 750rpx;height: 90rpx;text-align: center;background: #fff;color: #333;line-height: 90rpx;}
 .btn_hide{display: none}

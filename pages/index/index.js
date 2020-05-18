@@ -25,11 +25,9 @@ Page({
   //底部菜单跳转
   //在线模拟
   enterExam: function () {
-    if (loginCheck.check('/pages/exam/list/list')){
-      wx.navigateTo({
-        url: '/pages/exam/list/list'
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/exam/list/list'
+    })
   },
   //成为会员
   paybind: function() {
