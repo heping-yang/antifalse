@@ -25,7 +25,8 @@
     "pages/practice/report/report",
     "pages/practice/analysis/analysis",
     "pages/user/studytime/studytime",
-    "pages/practice/history/history"
+    "pages/practice/history/history",
+    "pages/exam/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

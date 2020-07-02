@@ -146,13 +146,17 @@ Page({
       if (typeof (answer) == 'undefined' || answer == null) {
         answer = '';
       }
-      var standard = item.standard;
+      var standard = item.standard.trim();
       if (item.type == '3') {
-        standard = "T" == standard ? "A" : "B";
+        if(standard=="T"){
+          standard = "A";
+        }else if(standard=="F"){
+          standard = "B";
+        }
       }
       if (answer == standard) {
         result = 1;
-        totalscore += 1;
+        totalscore += parseInt(item.score);
         rightCnt++;
       } else {
         wrongCnt++;

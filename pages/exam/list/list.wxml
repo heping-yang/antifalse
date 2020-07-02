@@ -16,7 +16,7 @@
         <block wx:for="{{examlist}}" wx:key="unique">
           
             <block wx:if='{{user.userstatus == 3 && item.intensifyflag == 1}}'>
-              <view class='test_sheet_list'  data-id="{{item.examId}}" data-name="{{item.name}}" bindtap="enterExam">
+              <view class='test_sheet_list'  data-id="{{item.examId}}" data-name="{{item.name}}" data-times="{{item.examTimes}}" data-isexam="{{item.isexam}}" data-start="{{item.examStart}}" data-end="{{item.examEnd}}" data-type="{{item.examType}}" data-duration="{{item.examDuration}}" bindtap="enterExam">
                 <view class='test_tit_box'>
                   <text class='test_tit'> <text class='symbol'>强化</text>{{item.name}}</text>
                   <image class='enter_exam' src='/images/enter_exam.png'></image>
@@ -28,7 +28,7 @@
               </view>
             </block>
             <block wx:if='{{item.intensifyflag == 0}}'>
-              <view class='test_sheet_list'  data-id="{{item.examId}}" data-name="{{item.name}}" bindtap="enterExam">
+              <view class='test_sheet_list'  data-id="{{item.examId}}" data-name="{{item.name}}" data-times="{{item.examTimes}}" data-isexam="{{item.isexam}}" data-start="{{item.examStart}}" data-end="{{item.examEnd}}" data-type="{{item.examType}}" data-duration="{{item.examDuration}}" bindtap="enterExam">
                 <view class='test_tit_box'>
                   <text class='test_tit'>{{item.name}}</text>
                   <image class='enter_exam' src='/images/enter_exam.png'></image>

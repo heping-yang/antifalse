@@ -11,7 +11,6 @@ Page({
     modalShow:false,
     handInModalShow: false,
     lastmodalShow:false,
-    finishModalShow:false,
     isloaded:false,
     examtype:0,
     //全部题目
@@ -34,7 +33,6 @@ Page({
     userAnswer:{},
     examId:'',
     examName:'',
-    isHandIn:0,
     submitType:1,
   },
   changeOption: function (type ,option){
@@ -104,7 +102,7 @@ Page({
   },
   //查看全部题目
   showAll: function () {
-    //stoptime();
+    stoptime();
     var data = this.data.userAnswer;
     this.setData({
       layerStus: true,
@@ -121,7 +119,7 @@ Page({
   },
   //继续模拟
   testContinue: function () {
-    //count_down(this);
+    count_down(this);
     this.setData({
       layerStus: false
     })
@@ -191,24 +189,39 @@ Page({
         usedtime: Math.ceil((50 * 60 * 1000 - app.globalData.total_micro_second) / (60 * 1000)),
         answerRecord: JSON.stringify(answerRecord),
         submitType:this.data.submitType,
-        isexam:1,
+        isexam:0,
       }, 
       success: function (res) {
         util.hideLoading();
         if(res.data=="error"){
           util.showMsg('上传数据失败');
         }else{
-          that.data.isHandIn = 1;
           //清空记录
           wx.removeStorageSync(that.data.examId);
           clearFlag = true;
           app.globalData.hId = res.data.id;
 
-          if(that.data.submitType==1){
-              that.setData({modalShow:false,
-                handInModalShow: false,
-                lastmodalShow:false,
-                finishModalShow:true});
+          if(res.data.count>=3){
+            wx.showModal({
+              title: '恭喜',
+              content: '您已经有三次的模拟成绩大于等于80分，是否提交报名申请？',
+              success: function(sm){
+                if(sm.confirm){
+                  //报名申请
+                  wx.redirectTo({
+                    url: '/pages/apply/applyonline/applyonline',
+                  });
+                }else{
+                  wx.redirectTo({
+                    url: '/pages/exam/report/report',
+                  });
+                }
+              }
+            });
+          }else{
+            wx.redirectTo({
+              url: '/pages/exam/report/report',
+            });
           }
         }
       },
@@ -221,7 +234,7 @@ Page({
   },
   //休息
   rest:function(){
-    //stoptime();
+    stoptime();
     var answerCnt = Object.getOwnPropertyNames(this.data.userAnswer).length;
     this.setData({
       modalShow: true,
@@ -231,7 +244,7 @@ Page({
   },
   //休息结束
   rested: function () {
-    //count_down(this);
+    count_down(this);
     this.setData({
       modalShow: false,
       handInModalShow: false,
@@ -240,7 +253,7 @@ Page({
   },
   //返回首页
   home: function () {
-    //stoptime();
+    stoptime();
     var answerCnt = Object.getOwnPropertyNames(this.data.userAnswer).length;
     this.setData({
       handInModalShow: true,
@@ -250,7 +263,7 @@ Page({
   },
   //继续考试
   testContuine:function(){
-    //count_down(this);
+    count_down(this);
     this.setData({
       modalShow: false,
       handInModalShow: false,
@@ -311,7 +324,6 @@ Page({
     this.data.examtype = app.globalData.examtype;
     this.data.userAnswer = us;
     this.data.questionIndex = options.index||0;
-    this.data.isexam = options.isexam || 0;
 
     //加载题目列表
     wx.request({
@@ -389,7 +401,6 @@ Page({
    */
   onHide: function () {
     stoptime();
-    console.log("onHide");
   },
 
   /**
@@ -397,9 +408,13 @@ Page({
    */
   onUnload: function () {
     stoptime();
-    if(this.data.isHandIn==0){
-      this.data.submitType = 2;
-      this.handIn();
+    if (!clearFlag){
+      //保存当前答案信息
+      wx.setStorage({
+        key: this.data.examId,
+        data: this.data.userAnswer,
+      });
+      console.log("保存当前答题数据");
     }
   },
 

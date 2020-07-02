@@ -13,7 +13,7 @@ Page({
     userInfo: {},
     user: {},
     //还需要在线学习时长
-    needTime: 1,
+    needTime: 0,
   },
 
   //我的
@@ -47,12 +47,11 @@ Page({
         telnum: app.globalData.user.telnum,
       },
       success: function (res) {
-        console.log(res.data);
         if (!!res.data && res.data!='error'){
           that.setData({
             examlist: res.data.list,
             typelist: res.data.typelist,
-            needTime: res.data.needTime||1,
+            needTime: res.data.needTime,
           });
         }
         util.hideLoading();
@@ -99,12 +98,43 @@ Page({
   },
   //进入考试
   enterExam:function (event) {
-    if(this.data.needTime){
-      util.showMsg('请先在线学习');
-      console.log('还需在线学习['+this.data.needTime+']分钟');
-      return;
+    let times = event.currentTarget.dataset.times;
+    let isexam = event.currentTarget.dataset.isexam;
+    let examStart = event.currentTarget.dataset.start;
+    let examEnd = event.currentTarget.dataset.end;
+    let examType = event.currentTarget.dataset.type;
+    let duration = event.currentTarget.dataset.duration;
+    if(isexam==1){
+      if(times!=null && times!="" && parseInt(times)>0){
+        util.showMsg('已经考试过');
+        return;
+      }
+      //如果是考试试题，需要判断是否在考试时间段内，用户是否可以考试
+      if(examType!=app.globalData.user.examType){
+        util.showMsg('非当日考试学员');
+        return;
+      }
+      
+      var dtStart = new Date(examStart);
+      var dtEnd = new Date(examEnd);
+      var now = new Date();
+      if(now.getTime()<dtStart.getTime()){
+        util.showMsg('未到考试时间');
+        return;
+      }
+      if(now.getTime()>dtEnd.getTime()){
+        util.showMsg('考试已结束');
+        return;
+      }
+
+    }else{
+      if(this.data.needTime){
+        util.showMsg('请先在线学习');
+        console.log('还需在线学习['+this.data.needTime+']分钟');
+        return;
+      }
     }
-    this.startExam(event.currentTarget.dataset.id, event.currentTarget.dataset.name, 0);
+    this.startExam(event.currentTarget.dataset.id, event.currentTarget.dataset.name, 0,isexam,duration);
   },
   //进入考试
   enterTypeExam: function () {
@@ -122,11 +152,18 @@ Page({
     
     this.startExam("type" + app.globalData.examtype, typeName, app.globalData.examtype);
   },
-  startExam:function(examId,examName,examType){  
+  startExam:function(examId,examName,examType,isexam,duration){  
     app.globalData.hId = this.guid();
-    app.globalData.total_micro_second = 50 * 60 * 1000
+    if(!duration){
+      duration = 50;
+    }
+    app.globalData.total_micro_second = duration * 60 * 1000;
+    var page = "test/test";
+    if(isexam==1){
+      page = "exam/exam";
+    }
     wx.navigateTo({
-      url: "/pages/exam/exam/exam?examId=" + examId + "&examName="+examName+"&examtype=" + examType,//url跳转地址
+      url: "/pages/exam/"+page+"?examId=" + examId + "&examName="+examName+"&examtype=" + examType,//url跳转地址
       success: function (res) {
       },
       fail: function (res) {
