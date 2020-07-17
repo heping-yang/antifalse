@@ -164,7 +164,7 @@
             <view class='question_box'>
               <text class='question'>{{questions[questionIndex].content}}</text>
               <block wx:if="{{questions[questionIndex].picflag != null && questions[questionIndex].picflag != 0}}">
-                <image class='qu_img' src='https://www.nxyqedu.com/antifalse/resources/images/{{questions[questionIndex].picflag}}.jpg'></image>
+                <image class='qu_img' src='{{app.globalData.baseUrl}}resources/images/{{questions[questionIndex].picflag}}.jpg'></image>
               </block>
             </view>
             <!--答案选项  -->

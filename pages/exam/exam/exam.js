@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    app:app,
     //弹框
     modalShow:false,
     handInModalShow: false,

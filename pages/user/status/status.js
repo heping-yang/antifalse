@@ -30,11 +30,19 @@ Page({
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
       //更新数据
+      let stime = "";
+      if(!!app.globalData.user.effstart && !!app.globalData.user.effstart.time){
+        stime = timeFmt.formatTime(app.globalData.user.effstart.time,'Y-M-D');
+      }
+      let ttime = "";
+      if(!!app.globalData.user.effend && !!app.globalData.user.effend.time){
+        etime = timeFmt.formatTime(app.globalData.user.effend.time, 'Y-M-D');
+      }
       that.setData({
         userInfo: userInfo,
         user: app.globalData.user,
-        stime: timeFmt.formatTime(app.globalData.user.effstart.time,'Y-M-D'),
-        etime: timeFmt.formatTime(app.globalData.user.effend.time, 'Y-M-D')
+        stime: stime,
+        etime: etime
       })
       if (that.data.user.userstatus>1){
         that.setData({

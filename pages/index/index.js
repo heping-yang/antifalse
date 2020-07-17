@@ -8,7 +8,7 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     user:{},
-    loginstatus : 0
+    loginstatus : 0,
   },
   //请登录
   loginbind: function () {
